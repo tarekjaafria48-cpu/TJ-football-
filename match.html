@@ -1,359 +1,1046 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TJ Football - تفاصيل المباراة</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-      background: #07111f;
-      color: white;
-      min-height: 100vh;
-    }
+<title>TJ Football - تفاصيل المباراة</title>
 
-    header {
-      background: linear-gradient(135deg, #071d3a, #0b4fa3);
-      padding: 18px 20px;
-      text-align: center;
-      border-bottom: 3px solid #e3262e;
-    }
+<style>
 
-    .logo {
-      font-size: 28px;
-      font-weight: bold;
-    }
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
-    .logo span {
-      color: #e3262e;
-    }
+:root{
+--red:#ff1744;
+--blue:#1677ff;
+--dark:#030812;
+--card:#0a1424;
+--card2:#0d1b2e;
+--text:#f7f9fc;
+--muted:#91a4ba;
+--border:#1b3049;
+}
 
-    .back {
-      display: inline-block;
-      margin-top: 12px;
-      color: white;
-      text-decoration: none;
-      background: rgba(255,255,255,0.12);
-      padding: 9px 18px;
-      border-radius: 20px;
-    }
+body{
 
-    .container {
-      width: 92%;
-      max-width: 900px;
-      margin: 25px auto;
-    }
+font-family:Arial,Tahoma,sans-serif;
 
-    .competition {
-      text-align: center;
-      color: #a9c8ef;
-      margin-bottom: 8px;
-      font-size: 15px;
-    }
+background:
+radial-gradient(circle at 10% 0%,#102c55 0,transparent 32%),
+radial-gradient(circle at 90% 10%,#3b0712 0,transparent 30%),
+var(--dark);
 
-    .match-status {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+color:var(--text);
 
-    .live {
-      display: inline-block;
-      background: #e3262e;
-      padding: 6px 15px;
-      border-radius: 20px;
-      font-weight: bold;
-      animation: pulse 1.5s infinite;
-    }
+min-height:100vh;
 
-    @keyframes pulse {
-      50% { opacity: .55; }
-    }
+}
 
-    .score-card {
-      background: linear-gradient(145deg, #0c1e35, #102d4d);
-      border-radius: 22px;
-      padding: 30px 20px;
-      box-shadow: 0 10px 35px rgba(0,0,0,.35);
-      border: 1px solid rgba(255,255,255,.08);
-    }
+header{
 
-    .teams {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      gap: 20px;
-    }
+background:rgba(3,8,18,.94);
 
-    .team {
-      width: 35%;
-      text-align: center;
-    }
+border-bottom:1px solid var(--border);
 
-    .team-logo {
-      width: 90px;
-      height: 90px;
-      object-fit: contain;
-      background: white;
-      border-radius: 50%;
-      padding: 10px;
-      margin-bottom: 12px;
-    }
+padding:15px;
 
-    .team-name {
-      font-size: 20px;
-      font-weight: bold;
-    }
+position:sticky;
 
-    .score {
-      font-size: 55px;
-      font-weight: bold;
-      color: white;
-    }
+top:0;
 
-    .versus {
-      color: #8ca6c2;
-      font-size: 14px;
-    }
+z-index:10;
 
-    .info {
-      margin-top: 25px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
+}
 
-    .info-box {
-      background: rgba(255,255,255,.06);
-      border-radius: 12px;
-      padding: 15px;
-      text-align: center;
-    }
+.header{
 
-    .info-title {
-      color: #8faac7;
-      font-size: 13px;
-      margin-bottom: 6px;
-    }
+max-width:1000px;
 
-    .info-value {
-      font-weight: bold;
-    }
+margin:auto;
 
-    .section {
-      background: #0c1a2c;
-      margin-top: 20px;
-      padding: 20px;
-      border-radius: 18px;
-    }
+display:flex;
 
-    .section h2 {
-      font-size: 20px;
-      margin-bottom: 15px;
-      border-right: 4px solid #e3262e;
-      padding-right: 10px;
-    }
+align-items:center;
 
-    .event {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 5px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
+justify-content:space-between;
 
-    .event:last-child {
-      border-bottom: none;
-    }
+gap:15px;
 
-    .minute {
-      color: #55aaff;
-      font-weight: bold;
-    }
+}
 
-    .news {
-      background: rgba(255,255,255,.05);
-      padding: 14px;
-      border-radius: 12px;
-      margin-bottom: 10px;
-    }
+.logo{
 
-    footer {
-      text-align: center;
-      color: #7890aa;
-      padding: 30px 10px;
-      font-size: 13px;
-    }
+font-size:24px;
 
-    @media (max-width: 650px) {
-      .teams {
-        gap: 5px;
-      }
+font-weight:1000;
 
-      .team-logo {
-        width: 65px;
-        height: 65px;
-      }
+font-style:italic;
 
-      .team-name {
-        font-size: 16px;
-      }
+}
 
-      .score {
-        font-size: 42px;
-      }
+.logo span{
 
-      .info {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+color:var(--red);
+
+}
+
+.back{
+
+text-decoration:none;
+
+color:white;
+
+background:#ffffff0b;
+
+border:1px solid #ffffff18;
+
+padding:9px 14px;
+
+border-radius:10px;
+
+font-size:12px;
+
+}
+
+.container{
+
+width:92%;
+
+max-width:900px;
+
+margin:25px auto;
+
+}
+
+.competition{
+
+text-align:center;
+
+color:var(--muted);
+
+font-size:13px;
+
+margin-bottom:8px;
+
+}
+
+.status{
+
+text-align:center;
+
+margin-bottom:18px;
+
+}
+
+.status span{
+
+display:inline-block;
+
+padding:7px 16px;
+
+border-radius:20px;
+
+font-size:12px;
+
+font-weight:bold;
+
+background:#173252;
+
+color:#8fc5ff;
+
+}
+
+.status.live span{
+
+background:#3a0b16;
+
+color:#ff496d;
+
+box-shadow:0 0 20px #ff174425;
+
+}
+
+.score-card{
+
+background:
+
+linear-gradient(
+145deg,
+rgba(13,30,53,.98),
+rgba(6,15,28,.98)
+);
+
+border:1px solid var(--border);
+
+border-radius:25px;
+
+padding:30px 20px;
+
+box-shadow:0 25px 70px #0008;
+
+}
+
+.teams{
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:35px;
+
+}
+
+.team{
+
+width:35%;
+
+text-align:center;
+
+}
+
+.team-logo{
+
+width:90px;
+
+height:90px;
+
+object-fit:contain;
+
+margin-bottom:12px;
+
+}
+
+.team-name{
+
+font-size:19px;
+
+font-weight:900;
+
+line-height:1.4;
+
+}
+
+.center{
+
+text-align:center;
+
+min-width:120px;
+
+}
+
+.score{
+
+font-size:52px;
+
+font-weight:1000;
+
+color:white;
+
+}
+
+.vs{
+
+font-size:13px;
+
+color:var(--muted);
+
+margin-top:5px;
+
+}
+
+.info{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:12px;
+
+margin-top:28px;
+
+}
+
+.info-box{
+
+background:#ffffff06;
+
+border:1px solid #ffffff0a;
+
+border-radius:13px;
+
+padding:14px;
+
+text-align:center;
+
+}
+
+.info-title{
+
+font-size:11px;
+
+color:var(--muted);
+
+margin-bottom:6px;
+
+}
+
+.info-value{
+
+font-size:13px;
+
+font-weight:bold;
+
+}
+
+.section{
+
+margin-top:20px;
+
+background:
+
+linear-gradient(
+145deg,
+rgba(10,20,36,.96),
+rgba(5,13,24,.96)
+);
+
+border:1px solid var(--border);
+
+border-radius:20px;
+
+padding:20px;
+
+}
+
+.section h2{
+
+font-size:19px;
+
+margin-bottom:15px;
+
+border-right:4px solid var(--red);
+
+padding-right:10px;
+
+}
+
+.event{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+gap:10px;
+
+padding:13px 5px;
+
+border-bottom:1px solid #17283c;
+
+font-size:13px;
+
+}
+
+.event:last-child{
+
+border-bottom:0;
+
+}
+
+.minute{
+
+color:#55aaff;
+
+font-weight:bold;
+
+}
+
+.stat{
+
+margin-bottom:17px;
+
+}
+
+.stat-head{
+
+display:flex;
+
+justify-content:space-between;
+
+font-size:12px;
+
+margin-bottom:7px;
+
+}
+
+.bar{
+
+height:8px;
+
+background:#14263b;
+
+border-radius:20px;
+
+overflow:hidden;
+
+}
+
+.bar-home{
+
+height:100%;
+
+background:var(--blue);
+
+border-radius:20px;
+
+}
+
+.bar-away{
+
+height:100%;
+
+background:var(--red);
+
+border-radius:20px;
+
+}
+
+.loading{
+
+text-align:center;
+
+padding:45px 10px;
+
+color:var(--muted);
+
+}
+
+.error{
+
+text-align:center;
+
+padding:30px;
+
+background:#3a0b16;
+
+border-radius:15px;
+
+color:#ff8197;
+
+}
+
+footer{
+
+text-align:center;
+
+padding:30px;
+
+margin-top:30px;
+
+background:#020711;
+
+border-top:1px solid var(--border);
+
+color:#667c94;
+
+font-size:11px;
+
+}
+
+@media(max-width:650px){
+
+.header{
+
+flex-direction:column;
+
+}
+
+.teams{
+
+gap:5px;
+
+}
+
+.team{
+
+width:32%;
+
+}
+
+.team-logo{
+
+width:65px;
+
+height:65px;
+
+}
+
+.team-name{
+
+font-size:14px;
+
+}
+
+.center{
+
+min-width:80px;
+
+}
+
+.score{
+
+font-size:40px;
+
+}
+
+.info{
+
+grid-template-columns:1fr;
+
+}
+
+.section{
+
+padding:15px;
+
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
 
 <header>
-  <div class="logo">TJ <span>Football</span> ⚽</div>
-  <a class="back" href="index.html">← العودة إلى المباريات</a>
-</header>
 
-<div class="container">
+<div class="header">
 
-  <div class="competition">الدوري الإنجليزي الممتاز</div>
+<div class="logo">
 
-  <div class="match-status">
-    <span class="live">● مباشر</span>
-  </div>
-
-  <div class="score-card">
-
-    <div class="teams">
-
-      <div class="team">
-        <img
-          class="team-logo"
-          src="https://upload.wikimedia.org/wikipedia/en/f/f2/Manchester_City_FC_badge.svg"
-          alt="Manchester City">
-        <div class="team-name">مانشستر سيتي</div>
-      </div>
-
-      <div>
-        <div class="score">
-          <span id="homeScore">2</span>
-          -
-          <span id="awayScore">1</span>
-        </div>
-        <div class="versus">90+3'</div>
-      </div>
-
-      <div class="team">
-        <img
-          class="team-logo"
-          src="https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg"
-          alt="Chelsea">
-        <div class="team-name">تشيلسي</div>
-      </div>
-
-    </div>
-
-    <div class="info">
-
-      <div class="info-box">
-        <div class="info-title">الملعب</div>
-        <div class="info-value">Etihad Stadium</div>
-      </div>
-
-      <div class="info-box">
-        <div class="info-title">التاريخ</div>
-        <div class="info-value">13 أغسطس 2026</div>
-      </div>
-
-      <div class="info-box">
-        <div class="info-title">التوقيت</div>
-        <div class="info-value">20:00</div>
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="section">
-
-    <h2>⚽ أحداث المباراة</h2>
-
-    <div class="event">
-      <span>⚽ هدف - مانشستر سيتي</span>
-      <span class="minute">23'</span>
-    </div>
-
-    <div class="event">
-      <span>🟨 بطاقة صفراء - تشيلسي</span>
-      <span class="minute">41'</span>
-    </div>
-
-    <div class="event">
-      <span>⚽ هدف - تشيلسي</span>
-      <span class="minute">58'</span>
-    </div>
-
-    <div class="event">
-      <span>⚽ هدف - مانشستر سيتي</span>
-      <span class="minute">76'</span>
-    </div>
-
-  </div>
-
-  <div class="section">
-
-    <h2>📊 إحصائيات المباراة</h2>
-
-    <div class="event">
-      <span>الاستحواذ</span>
-      <strong>58% - 42%</strong>
-    </div>
-
-    <div class="event">
-      <span>التسديدات</span>
-      <strong>14 - 9</strong>
-    </div>
-
-    <div class="event">
-      <span>التسديدات على المرمى</span>
-      <strong>7 - 4</strong>
-    </div>
-
-    <div class="event">
-      <span>الركنيات</span>
-      <strong>6 - 3</strong>
-    </div>
-
-  </div>
-
-  <div class="section">
-
-    <h2>📰 أخبار المباراة</h2>
-
-    <div class="news">
-      المباراة تشهد منافسة قوية بين الفريقين حتى الدقائق الأخيرة.
-    </div>
-
-    <div class="news">
-      تابع TJ Football لمعرفة آخر المستجدات والنتيجة النهائية.
-    </div>
-
-  </div>
+TJ <span>FOOTBALL</span> ⚽
 
 </div>
 
+<a href="index.html" class="back">
+
+← العودة إلى الرئيسية
+
+</a>
+
+</div>
+
+</header>
+
+
+<div class="container">
+
+<div id="match-container">
+
+<div class="loading">
+
+جاري تحميل تفاصيل المباراة...
+
+</div>
+
+</div>
+
+</div>
+
+
 <footer>
-  © 2026 TJ Football ⚽ — جميع الحقوق محفوظة
+
+TJ FOOTBALL ⚽
+
+<br>
+
+شغف • إثارة • كرة القدم
+
 </footer>
 
+
+<script>
+
+async function getJSON(file){
+
+const response =
+await fetch(file+"?v="+Date.now());
+
+if(!response.ok){
+
+throw new Error("تعذر تحميل "+file);
+
+}
+
+return response.json();
+
+}
+
+
+function teamName(team){
+
+return team?.shortName ||
+team?.name ||
+"غير معروف";
+
+}
+
+
+function teamLogo(team){
+
+if(team?.logo){
+
+return team.logo;
+
+}
+
+if(team?.id){
+
+return `https://media.api-sports.io/football/teams/${team.id}.png`;
+
+}
+
+return "";
+
+}
+
+
+function formatDate(date){
+
+if(!date){
+
+return "غير متوفر";
+
+}
+
+return new Date(date).toLocaleString(
+"ar-TN",
+{
+
+day:"2-digit",
+
+month:"long",
+
+year:"numeric",
+
+hour:"2-digit",
+
+minute:"2-digit"
+
+}
+
+);
+
+}
+
+
+function statusText(status){
+
+switch(status){
+
+case "SCHEDULED":
+return "قادمة";
+
+case "TIMED":
+return "موعد المباراة";
+
+case "IN_PLAY":
+return "مباشر الآن";
+
+case "PAUSED":
+return "استراحة";
+
+case "FINISHED":
+return "انتهت";
+
+default:
+return status || "غير معروف";
+
+}
+
+}
+
+
+function isLive(status){
+
+return (
+
+status === "IN_PLAY" ||
+
+status === "PAUSED"
+
+);
+
+}
+
+
+function getMatchId(){
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+return params.get("id");
+
+}
+
+
+function findMatch(matches,id){
+
+if(!id){
+
+return matches[0];
+
+}
+
+const found =
+matches.find(
+m =>
+String(m.id) === String(id)
+);
+
+return found || matches[0];
+
+}
+
+
+function renderMatch(match){
+
+const home =
+match.homeTeam || {};
+
+const away =
+match.awayTeam || {};
+
+const homeScore =
+match.score?.fullTime?.home;
+
+const awayScore =
+match.score?.fullTime?.away;
+
+const status =
+match.status || "SCHEDULED";
+
+const live =
+isLive(status);
+
+const container =
+document.getElementById(
+"match-container"
+);
+
+container.innerHTML = `
+
+<div class="competition">
+
+${match.competition?.name || "مباراة كرة القدم"}
+
+</div>
+
+
+<div class="status ${live ? "live" : ""}">
+
+<span>
+
+${live ? "🔴 " : ""}
+
+${statusText(status)}
+
+</span>
+
+</div>
+
+
+<div class="score-card">
+
+<div class="teams">
+
+
+<div class="team">
+
+<img
+
+class="team-logo"
+
+src="${teamLogo(home)}"
+
+onerror="this.style.visibility='hidden'"
+
+alt="${teamName(home)}"
+
+>
+
+<div class="team-name">
+
+${teamName(home)}
+
+</div>
+
+</div>
+
+
+<div class="center">
+
+<div class="score">
+
+${
+homeScore !== undefined &&
+homeScore !== null
+?
+`${homeScore} - ${awayScore ?? 0}`
+:
+"VS"
+}
+
+</div>
+
+<div class="vs">
+
+${
+status === "FINISHED"
+?
+"النتيجة النهائية"
+:
+formatDate(match.utcDate)
+}
+
+</div>
+
+</div>
+
+
+<div class="team">
+
+<img
+
+class="team-logo"
+
+src="${teamLogo(away)}"
+
+onerror="this.style.visibility='hidden'"
+
+alt="${teamName(away)}"
+
+>
+
+<div class="team-name">
+
+${teamName(away)}
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="info">
+
+
+<div class="info-box">
+
+<div class="info-title">
+
+📅 التاريخ
+
+</div>
+
+<div class="info-value">
+
+${formatDate(match.utcDate)}
+
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="info-title">
+
+🏆 البطولة
+
+</div>
+
+<div class="info-value">
+
+${match.competition?.name || "غير معروف"}
+
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="info-title">
+
+🏟️ الملعب
+
+</div>
+
+<div class="info-value">
+
+${match.venue?.name || "غير متوفر"}
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2>
+
+⚽ أحداث المباراة
+
+</h2>
+
+<div id="events">
+
+<div class="loading">
+
+لا توجد أحداث مسجلة حاليًا.
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2>
+
+📊 إحصائيات المباراة
+
+</h2>
+
+<div id="stats">
+
+<div class="loading">
+
+الإحصائيات غير متوفرة حاليًا.
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+
+async function loadMatch(){
+
+try{
+
+const data =
+await getJSON(
+"data/matches.json"
+);
+
+const matches =
+data.matches || [];
+
+if(!matches.length){
+
+throw new Error(
+"لا توجد مباريات"
+);
+
+}
+
+const id =
+getMatchId();
+
+const match =
+findMatch(matches,id);
+
+if(!match){
+
+throw new Error(
+"المباراة غير موجودة"
+);
+
+}
+
+renderMatch(match);
+
+}catch(error){
+
+console.error(error);
+
+document.getElementById(
+"match-container"
+).innerHTML = `
+
+<div class="error">
+
+<h2>⚠️ تعذر تحميل المباراة</h2>
+
+<br>
+
+<p>
+
+لم نتمكن من العثور على تفاصيل هذه المباراة.
+
+</p>
+
+<br>
+
+<a
+
+href="index.html"
+
+style="
+color:white;
+text-decoration:none;
+background:#ff1744;
+padding:10px 18px;
+border-radius:10px;
+display:inline-block;
+"
+
+>
+
+العودة إلى المباريات
+
+</a>
+
+</div>
+
+`;
+
+}
+
+}
+
+
+loadMatch();
+
+</script>
+
 </body>
-        </html>
+
+</html>

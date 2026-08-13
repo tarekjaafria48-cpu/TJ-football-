@@ -16,30 +16,73 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Get matches
-        env:
-          FOOTBALL_API_TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
+      - name: Prepare folders
         run: |
-          TODAY=$(date -u +%Y-%m-%d)
-          TOMORROW=$(date -u -d "+1 day" +%Y-%m-%d)
-          DAY3=$(date -u -d "+3 days" +%Y-%m-%d)
-
           mkdir -p data
 
+      - name: Get matches
+        env:
+          TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
+        run: |
+          TODAY=$(date -u +%Y-%m-%d)
+          DAY3=$(date -u -d "+3 days" +%Y-%m-%d)
+
           curl -s \
-            -H "X-Auth-Token: $FOOTBALL_API_TOKEN" \
+            -H "X-Auth-Token: $TOKEN" \
             "https://api.football-data.org/v4/matches?dateFrom=$TODAY&dateTo=$DAY3&limit=500" \
             -o data/matches.json
 
-      - name: Check data
+      - name: Get Premier League standings
+        env:
+          TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
         run: |
-          echo "عدد المباريات:"
-          python -c "import json; d=json.load(open('data/matches.json')); print(len(d.get('matches', [])))"
+          curl -s \
+            -H "X-Auth-Token: $TOKEN" \
+            "https://api.football-data.org/v4/competitions/PL/standings" \
+            -o data/premier-league-standings.json
 
-      - name: Save data
+      - name: Get Premier League scorers
+        env:
+          TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
+        run: |
+          curl -s \
+            -H "X-Auth-Token: $TOKEN" \
+            "https://api.football-data.org/v4/competitions/PL/scorers?limit=20" \
+            -o data/premier-league-scorers.json
+
+      - name: Get La Liga standings
+        env:
+          TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
+        run: |
+          curl -s \
+            -H "X-Auth-Token: $TOKEN" \
+            "https://api.football-data.org/v4/competitions/PD/standings" \
+            -o data/la-liga-standings.json
+
+      - name: Get La Liga scorers
+        env:
+          TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
+        run: |
+          curl -s \
+            -H "X-Auth-Token: $TOKEN" \
+            "https://api.football-data.org/v4/competitions/PD/scorers?limit=20" \
+            -o data/la-liga-scorers.json
+
+      - name: Validate data
+        run: |
+          echo "Football data updated."
+          ls -lh data/
+
+      - name: Save changes
         run: |
           git config user.name "TJ Football Bot"
           git config user.email "actions@github.com"
-          git add data/matches.json
-          git diff --cached --quiet || git commit -m "Update football matches"
-          git push
+
+          git add data/
+
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "Update football data"
+            git push
+          fi

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TJ Football - تفاصيل المباراة</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #07111f;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #071d3a, #0b4fa3);
+      padding: 18px 20px;
+      text-align: center;
+      border-bottom: 3px solid #e3262e;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #e3262e;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 12px;
+      color: white;
+      text-decoration: none;
+      background: rgba(255,255,255,0.12);
+      padding: 9px 18px;
+      border-radius: 20px;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 900px;
+      margin: 25px auto;
+    }
+
+    .competition {
+      text-align: center;
+      color: #a9c8ef;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .match-status {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .live {
+      display: inline-block;
+      background: #e3262e;
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      50% { opacity: .55; }
+    }
+
+    .score-card {
+      background: linear-gradient(145deg, #0c1e35, #102d4d);
+      border-radius: 22px;
+      padding: 30px 20px;
+      box-shadow: 0 10px 35px rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .teams {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .team {
+      width: 35%;
+      text-align: center;
+    }
+
+    .team-logo {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      background: white;
+      border-radius: 50%;
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+
+    .team-name {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .score {
+      font-size: 55px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .versus {
+      color: #8ca6c2;
+      font-size: 14px;
+    }
+
+    .info {
+      margin-top: 25px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .info-box {
+      background: rgba(255,255,255,.06);
+      border-radius: 12px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .info-title {
+      color: #8faac7;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .info-value {
+      font-weight: bold;
+    }
+
+    .section {
+      background: #0c1a2c;
+      margin-top: 20px;
+      padding: 20px;
+      border-radius: 18px;
+    }
+
+    .section h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      border-right: 4px solid #e3262e;
+      padding-right: 10px;
+    }
+
+    .event {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 5px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .event:last-child {
+      border-bottom: none;
+    }
+
+    .minute {
+      color: #55aaff;
+      font-weight: bold;
+    }
+
+    .news {
+      background: rgba(255,255,255,.05);
+      padding: 14px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      color: #7890aa;
+      padding: 30px 10px;
+      font-size: 13px;
+    }
+
+    @media (max-width: 650px) {
+      .teams {
+        gap: 5px;
+      }
+
+      .team-logo {
+        width: 65px;
+        height: 65px;
+      }
+
+      .team-name {
+        font-size: 16px;
+      }
+
+      .score {
+        font-size: 42px;
+      }
+
+      .info {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">TJ <span>Football</span> ⚽</div>
+  <a class="back" href="index.html">← العودة إلى المباريات</a>
+</header>
+
+<div class="container">
+
+  <div class="competition">الدوري الإنجليزي الممتاز</div>
+
+  <div class="match-status">
+    <span class="live">● مباشر</span>
+  </div>
+
+  <div class="score-card">
+
+    <div class="teams">
+
+      <div class="team">
+        <img
+          class="team-logo"
+          src="https://upload.wikimedia.org/wikipedia/en/f/f2/Manchester_City_FC_badge.svg"
+          alt="Manchester City">
+        <div class="team-name">مانشستر سيتي</div>
+      </div>
+
+      <div>
+        <div class="score">
+          <span id="homeScore">2</span>
+          -
+          <span id="awayScore">1</span>
+        </div>
+        <div class="versus">90+3'</div>
+      </div>
+
+      <div class="team">
+        <img
+          class="team-logo"
+          src="https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg"
+          alt="Chelsea">
+        <div class="team-name">تشيلسي</div>
+      </div>
+
+    </div>
+
+    <div class="info">
+
+      <div class="info-box">
+        <div class="info-title">الملعب</div>
+        <div class="info-value">Etihad Stadium</div>
+      </div>
+
+      <div class="info-box">
+        <div class="info-title">التاريخ</div>
+        <div class="info-value">13 أغسطس 2026</div>
+      </div>
+
+      <div class="info-box">
+        <div class="info-title">التوقيت</div>
+        <div class="info-value">20:00</div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <h2>⚽ أحداث المباراة</h2>
+
+    <div class="event">
+      <span>⚽ هدف - مانشستر سيتي</span>
+      <span class="minute">23'</span>
+    </div>
+
+    <div class="event">
+      <span>🟨 بطاقة صفراء - تشيلسي</span>
+      <span class="minute">41'</span>
+    </div>
+
+    <div class="event">
+      <span>⚽ هدف - تشيلسي</span>
+      <span class="minute">58'</span>
+    </div>
+
+    <div class="event">
+      <span>⚽ هدف - مانشستر سيتي</span>
+      <span class="minute">76'</span>
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <h2>📊 إحصائيات المباراة</h2>
+
+    <div class="event">
+      <span>الاستحواذ</span>
+      <strong>58% - 42%</strong>
+    </div>
+
+    <div class="event">
+      <span>التسديدات</span>
+      <strong>14 - 9</strong>
+    </div>
+
+    <div class="event">
+      <span>التسديدات على المرمى</span>
+      <strong>7 - 4</strong>
+    </div>
+
+    <div class="event">
+      <span>الركنيات</span>
+      <strong>6 - 3</strong>
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <h2>📰 أخبار المباراة</h2>
+
+    <div class="news">
+      المباراة تشهد منافسة قوية بين الفريقين حتى الدقائق الأخيرة.
+    </div>
+
+    <div class="news">
+      تابع TJ Football لمعرفة آخر المستجدات والنتيجة النهائية.
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 TJ Football ⚽ — جميع الحقوق محفوظة
+</footer>
+
+</body>
+        </html>

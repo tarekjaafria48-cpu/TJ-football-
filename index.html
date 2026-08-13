@@ -40,8 +40,6 @@ color:var(--text);
 min-height:100vh;
 }
 
-/* HEADER */
-
 header{
 position:sticky;
 top:0;
@@ -117,8 +115,6 @@ background:#18d96b;
 box-shadow:0 0 12px #18d96b;
 }
 
-/* NAV */
-
 nav{
 max-width:1250px;
 margin:auto;
@@ -146,15 +142,11 @@ background:linear-gradient(90deg,var(--red),#c90032);
 color:white;
 }
 
-/* MAIN */
-
 main{
 max-width:1250px;
 margin:auto;
 padding:18px;
 }
-
-/* HERO */
 
 .hero{
 position:relative;
@@ -252,8 +244,6 @@ border:1px solid #ffffff20;
 color:white;
 }
 
-/* SECTION */
-
 .section{
 margin-top:22px;
 padding:20px;
@@ -285,8 +275,6 @@ color:var(--red);
 font-weight:bold;
 }
 
-/* GRID */
-
 .grid{
 display:grid;
 grid-template-columns:
@@ -294,21 +282,27 @@ repeat(auto-fit,minmax(230px,1fr));
 gap:13px;
 }
 
-/* MATCH */
-
 .match{
+display:block;
 background:var(--card2);
 border:1px solid var(--border);
 border-radius:17px;
 padding:16px;
 text-align:center;
 transition:.25s;
+text-decoration:none;
+color:inherit;
+cursor:pointer;
 }
 
 .match:hover{
 transform:translateY(-4px);
 border-color:#ff1744;
 box-shadow:0 15px 35px #ff174420;
+}
+
+.match:active{
+transform:scale(.98);
 }
 
 .competition{
@@ -352,8 +346,6 @@ color:var(--muted);
 margin-top:12px;
 }
 
-/* TWO COLUMNS */
-
 .two{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -365,8 +357,6 @@ gap:18px;
 grid-template-columns:1fr;
 }
 }
-
-/* NEWS */
 
 .news{
 display:flex;
@@ -397,8 +387,6 @@ color:var(--muted);
 margin-top:6px;
 font-size:10px;
 }
-
-/* TRANSFERS */
 
 .transfer-tools{
 display:flex;
@@ -491,8 +479,6 @@ font-size:10px;
 margin-top:7px;
 }
 
-/* RESULTS */
-
 .result{
 display:flex;
 align-items:center;
@@ -526,8 +512,6 @@ font-size:19px;
 font-weight:1000;
 color:var(--red);
 }
-
-/* TABLE */
 
 .table-wrap{
 overflow-x:auto;
@@ -566,8 +550,6 @@ height:27px;
 object-fit:contain;
 }
 
-/* SCORERS */
-
 .scorer{
 display:flex;
 align-items:center;
@@ -605,8 +587,6 @@ font-weight:1000;
 color:var(--red);
 }
 
-/* FOOTER */
-
 footer{
 margin-top:30px;
 padding:35px 20px;
@@ -628,8 +608,6 @@ font-size:11px;
 margin-top:8px;
 }
 
-/* LOADING */
-
 .loading{
 text-align:center;
 padding:25px;
@@ -642,8 +620,6 @@ border-radius:12px;
 background:#3a0b16;
 color:#ff8197;
 }
-
-/* MOBILE */
 
 @media(max-width:600px){
 
@@ -704,9 +680,7 @@ margin-top:18px;
 </style>
 </head>
 
-
 <body>
-
 
 <header>
 
@@ -730,7 +704,6 @@ LIVE FOOTBALL
 
 </div>
 
-
 <nav>
 
 <a href="#home">🏠 الرئيسية</a>
@@ -745,9 +718,7 @@ LIVE FOOTBALL
 
 </header>
 
-
 <main>
-
 
 <section id="home" class="hero">
 
@@ -769,13 +740,11 @@ LIVE FOOTBALL
 
 <div class="hero-buttons">
 
-<a class="hero-btn primary"
-href="#transfers">
+<a class="hero-btn primary" href="#transfers">
 🔄 آخر الانتقالات
 </a>
 
-<a class="hero-btn secondary"
-href="#matches">
+<a class="hero-btn secondary" href="#matches">
 ⚽ مباريات اليوم
 </a>
 
@@ -785,7 +754,6 @@ href="#matches">
 
 </section>
 
-
 <section id="matches" class="section">
 
 <div class="title">
@@ -794,16 +762,16 @@ href="#matches">
 </div>
 
 <div id="matches-container">
+
 <div class="loading">
 جاري تحميل المباريات...
 </div>
+
 </div>
 
 </section>
 
-
 <div class="two">
-
 
 <section id="news" class="section">
 
@@ -813,13 +781,14 @@ href="#matches">
 </div>
 
 <div id="news-container">
+
 <div class="loading">
 جاري تحميل الأخبار...
 </div>
+
 </div>
 
 </section>
-
 
 <section id="results" class="section">
 
@@ -829,15 +798,16 @@ href="#matches">
 </div>
 
 <div id="results-container">
+
 <div class="loading">
 جاري تحميل النتائج...
 </div>
+
 </div>
 
 </section>
 
 </div>
-
 
 <section id="transfers" class="section">
 
@@ -849,7 +819,6 @@ href="#matches">
 
 </div>
 
-
 <div class="transfer-tools">
 
 <input
@@ -860,7 +829,6 @@ placeholder="🔎 ابحث عن لاعب أو نادٍ..."
 
 </div>
 
-
 <div id="transfers-container">
 
 <div class="loading">
@@ -870,7 +838,6 @@ placeholder="🔎 ابحث عن لاعب أو نادٍ..."
 </div>
 
 </section>
-
 
 <section id="tables" class="section">
 
@@ -888,13 +855,14 @@ placeholder="🔎 ابحث عن لاعب أو نادٍ..."
 </h3>
 
 <div id="plTable">
+
 <div class="loading">
 جاري التحميل...
 </div>
-</div>
 
 </div>
 
+</div>
 
 <div>
 
@@ -903,9 +871,11 @@ placeholder="🔎 ابحث عن لاعب أو نادٍ..."
 </h3>
 
 <div id="laTable">
+
 <div class="loading">
 جاري التحميل...
 </div>
+
 </div>
 
 </div>
@@ -913,7 +883,6 @@ placeholder="🔎 ابحث عن لاعب أو نادٍ..."
 </div>
 
 </section>
-
 
 <section id="scorers" class="section">
 
@@ -923,16 +892,16 @@ placeholder="🔎 ابحث عن لاعب أو نادٍ..."
 </div>
 
 <div id="plScorers">
+
 <div class="loading">
 جاري التحميل...
 </div>
+
 </div>
 
 </section>
 
-
 </main>
-
 
 <footer>
 
@@ -950,9 +919,7 @@ TJ FOOTBALL
 
 </footer>
 
-
 <script>
-
 
 async function getJSON(file){
 
@@ -966,7 +933,6 @@ return response.json();
 
 }
 
-
 function teamName(team){
 
 return team?.shortName ||
@@ -974,7 +940,6 @@ team?.name ||
 "غير معروف";
 
 }
-
 
 function teamLogo(team){
 
@@ -988,7 +953,6 @@ return "";
 
 }
 
-
 function playerPhoto(player){
 
 if(player?.photo)
@@ -1000,7 +964,6 @@ return `https://media.api-sports.io/football/players/${player.id}.png`;
 return "https://via.placeholder.com/100?text=⚽";
 
 }
-
 
 function dateFormat(date){
 
@@ -1047,15 +1010,22 @@ m.status==="FINISHED"
 );
 
 
+/* MATCHES WITH LINKS */
+
 document.getElementById(
 "matches-container"
 ).innerHTML = upcoming.length ?
 
 `<div class="grid">
 
-${upcoming.slice(0,20).map(m=>`
+${upcoming.slice(0,20).map((m,index)=>`
 
-<div class="match">
+<a
+href="match.html?id=${encodeURIComponent(
+m.id || index
+)}"
+class="match"
+>
 
 <div class="competition">
 ${m.competition?.name || "مباراة"}
@@ -1099,7 +1069,7 @@ ${teamName(m.awayTeam)}
 📅 ${dateFormat(m.utcDate)}
 </div>
 
-</div>
+</a>
 
 `).join("")}
 
@@ -1108,6 +1078,8 @@ ${teamName(m.awayTeam)}
 :
 "<p>لا توجد مباريات قادمة.</p>";
 
+
+/* RESULTS */
 
 document.getElementById(
 "results-container"
@@ -1157,6 +1129,11 @@ onerror="this.style.display='none'"
 }catch(error){
 
 console.error(error);
+
+document.getElementById(
+"matches-container"
+).innerHTML =
+'<div class="error">تعذر تحميل المباريات.</div>';
 
 }
 
@@ -1231,7 +1208,6 @@ await getJSON("data/transfers.json");
 
 transferList=[];
 
-
 (data.response || [])
 .forEach(item=>{
 
@@ -1257,9 +1233,7 @@ new Date(b.transfer.date || 0) -
 new Date(a.transfer.date || 0)
 );
 
-
 renderTransfers(transferList);
-
 
 }catch(error){
 
@@ -1349,7 +1323,6 @@ ${to.name || "غير معروف"}
 `;
 
 }).join("");
-
 
 }
 

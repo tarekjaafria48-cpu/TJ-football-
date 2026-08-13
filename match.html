@@ -28,490 +28,298 @@ padding:0;
 }
 
 body{
-
 font-family:Arial,Tahoma,sans-serif;
-
 background:
 radial-gradient(circle at 10% 0%,#102c55 0,transparent 32%),
 radial-gradient(circle at 90% 10%,#3b0712 0,transparent 30%),
 var(--dark);
-
 color:var(--text);
-
 min-height:100vh;
-
 }
 
 header{
-
 background:rgba(3,8,18,.94);
-
 border-bottom:1px solid var(--border);
-
 padding:15px;
-
 position:sticky;
-
 top:0;
-
 z-index:10;
-
 }
 
 .header{
-
 max-width:1000px;
-
 margin:auto;
-
 display:flex;
-
 align-items:center;
-
 justify-content:space-between;
-
 gap:15px;
-
 }
 
 .logo{
-
 font-size:24px;
-
 font-weight:1000;
-
 font-style:italic;
-
 }
 
 .logo span{
-
 color:var(--red);
-
 }
 
 .back{
-
 text-decoration:none;
-
 color:white;
-
 background:#ffffff0b;
-
 border:1px solid #ffffff18;
-
 padding:9px 14px;
-
 border-radius:10px;
-
 font-size:12px;
-
 }
 
 .container{
-
 width:92%;
-
 max-width:900px;
-
 margin:25px auto;
-
 }
 
 .competition{
-
 text-align:center;
-
 color:var(--muted);
-
 font-size:13px;
-
 margin-bottom:8px;
-
 }
 
 .status{
-
 text-align:center;
-
 margin-bottom:18px;
-
 }
 
 .status span{
-
 display:inline-block;
-
 padding:7px 16px;
-
 border-radius:20px;
-
 font-size:12px;
-
 font-weight:bold;
-
 background:#173252;
-
 color:#8fc5ff;
-
 }
 
 .status.live span{
-
 background:#3a0b16;
-
 color:#ff496d;
-
 box-shadow:0 0 20px #ff174425;
-
 }
 
 .score-card{
-
 background:
-
 linear-gradient(
 145deg,
 rgba(13,30,53,.98),
 rgba(6,15,28,.98)
 );
-
 border:1px solid var(--border);
-
 border-radius:25px;
-
 padding:30px 20px;
-
 box-shadow:0 25px 70px #0008;
-
 }
 
 .teams{
-
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
 gap:35px;
-
 }
 
 .team{
-
 width:35%;
-
 text-align:center;
-
 }
 
 .team-logo{
-
 width:90px;
-
 height:90px;
-
 object-fit:contain;
-
 margin-bottom:12px;
-
 }
 
 .team-name{
-
 font-size:19px;
-
 font-weight:900;
-
 line-height:1.4;
-
 }
 
 .center{
-
 text-align:center;
-
 min-width:120px;
-
 }
 
 .score{
-
 font-size:52px;
-
 font-weight:1000;
-
 color:white;
-
 }
 
 .vs{
-
 font-size:13px;
-
 color:var(--muted);
-
 margin-top:5px;
-
 }
 
 .info{
-
 display:grid;
-
 grid-template-columns:repeat(3,1fr);
-
 gap:12px;
-
 margin-top:28px;
-
 }
 
 .info-box{
-
 background:#ffffff06;
-
 border:1px solid #ffffff0a;
-
 border-radius:13px;
-
 padding:14px;
-
 text-align:center;
-
 }
 
 .info-title{
-
 font-size:11px;
-
 color:var(--muted);
-
 margin-bottom:6px;
-
 }
 
 .info-value{
-
 font-size:13px;
-
 font-weight:bold;
-
 }
 
 .section{
-
 margin-top:20px;
-
 background:
-
 linear-gradient(
 145deg,
 rgba(10,20,36,.96),
 rgba(5,13,24,.96)
 );
-
 border:1px solid var(--border);
-
 border-radius:20px;
-
 padding:20px;
-
 }
 
 .section h2{
-
 font-size:19px;
-
 margin-bottom:15px;
-
 border-right:4px solid var(--red);
-
 padding-right:10px;
-
 }
 
 .event{
-
 display:flex;
-
 align-items:center;
-
 justify-content:space-between;
-
 gap:10px;
-
 padding:13px 5px;
-
 border-bottom:1px solid #17283c;
-
 font-size:13px;
-
 }
 
 .event:last-child{
-
 border-bottom:0;
-
 }
 
 .minute{
-
 color:#55aaff;
-
 font-weight:bold;
-
 }
 
 .stat{
-
 margin-bottom:17px;
-
 }
 
 .stat-head{
-
 display:flex;
-
 justify-content:space-between;
-
 font-size:12px;
-
 margin-bottom:7px;
-
 }
 
 .bar{
-
 height:8px;
-
 background:#14263b;
-
 border-radius:20px;
-
 overflow:hidden;
-
 }
 
 .bar-home{
-
 height:100%;
-
 background:var(--blue);
-
 border-radius:20px;
-
 }
 
 .bar-away{
-
 height:100%;
-
 background:var(--red);
-
 border-radius:20px;
-
 }
 
 .loading{
-
 text-align:center;
-
 padding:45px 10px;
-
 color:var(--muted);
-
 }
 
 .error{
-
 text-align:center;
-
 padding:30px;
-
 background:#3a0b16;
-
 border-radius:15px;
-
 color:#ff8197;
-
 }
 
 footer{
-
 text-align:center;
-
 padding:30px;
-
 margin-top:30px;
-
 background:#020711;
-
 border-top:1px solid var(--border);
-
 color:#667c94;
-
 font-size:11px;
-
 }
 
 @media(max-width:650px){
 
 .header{
-
 flex-direction:column;
-
 }
 
 .teams{
-
 gap:5px;
-
 }
 
 .team{
-
 width:32%;
-
 }
 
 .team-logo{
-
 width:65px;
-
 height:65px;
-
 }
 
 .team-name{
-
 font-size:14px;
-
 }
 
 .center{
-
 min-width:80px;
-
 }
 
 .score{
-
 font-size:40px;
-
 }
 
 .info{
-
 grid-template-columns:1fr;
-
 }
 
 .section{
-
 padding:15px;
-
 }
 
 }
@@ -571,14 +379,20 @@ TJ FOOTBALL ⚽
 
 <script>
 
+/* =========================
+   تحميل JSON
+========================= */
+
 async function getJSON(file){
 
 const response =
-await fetch(file+"?v="+Date.now());
+await fetch(file + "?v=" + Date.now());
 
 if(!response.ok){
 
-throw new Error("تعذر تحميل "+file);
+throw new Error(
+"تعذر تحميل " + file
+);
 
 }
 
@@ -587,14 +401,24 @@ return response.json();
 }
 
 
+/* =========================
+   أسماء الفرق
+========================= */
+
 function teamName(team){
 
-return team?.shortName ||
+return (
+team?.shortName ||
 team?.name ||
-"غير معروف";
+"غير معروف"
+);
 
 }
 
+
+/* =========================
+   شعارات الفرق
+========================= */
 
 function teamLogo(team){
 
@@ -606,7 +430,9 @@ return team.logo;
 
 if(team?.id){
 
-return `https://media.api-sports.io/football/teams/${team.id}.png`;
+return `
+https://media.api-sports.io/football/teams/${team.id}.png
+`;
 
 }
 
@@ -614,6 +440,10 @@ return "";
 
 }
 
+
+/* =========================
+   تنسيق التاريخ
+========================= */
 
 function formatDate(date){
 
@@ -623,26 +453,31 @@ return "غير متوفر";
 
 }
 
-return new Date(date).toLocaleString(
-"ar-TN",
-{
+const d = new Date(date);
 
-day:"2-digit",
+if(isNaN(d.getTime())){
 
-month:"long",
-
-year:"numeric",
-
-hour:"2-digit",
-
-minute:"2-digit"
+return "غير متوفر";
 
 }
 
+return d.toLocaleString(
+"ar-TN",
+{
+day:"2-digit",
+month:"long",
+year:"numeric",
+hour:"2-digit",
+minute:"2-digit"
+}
 );
 
 }
 
+
+/* =========================
+   حالة المباراة
+========================= */
 
 function statusText(status){
 
@@ -663,6 +498,12 @@ return "استراحة";
 case "FINISHED":
 return "انتهت";
 
+case "POSTPONED":
+return "تأجلت";
+
+case "CANCELLED":
+return "أُلغيت";
+
 default:
 return status || "غير معروف";
 
@@ -671,18 +512,23 @@ return status || "غير معروف";
 }
 
 
+/* =========================
+   هل المباراة مباشرة؟
+========================= */
+
 function isLive(status){
 
-return (
-
+return(
 status === "IN_PLAY" ||
-
 status === "PAUSED"
-
 );
 
 }
 
+
+/* =========================
+   قراءة ID من الرابط
+========================= */
 
 function getMatchId(){
 
@@ -696,24 +542,73 @@ return params.get("id");
 }
 
 
+/* =========================
+   البحث عن المباراة
+========================= */
+
 function findMatch(matches,id){
 
-if(!id){
+/*
+إذا لم يوجد ID
+لا نعرض أول مباراة تلقائيًا
+*/
 
-return matches[0];
+if(
+id === null ||
+id === undefined ||
+id === ""
+){
+
+return null;
 
 }
 
-const found =
+
+/*
+البحث باستخدام ID الحقيقي
+*/
+
+const byId =
 matches.find(
 m =>
+m.id !== undefined &&
+m.id !== null &&
 String(m.id) === String(id)
 );
 
-return found || matches[0];
+if(byId){
+
+return byId;
 
 }
 
+
+/*
+إذا كانت الصفحة الرئيسية
+استخدمت رقم index
+*/
+
+const index =
+Number(id);
+
+if(
+Number.isInteger(index) &&
+index >= 0 &&
+index < matches.length
+){
+
+return matches[index];
+
+}
+
+return null;
+
+}
+
+
+/* =========================
+   عرض المباراة
+========================= */
 
 function renderMatch(match){
 
@@ -739,6 +634,13 @@ const container =
 document.getElementById(
 "match-container"
 );
+
+
+/* عنوان الصفحة */
+
+document.title =
+`${teamName(home)} × ${teamName(away)} - TJ Football`;
+
 
 container.innerHTML = `
 
@@ -767,6 +669,8 @@ ${statusText(status)}
 <div class="teams">
 
 
+<!-- الفريق الأول -->
+
 <div class="team">
 
 <img
@@ -775,7 +679,10 @@ class="team-logo"
 
 src="${teamLogo(home)}"
 
-onerror="this.style.visibility='hidden'"
+onerror="
+this.onerror=null;
+this.style.visibility='hidden';
+"
 
 alt="${teamName(home)}"
 
@@ -790,6 +697,8 @@ ${teamName(home)}
 </div>
 
 
+<!-- النتيجة -->
+
 <div class="center">
 
 <div class="score">
@@ -797,28 +706,41 @@ ${teamName(home)}
 ${
 homeScore !== undefined &&
 homeScore !== null
+
 ?
+
 `${homeScore} - ${awayScore ?? 0}`
+
 :
+
 "VS"
+
 }
 
 </div>
+
 
 <div class="vs">
 
 ${
 status === "FINISHED"
+
 ?
+
 "النتيجة النهائية"
+
 :
+
 formatDate(match.utcDate)
+
 }
 
 </div>
 
 </div>
 
+
+<!-- الفريق الثاني -->
 
 <div class="team">
 
@@ -828,7 +750,10 @@ class="team-logo"
 
 src="${teamLogo(away)}"
 
-onerror="this.style.visibility='hidden'"
+onerror="
+this.onerror=null;
+this.style.visibility='hidden';
+"
 
 alt="${teamName(away)}"
 
@@ -845,6 +770,8 @@ ${teamName(away)}
 
 </div>
 
+
+<!-- معلومات المباراة -->
 
 <div class="info">
 
@@ -905,6 +832,8 @@ ${match.venue?.name || "غير متوفر"}
 </div>
 
 
+<!-- الأحداث -->
+
 <div class="section">
 
 <h2>
@@ -925,6 +854,8 @@ ${match.venue?.name || "غير متوفر"}
 
 </div>
 
+
+<!-- الإحصائيات -->
 
 <div class="section">
 
@@ -951,6 +882,10 @@ ${match.venue?.name || "غير متوفر"}
 }
 
 
+/* =========================
+   تحميل المباراة
+========================= */
+
 async function loadMatch(){
 
 try{
@@ -963,7 +898,8 @@ await getJSON(
 const matches =
 data.matches || [];
 
-if(!matches.length){
+
+if(!Array.isArray(matches) || !matches.length){
 
 throw new Error(
 "لا توجد مباريات"
@@ -971,11 +907,32 @@ throw new Error(
 
 }
 
+
+/* الحصول على ID من الرابط */
+
 const id =
 getMatchId();
 
+
+console.log(
+"Match ID:",
+id
+);
+
+console.log(
+"Available matches:",
+matches
+);
+
+
+/* البحث */
+
 const match =
-findMatch(matches,id);
+findMatch(
+matches,
+id
+);
+
 
 if(!match){
 
@@ -985,11 +942,25 @@ throw new Error(
 
 }
 
+
+/* عرض المباراة */
+
 renderMatch(match);
+
+
+/* إخفاء أي خطأ سابق */
+
+console.log(
+"Loaded match:",
+match
+);
 
 }catch(error){
 
-console.error(error);
+console.error(
+"Match loading error:",
+error
+);
 
 document.getElementById(
 "match-container"
@@ -997,7 +968,11 @@ document.getElementById(
 
 <div class="error">
 
-<h2>⚠️ تعذر تحميل المباراة</h2>
+<h2>
+
+⚠️ تعذر تحميل المباراة
+
+</h2>
 
 <br>
 
@@ -1011,7 +986,7 @@ document.getElementById(
 
 <a
 
-href="index.html"
+href="index.html#matches"
 
 style="
 color:white;
@@ -1036,6 +1011,10 @@ display:inline-block;
 
 }
 
+
+/* =========================
+   تشغيل الصفحة
+========================= */
 
 loadMatch();
 

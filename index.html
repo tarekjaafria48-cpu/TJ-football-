@@ -33,7 +33,6 @@ header{
 
 .tag{
   margin-top:8px;
-  font-size:16px;
 }
 
 nav{
@@ -71,16 +70,11 @@ main{
   padding:28px;
   border-radius:20px;
   margin:20px 0;
-  box-shadow:0 5px 18px #10182812;
 }
 
 .hero h1{
   color:#d90429;
   margin-bottom:10px;
-}
-
-.hero p{
-  line-height:1.8;
 }
 
 .section{
@@ -107,10 +101,6 @@ main{
   padding:16px;
   background:white;
   overflow:hidden;
-}
-
-.card:hover{
-  box-shadow:0 7px 20px #10182818;
 }
 
 .card img{
@@ -144,12 +134,6 @@ main{
   margin-top:7px;
 }
 
-.match-title{
-  font-weight:bold;
-  line-height:1.7;
-  margin:8px 0;
-}
-
 .score{
   font-size:23px;
   font-weight:900;
@@ -178,6 +162,18 @@ main{
   text-decoration:none;
 }
 
+.transfer{
+  border-right:5px solid #d90429;
+  padding:12px;
+  margin-bottom:12px;
+  background:#f8fafc;
+  border-radius:10px;
+}
+
+.transfer strong{
+  color:#0757b8;
+}
+
 table{
   width:100%;
   border-collapse:collapse;
@@ -203,7 +199,6 @@ footer{
 }
 
 @media(max-width:600px){
-
   .logo{
     font-size:30px;
   }
@@ -220,7 +215,6 @@ footer{
     padding:7px;
     font-size:13px;
   }
-
 }
 </style>
 </head>
@@ -228,51 +222,29 @@ footer{
 <body>
 
 <header>
-
-<div class="logo">
-TJ Football ⚽
-</div>
-
-<div class="tag">
-كل أخبار ومباريات كرة القدم في مكان واحد 🔴🔵
-</div>
-
+<div class="logo">TJ Football ⚽</div>
+<div class="tag">كل أخبار ومباريات كرة القدم في مكان واحد 🔴🔵</div>
 </header>
 
-
 <nav>
-
 <a href="#home">🏠 الرئيسية</a>
-
 <a href="#news">📰 الأخبار</a>
-
 <a href="#matches">⚽ المباريات</a>
-
 <a href="#results">📊 النتائج</a>
-
+<a href="#transfers">🔄 الانتقالات</a>
 <a href="#pl">🏆 Premier League</a>
-
 <a href="#laliga">🇪🇸 La Liga</a>
-
 <a href="#scorers">⭐ الهدافون</a>
-
 </nav>
-
 
 <main>
 
-
 <section id="home" class="hero">
-
-<h1>
-مرحبًا بك في TJ Football 🔴🔵
-</h1>
-
+<h1>مرحبًا بك في TJ Football 🔴🔵</h1>
 <p>
 منصة كروية لمتابعة الأخبار والمباريات والنتائج
-والترتيب والهدافين.
+والترتيب والهدافين والانتقالات.
 </p>
-
 </section>
 
 
@@ -280,16 +252,10 @@ TJ Football ⚽
 
 <section id="news" class="section">
 
-<h2>
-📰 آخر أخبار كرة القدم
-</h2>
+<h2>📰 آخر أخبار كرة القدم</h2>
 
 <div id="news-container">
-
-<div class="loading">
-جاري تحميل الأخبار...
-</div>
-
+<div class="loading">جاري تحميل الأخبار...</div>
 </div>
 
 </section>
@@ -299,16 +265,10 @@ TJ Football ⚽
 
 <section id="matches" class="section">
 
-<h2>
-⚽ المباريات القادمة
-</h2>
+<h2>⚽ المباريات القادمة</h2>
 
 <div id="matches-container">
-
-<div class="loading">
-جاري تحميل المباريات...
-</div>
-
+<div class="loading">جاري تحميل المباريات...</div>
 </div>
 
 </section>
@@ -318,16 +278,23 @@ TJ Football ⚽
 
 <section id="results" class="section">
 
-<h2>
-📊 النتائج الأخيرة
-</h2>
+<h2>📊 النتائج الأخيرة</h2>
 
 <div id="results-container">
-
-<div class="loading">
-جاري تحميل النتائج...
+<div class="loading">جاري تحميل النتائج...</div>
 </div>
 
+</section>
+
+
+<!-- TRANSFERS -->
+
+<section id="transfers" class="section">
+
+<h2>🔄 آخر الانتقالات</h2>
+
+<div id="transfers-container">
+<div class="loading">جاري تحميل الانتقالات...</div>
 </div>
 
 </section>
@@ -337,16 +304,10 @@ TJ Football ⚽
 
 <section id="pl" class="section">
 
-<h2>
-🏆 ترتيب Premier League
-</h2>
+<h2>🏆 ترتيب Premier League</h2>
 
 <div id="plTable">
-
-<div class="loading">
-جاري تحميل الترتيب...
-</div>
-
+<div class="loading">جاري تحميل الترتيب...</div>
 </div>
 
 </section>
@@ -356,16 +317,10 @@ TJ Football ⚽
 
 <section id="laliga" class="section">
 
-<h2>
-🇪🇸 ترتيب La Liga
-</h2>
+<h2>🇪🇸 ترتيب La Liga</h2>
 
 <div id="laTable">
-
-<div class="loading">
-جاري تحميل الترتيب...
-</div>
-
+<div class="loading">جاري تحميل الترتيب...</div>
 </div>
 
 </section>
@@ -375,41 +330,26 @@ TJ Football ⚽
 
 <section id="scorers" class="section">
 
-<h2>
-⭐ الهدافون
-</h2>
+<h2>⭐ الهدافون</h2>
 
 <div class="cards">
 
 <div class="card">
 
-<h3>
-🏴 هدافو Premier League
-</h3>
+<h3>🏴 هدافو Premier League</h3>
 
 <div id="plScorers">
-
-<div class="loading">
-جاري التحميل...
+<div class="loading">جاري التحميل...</div>
 </div>
 
 </div>
-
-</div>
-
 
 <div class="card">
 
-<h3>
-🇪🇸 هدافو La Liga
-</h3>
+<h3>🇪🇸 هدافو La Liga</h3>
 
 <div id="laScorers">
-
-<div class="loading">
-جاري التحميل...
-</div>
-
+<div class="loading">جاري التحميل...</div>
 </div>
 
 </div>
@@ -418,18 +358,13 @@ TJ Football ⚽
 
 </section>
 
-
 </main>
 
 
 <footer>
-
 TJ Football ⚽
-
 <br>
-
 © 2026
-
 </footer>
 
 
@@ -437,7 +372,7 @@ TJ Football ⚽
 
 
 /* =========================
-   GENERAL
+   JSON
 ========================= */
 
 async function getJSON(file){
@@ -446,17 +381,17 @@ const response =
 await fetch(file + "?v=" + Date.now());
 
 if(!response.ok){
-
-throw new Error(
-"Unable to load " + file
-);
-
+throw new Error(file);
 }
 
 return await response.json();
 
 }
 
+
+/* =========================
+   TEAM
+========================= */
 
 function team(t){
 
@@ -467,13 +402,13 @@ t?.name ||
 }
 
 
+/* =========================
+   DATE
+========================= */
+
 function dateFormat(date){
 
-if(!date){
-
-return "";
-
-}
+if(!date)return "";
 
 return new Date(date).toLocaleString(
 "fr-FR",
@@ -495,9 +430,7 @@ minute:"2-digit"
 async function loadNews(){
 
 const container =
-document.getElementById(
-"news-container"
-);
+document.getElementById("news-container");
 
 try{
 
@@ -506,7 +439,6 @@ await getJSON("data/news.json");
 
 const articles =
 data.articles || [];
-
 
 if(!articles.length){
 
@@ -517,38 +449,27 @@ return;
 
 }
 
-
 container.innerHTML = `
 
 <div class="cards">
 
-${articles
-.slice(0,18)
-.map(article => `
+${articles.slice(0,18).map(article => `
 
 <div class="card">
 
 ${
 article.urlToImage
-
 ?
-
-`
-<img
+`<img
 src="${article.urlToImage}"
 alt=""
-loading="lazy"
->
+loading="lazy">
 `
-
 :
-
 ""
 }
 
-<span class="badge">
-📰 كرة القدم
-</span>
+<span class="badge">📰 كرة القدم</span>
 
 <h3>
 ${article.title || "خبر كروي"}
@@ -566,15 +487,13 @@ ${article.source?.name || ""}
 class="read"
 href="${article.url}"
 target="_blank"
-rel="noopener noreferrer"
->
+rel="noopener noreferrer">
 اقرأ الخبر ↗
 </a>
 
 </div>
 
-`)
-.join("")}
+`).join("")}
 
 </div>
 
@@ -585,11 +504,247 @@ rel="noopener noreferrer"
 console.error(error);
 
 container.innerHTML =
-`
-<div class="error">
-⚠️ تعذر تحميل الأخبار حاليًا.
+'<div class="error">⚠️ تعذر تحميل الأخبار.</div>';
+
+}
+
+}
+
+
+/* =========================
+   MATCHES
+========================= */
+
+async function loadFootball(){
+
+try{
+
+const data =
+await getJSON("data/matches.json");
+
+const matches =
+data.matches || [];
+
+const upcoming =
+matches.filter(m =>
+m.status === "SCHEDULED" ||
+m.status === "TIMED"
+);
+
+const finished =
+matches.filter(m =>
+m.status === "FINISHED"
+);
+
+
+/* UPCOMING */
+
+const matchesContainer =
+document.getElementById(
+"matches-container"
+);
+
+if(!upcoming.length){
+
+matchesContainer.innerHTML =
+"<p>لا توجد مباريات قادمة حاليًا.</p>";
+
+}else{
+
+matchesContainer.innerHTML = `
+
+<div class="cards">
+
+${upcoming.slice(0,30).map(m => `
+
+<div class="card">
+
+<span class="badge">
+${m.competition?.name || "مباراة"}
+</span>
+
+<h3>
+${team(m.homeTeam)}
+<br>
+🆚
+<br>
+${team(m.awayTeam)}
+</h3>
+
+<p class="small">
+📅 ${dateFormat(m.utcDate)}
+</p>
+
 </div>
+
+`).join("")}
+
+</div>
+
 `;
+
+}
+
+
+/* RESULTS */
+
+const resultsContainer =
+document.getElementById(
+"results-container"
+);
+
+if(!finished.length){
+
+resultsContainer.innerHTML =
+"<p>لا توجد نتائج حاليًا.</p>";
+
+}else{
+
+resultsContainer.innerHTML = `
+
+<div class="cards">
+
+${finished.slice(0,30).map(m => `
+
+<div class="card">
+
+<span class="badge">
+${m.competition?.name || "مباراة"}
+</span>
+
+<h3>
+${team(m.homeTeam)}
+<br>
+🆚
+<br>
+${team(m.awayTeam)}
+</h3>
+
+<div class="score">
+
+${m.score?.fullTime?.home ?? "-"}
+ -
+${m.score?.fullTime?.away ?? "-"}
+
+</div>
+
+<p class="small">
+انتهت
+</p>
+
+</div>
+
+`).join("")}
+
+</div>
+
+`;
+
+}
+
+}catch(error){
+
+console.error(error);
+
+document.getElementById(
+"matches-container"
+).innerHTML =
+'<div class="error">⚠️ تعذر تحميل المباريات.</div>';
+
+document.getElementById(
+"results-container"
+).innerHTML =
+'<div class="error">⚠️ تعذر تحميل النتائج.</div>';
+
+}
+
+}
+
+
+/* =========================
+   TRANSFERS
+========================= */
+
+async function loadTransfers(){
+
+const container =
+document.getElementById(
+"transfers-container"
+);
+
+try{
+
+const data =
+await getJSON("data/transfers.json");
+
+const transfers =
+data.response || [];
+
+if(!transfers.length){
+
+container.innerHTML =
+"<p>لا توجد انتقالات متاحة حاليًا.</p>";
+
+return;
+
+}
+
+let html = "";
+
+transfers.forEach(item => {
+
+const player =
+item.player?.name ||
+"لاعب";
+
+const transferList =
+item.transfers || [];
+
+transferList.forEach(t => {
+
+html += `
+
+<div class="transfer">
+
+<b>👤 ${player}</b>
+
+<br><br>
+
+<span>
+${t.teams?.in?.name || "غير معروف"}
+</span>
+
+<strong>
+ ← انتقال من →
+</strong>
+
+<span>
+${t.teams?.out?.name || "غير معروف"}
+</span>
+
+<br>
+
+<span class="small">
+📅 ${t.date || ""}
+</span>
+
+</div>
+
+`;
+
+});
+
+});
+
+container.innerHTML = html ||
+"<p>لا توجد انتقالات متاحة.</p>";
+
+}catch(error){
+
+console.error(error);
+
+container.innerHTML =
+'<div class="error">⚠️ تعذر تحميل الانتقالات.</div>';
 
 }
 
@@ -608,7 +763,6 @@ return "<p>لا توجد بيانات.</p>";
 
 }
 
-
 return `
 
 <div style="overflow-x:auto">
@@ -618,61 +772,41 @@ return `
 <thead>
 
 <tr>
-
 <th>#</th>
-
 <th>الفريق</th>
-
 <th>لعب</th>
-
 <th>ف</th>
-
 <th>ت</th>
-
 <th>خ</th>
-
 <th>النقاط</th>
-
 </tr>
 
 </thead>
 
 <tbody>
 
-${rows.map(row => `
+${rows.map(r => `
 
 <tr>
 
-<td>
-${row.position ?? "-"}
-</td>
+<td>${r.position ?? "-"}</td>
 
 <td>
-${row.team?.shortName ||
-row.team?.name ||
+${r.team?.shortName ||
+r.team?.name ||
 "-"}
 </td>
 
-<td>
-${row.playedGames ?? "-"}
-</td>
+<td>${r.playedGames ?? "-"}</td>
+
+<td>${r.won ?? "-"}</td>
+
+<td>${r.draw ?? "-"}</td>
+
+<td>${r.lost ?? "-"}</td>
 
 <td>
-${row.won ?? "-"}
-</td>
-
-<td>
-${row.draw ?? "-"}
-</td>
-
-<td>
-${row.lost ?? "-"}
-</td>
-
-<td>
-<b>
-${row.points ?? "-"}
-</b>
+<b>${r.points ?? "-"}</b>
 </td>
 
 </tr>
@@ -691,6 +825,48 @@ ${row.points ?? "-"}
 
 
 /* =========================
+   STANDINGS
+========================= */
+
+async function loadStandings(){
+
+try{
+
+const pl =
+await getJSON(
+"data/premier-league-standings.json"
+);
+
+document.getElementById(
+"plTable"
+).innerHTML =
+tableHTML(
+pl.standings?.[0]?.table || []
+);
+
+
+const la =
+await getJSON(
+"data/la-liga-standings.json"
+);
+
+document.getElementById(
+"laTable"
+).innerHTML =
+tableHTML(
+la.standings?.[0]?.table || []
+);
+
+}catch(error){
+
+console.error(error);
+
+}
+
+}
+
+
+/* =========================
    SCORERS
 ========================= */
 
@@ -699,324 +875,53 @@ function scorersHTML(data){
 const scorers =
 data.scorers || [];
 
-
 if(!scorers.length){
 
 return "<p>لا توجد بيانات.</p>";
 
 }
 
+return scorers.slice(0,15).map(
+(s,i) => `
 
-return scorers
-.slice(0,15)
-.map((player,index)=>`
-
-<div
-style="
+<div style="
 padding:10px 0;
 border-bottom:1px solid #eee;
-"
->
+">
 
 <b>
-${index + 1}.
-${player.player?.name ||
-"لاعب"}
+${i+1}.
+${s.player?.name || "لاعب"}
 </b>
 
 <br>
 
 <span class="small">
 
-${player.team?.shortName ||
-player.team?.name ||
+${s.team?.shortName ||
+s.team?.name ||
 ""}
 
- — ⚽
-
-${player.goals ?? 0}
+ — ⚽ ${s.goals ?? 0}
 
 </span>
 
 </div>
 
-`)
-.join("");
+`
+).join("");
 
 }
 
-
-/* =========================
-   FOOTBALL DATA
-========================= */
-
-async function loadFootball(){
-
-try{
-
-const data =
-await getJSON(
-"data/matches.json"
-);
-
-const matches =
-data.matches || [];
-
-
-const upcoming =
-matches.filter(match =>
-
-match.status === "SCHEDULED" ||
-
-match.status === "TIMED"
-
-);
-
-
-const finished =
-matches.filter(match =>
-
-match.status === "FINISHED"
-
-);
-
-
-/* MATCHES */
-
-const matchesContainer =
-document.getElementById(
-"matches-container"
-);
-
-
-if(!upcoming.length){
-
-matchesContainer.innerHTML =
-"<p>لا توجد مباريات قادمة حاليًا.</p>";
-
-}else{
-
-matchesContainer.innerHTML = `
-
-<div class="cards">
-
-${upcoming
-.slice(0,30)
-.map(match=>`
-
-<div class="card">
-
-<span class="badge">
-
-${match.competition?.name ||
-"مباراة"}
-
-</span>
-
-<div class="match-title">
-
-${team(match.homeTeam)}
-
-<br>
-
-🆚
-
-<br>
-
-${team(match.awayTeam)}
-
-</div>
-
-<div class="small">
-
-📅
-
-${dateFormat(match.utcDate)}
-
-</div>
-
-</div>
-
-`)
-.join("")}
-
-</div>
-
-`;
-
-}
-
-
-/* RESULTS */
-
-const resultsContainer =
-document.getElementById(
-"results-container"
-);
-
-
-if(!finished.length){
-
-resultsContainer.innerHTML =
-"<p>لا توجد نتائج متاحة حاليًا.</p>";
-
-}else{
-
-resultsContainer.innerHTML = `
-
-<div class="cards">
-
-${finished
-.slice(0,30)
-.map(match=>`
-
-<div class="card">
-
-<span class="badge">
-
-${match.competition?.name ||
-"مباراة"}
-
-</span>
-
-<div class="match-title">
-
-${team(match.homeTeam)}
-
-<br>
-
-🆚
-
-<br>
-
-${team(match.awayTeam)}
-
-</div>
-
-<div class="score">
-
-${match.score?.fullTime?.home ??
-"-"}
-
- -
-
-${match.score?.fullTime?.away ??
-"-"}
-
-</div>
-
-<div class="small">
-
-انتهت
-
-</div>
-
-</div>
-
-`)
-.join("")}
-
-</div>
-
-`;
-
-}
-
-}catch(error){
-
-console.error(error);
-
-document.getElementById(
-"matches-container"
-).innerHTML =
-
-'<div class="error">⚠️ تعذر تحميل المباريات.</div>';
-
-document.getElementById(
-"results-container"
-).innerHTML =
-
-'<div class="error">⚠️ تعذر تحميل النتائج.</div>';
-
-}
-
-}
-
-
-/* =========================
-   STANDINGS
-========================= */
-
-async function loadStandings(){
-
-try{
-
-
-const pl =
-await getJSON(
-"data/premier-league-standings.json"
-);
-
-
-const plRows =
-pl.standings?.[0]?.table || [];
-
-
-document.getElementById(
-"plTable"
-).innerHTML =
-tableHTML(plRows);
-
-
-const la =
-await getJSON(
-"data/la-liga-standings.json"
-);
-
-
-const laRows =
-la.standings?.[0]?.table || [];
-
-
-document.getElementById(
-"laTable"
-).innerHTML =
-tableHTML(laRows);
-
-
-}catch(error){
-
-console.error(error);
-
-document.getElementById(
-"plTable"
-).innerHTML =
-'<div class="error">⚠️ تعذر تحميل الترتيب.</div>';
-
-document.getElementById(
-"laTable"
-).innerHTML =
-'<div class="error">⚠️ تعذر تحميل الترتيب.</div>';
-
-}
-
-}
-
-
-/* =========================
-   SCORERS
-========================= */
 
 async function loadScorers(){
 
 try{
 
-
 const pl =
 await getJSON(
 "data/premier-league-scorers.json"
 );
-
 
 document.getElementById(
 "plScorers"
@@ -1029,26 +934,14 @@ await getJSON(
 "data/la-liga-scorers.json"
 );
 
-
 document.getElementById(
 "laScorers"
 ).innerHTML =
 scorersHTML(la);
 
-
 }catch(error){
 
 console.error(error);
-
-document.getElementById(
-"plScorers"
-).innerHTML =
-'<div class="error">⚠️ تعذر تحميل الهدافين.</div>';
-
-document.getElementById(
-"laScorers"
-).innerHTML =
-'<div class="error">⚠️ تعذر تحميل الهدافين.</div>';
 
 }
 
@@ -1063,10 +956,11 @@ loadNews();
 
 loadFootball();
 
+loadTransfers();
+
 loadStandings();
 
 loadScorers();
-
 
 </script>
 

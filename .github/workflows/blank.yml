@@ -13,17 +13,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout
         uses: actions/checkout@v4
 
+
       - name: Prepare data folder
-        run: mkdir -p data
+        run: |
+          mkdir -p data
+
+
+      # =========================
+      # FOOTBALL MATCHES
+      # =========================
 
       - name: Get football matches
         env:
           TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
         run: |
+
           TODAY=$(date -u +%Y-%m-%d)
+
           DAY3=$(date -u -d "+3 days" +%Y-%m-%d)
 
           curl -s \
@@ -31,60 +41,133 @@ jobs:
             "https://api.football-data.org/v4/matches?dateFrom=$TODAY&dateTo=$DAY3&limit=500" \
             -o data/matches.json
 
+
+      # =========================
+      # PREMIER LEAGUE STANDINGS
+      # =========================
+
       - name: Get Premier League standings
         env:
           TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
         run: |
+
           curl -s \
             -H "X-Auth-Token: $TOKEN" \
             "https://api.football-data.org/v4/competitions/PL/standings" \
             -o data/premier-league-standings.json
 
+
+      # =========================
+      # PREMIER LEAGUE SCORERS
+      # =========================
+
       - name: Get Premier League scorers
         env:
           TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
         run: |
+
           curl -s \
             -H "X-Auth-Token: $TOKEN" \
             "https://api.football-data.org/v4/competitions/PL/scorers?limit=20" \
             -o data/premier-league-scorers.json
 
+
+      # =========================
+      # LA LIGA STANDINGS
+      # =========================
+
       - name: Get La Liga standings
         env:
           TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
         run: |
+
           curl -s \
             -H "X-Auth-Token: $TOKEN" \
             "https://api.football-data.org/v4/competitions/PD/standings" \
             -o data/la-liga-standings.json
 
+
+      # =========================
+      # LA LIGA SCORERS
+      # =========================
+
       - name: Get La Liga scorers
         env:
           TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
         run: |
+
           curl -s \
             -H "X-Auth-Token: $TOKEN" \
             "https://api.football-data.org/v4/competitions/PD/scorers?limit=20" \
             -o data/la-liga-scorers.json
 
+
+      # =========================
+      # NEWS
+      # =========================
+
       - name: Get football news
         env:
           NEWS_KEY: ${{ secrets.NEWS_API_KEY }}
         run: |
+
           curl -s \
             "https://newsapi.org/v2/everything?q=football&language=en&sortBy=publishedAt&pageSize=30&apiKey=$NEWS_KEY" \
             -o data/news.json
 
+
+      # =========================
+      # TRANSFERS
+      # =========================
+
+      - name: Get football transfers
+        env:
+          API_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+        run: |
+
+          curl -s \
+            -H "x-apisports-key: $API_KEY" \
+            "https://v3.football.api-sports.io/transfers?player=276" \
+            -o data/transfers.json
+
+
+      # =========================
+      # CHECK DATA
+      # =========================
+
+      - name: Check downloaded files
+        run: |
+
+          echo "TJ Football data:"
+
+          ls -lh data/
+
+          echo "Transfers file:"
+
+          cat data/transfers.json
+
+
+      # =========================
+      # SAVE
+      # =========================
+
       - name: Save data
         run: |
+
           git config user.name "TJ Football Bot"
+
           git config user.email "actions@github.com"
 
           git add data/
 
           if git diff --cached --quiet; then
+
             echo "No changes."
+
           else
+
             git commit -m "Update TJ Football data"
+
             git push
+
           fi

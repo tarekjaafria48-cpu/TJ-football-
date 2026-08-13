@@ -16,21 +16,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Get football matches
+      - name: Get matches
         env:
           FOOTBALL_API_TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
         run: |
+          TODAY=$(date -u +%Y-%m-%d)
+          TOMORROW=$(date -u -d "+1 day" +%Y-%m-%d)
+          DAY3=$(date -u -d "+3 days" +%Y-%m-%d)
+
+          mkdir -p data
+
           curl -s \
             -H "X-Auth-Token: $FOOTBALL_API_TOKEN" \
-            "https://api.football-data.org/v4/matches" \
-            -o matches.json
+            "https://api.football-data.org/v4/matches?dateFrom=$TODAY&dateTo=$DAY3&limit=500" \
+            -o data/matches.json
 
-      - name: Save football data
+      - name: Check data
         run: |
-          mkdir -p data
-          mv matches.json data/matches.json
+          echo "عدد المباريات:"
+          python -c "import json; d=json.load(open('data/matches.json')); print(len(d.get('matches', [])))"
 
-      - name: Commit updated data
+      - name: Save data
         run: |
           git config user.name "TJ Football Bot"
           git config user.email "actions@github.com"

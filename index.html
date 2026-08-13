@@ -3,218 +3,215 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-
 <title>TJ Football ⚽</title>
 
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  font-family:Arial,sans-serif;
-  background:#f3f6fb;
-  color:#101828;
+font-family:Arial,sans-serif;
+background:#f3f6fb;
+color:#101828
 }
 
 header{
-  background:linear-gradient(135deg,#d90429,#0757b8);
-  color:white;
-  padding:30px 15px;
-  text-align:center;
+background:linear-gradient(135deg,#d90429,#0757b8);
+color:white;
+padding:30px 15px;
+text-align:center
 }
 
 .logo{
-  font-size:38px;
-  font-weight:900;
+font-size:38px;
+font-weight:900
 }
 
-.tag{
-  margin-top:8px;
-}
+.tag{margin-top:8px}
 
 nav{
-  display:flex;
-  gap:8px;
-  overflow-x:auto;
-  background:#071b3a;
-  padding:10px;
-  position:sticky;
-  top:0;
-  z-index:10;
+display:flex;
+gap:8px;
+overflow-x:auto;
+background:#071b3a;
+padding:10px;
+position:sticky;
+top:0;
+z-index:10
 }
 
 nav a{
-  color:white;
-  text-decoration:none;
-  padding:11px 15px;
-  border-radius:25px;
-  white-space:nowrap;
-  font-weight:bold;
+color:white;
+text-decoration:none;
+padding:11px 15px;
+border-radius:25px;
+white-space:nowrap;
+font-weight:bold
 }
 
-nav a:hover{
-  background:#d90429;
-}
+nav a:hover{background:#d90429}
 
 main{
-  max-width:1150px;
-  margin:auto;
-  padding:15px;
+max-width:1150px;
+margin:auto;
+padding:15px
 }
 
 .hero{
-  background:linear-gradient(135deg,#fff,#e7f0ff);
-  padding:28px;
-  border-radius:20px;
-  margin:20px 0;
+background:linear-gradient(135deg,#fff,#e7f0ff);
+padding:28px;
+border-radius:20px;
+margin:20px 0
 }
 
 .hero h1{
-  color:#d90429;
-  margin-bottom:10px;
+color:#d90429;
+margin-bottom:10px
 }
 
 .section{
-  background:white;
-  border-radius:20px;
-  padding:20px;
-  margin:20px 0;
-  box-shadow:0 5px 18px #10182812;
+background:white;
+border-radius:20px;
+padding:20px;
+margin:20px 0;
+box-shadow:0 5px 18px #10182812
 }
 
-.section h2{
-  margin-bottom:18px;
-}
+.section h2{margin-bottom:18px}
 
 .cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:15px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:15px
 }
 
 .card{
-  border:1px solid #e5e7eb;
-  border-radius:16px;
-  padding:16px;
-  background:white;
-  overflow:hidden;
+border:1px solid #e5e7eb;
+border-radius:16px;
+padding:16px;
+background:white
 }
 
 .card img{
-  width:100%;
-  height:165px;
-  object-fit:cover;
-  border-radius:12px;
-  margin-bottom:10px;
+width:100%;
+height:165px;
+object-fit:cover;
+border-radius:12px;
+margin-bottom:10px
 }
 
 .card h3{
-  line-height:1.5;
-  margin-bottom:8px;
+line-height:1.5;
+margin-bottom:8px
 }
 
 .badge{
-  display:inline-block;
-  background:#e8f0ff;
-  color:#0757b8;
-  padding:6px 10px;
-  border-radius:20px;
-  font-size:13px;
-  font-weight:bold;
-  margin-bottom:9px;
+display:inline-block;
+background:#e8f0ff;
+color:#0757b8;
+padding:6px 10px;
+border-radius:20px;
+font-size:13px;
+font-weight:bold;
+margin-bottom:9px
 }
 
 .small{
-  color:#667085;
-  font-size:13px;
-  line-height:1.6;
-  margin-top:7px;
+color:#667085;
+font-size:13px;
+line-height:1.6;
+margin-top:7px
 }
 
 .score{
-  font-size:23px;
-  font-weight:900;
-  color:#d90429;
-  margin-top:8px;
+font-size:23px;
+font-weight:900;
+color:#d90429;
+margin-top:8px
 }
 
 .loading{
-  text-align:center;
-  padding:20px;
-  color:#667085;
+text-align:center;
+padding:20px;
+color:#667085
 }
 
 .error{
-  padding:15px;
-  border-radius:12px;
-  background:#fff3f3;
-  color:#b42318;
+padding:15px;
+border-radius:12px;
+background:#fff3f3;
+color:#b42318
 }
 
 .read{
-  display:inline-block;
-  margin-top:10px;
-  color:#0757b8;
-  font-weight:bold;
-  text-decoration:none;
+display:inline-block;
+margin-top:10px;
+color:#0757b8;
+font-weight:bold;
+text-decoration:none
 }
+
+/* TRANSFERS */
 
 .transfer{
-  border-right:5px solid #d90429;
-  padding:12px;
-  margin-bottom:12px;
-  background:#f8fafc;
-  border-radius:10px;
+border-right:5px solid #d90429;
+padding:15px;
+margin-bottom:12px;
+background:#f8fafc;
+border-radius:12px
 }
 
-.transfer strong{
-  color:#0757b8;
+.transfer .player{
+font-size:18px;
+font-weight:900;
+color:#101828
+}
+
+.transfer .clubs{
+margin-top:8px;
+font-size:15px
+}
+
+.transfer .date{
+margin-top:8px;
+font-size:13px;
+color:#667085
+}
+
+.transfer .arrow{
+color:#d90429;
+font-weight:900;
+margin:0 7px
 }
 
 table{
-  width:100%;
-  border-collapse:collapse;
+width:100%;
+border-collapse:collapse
 }
 
 th,td{
-  padding:10px;
-  text-align:center;
-  border-bottom:1px solid #eee;
+padding:10px;
+text-align:center;
+border-bottom:1px solid #eee
 }
 
 th{
-  background:#071b3a;
-  color:white;
+background:#071b3a;
+color:white
 }
 
 footer{
-  background:#071b3a;
-  color:white;
-  text-align:center;
-  padding:28px;
-  margin-top:30px;
+background:#071b3a;
+color:white;
+text-align:center;
+padding:28px;
+margin-top:30px
 }
 
 @media(max-width:600px){
-  .logo{
-    font-size:30px;
-  }
-
-  main{
-    padding:10px;
-  }
-
-  .section{
-    padding:15px;
-  }
-
-  th,td{
-    padding:7px;
-    font-size:13px;
-  }
+.logo{font-size:30px}
+main{padding:10px}
+.section{padding:15px}
+th,td{padding:7px;font-size:13px}
 }
 </style>
 </head>
@@ -247,119 +244,71 @@ footer{
 </p>
 </section>
 
-
-<!-- NEWS -->
-
 <section id="news" class="section">
-
 <h2>📰 آخر أخبار كرة القدم</h2>
-
 <div id="news-container">
 <div class="loading">جاري تحميل الأخبار...</div>
 </div>
-
 </section>
 
-
-<!-- MATCHES -->
-
 <section id="matches" class="section">
-
 <h2>⚽ المباريات القادمة</h2>
-
 <div id="matches-container">
 <div class="loading">جاري تحميل المباريات...</div>
 </div>
-
 </section>
 
-
-<!-- RESULTS -->
-
 <section id="results" class="section">
-
 <h2>📊 النتائج الأخيرة</h2>
-
 <div id="results-container">
 <div class="loading">جاري تحميل النتائج...</div>
 </div>
-
 </section>
 
-
-<!-- TRANSFERS -->
-
 <section id="transfers" class="section">
-
-<h2>🔄 آخر الانتقالات</h2>
-
+<h2>🔄 أحدث الانتقالات</h2>
 <div id="transfers-container">
 <div class="loading">جاري تحميل الانتقالات...</div>
 </div>
-
 </section>
 
-
-<!-- PREMIER LEAGUE -->
-
 <section id="pl" class="section">
-
 <h2>🏆 ترتيب Premier League</h2>
-
 <div id="plTable">
 <div class="loading">جاري تحميل الترتيب...</div>
 </div>
-
 </section>
 
-
-<!-- LA LIGA -->
-
 <section id="laliga" class="section">
-
 <h2>🇪🇸 ترتيب La Liga</h2>
-
 <div id="laTable">
 <div class="loading">جاري تحميل الترتيب...</div>
 </div>
-
 </section>
 
-
-<!-- SCORERS -->
-
 <section id="scorers" class="section">
-
 <h2>⭐ الهدافون</h2>
 
 <div class="cards">
 
 <div class="card">
-
 <h3>🏴 هدافو Premier League</h3>
-
 <div id="plScorers">
 <div class="loading">جاري التحميل...</div>
 </div>
-
 </div>
 
 <div class="card">
-
 <h3>🇪🇸 هدافو La Liga</h3>
-
 <div id="laScorers">
 <div class="loading">جاري التحميل...</div>
 </div>
-
 </div>
 
 </div>
-
 </section>
 
 </main>
-
 
 <footer>
 TJ Football ⚽
@@ -367,44 +316,22 @@ TJ Football ⚽
 © 2026
 </footer>
 
-
 <script>
-
-
-/* =========================
-   JSON
-========================= */
 
 async function getJSON(file){
 
-const response =
-await fetch(file + "?v=" + Date.now());
+const response=await fetch(file+"?v="+Date.now());
 
 if(!response.ok){
 throw new Error(file);
 }
 
 return await response.json();
-
 }
-
-
-/* =========================
-   TEAM
-========================= */
 
 function team(t){
-
-return t?.shortName ||
-t?.name ||
-"غير معروف";
-
+return t?.shortName || t?.name || "غير معروف";
 }
-
-
-/* =========================
-   DATE
-========================= */
 
 function dateFormat(date){
 
@@ -415,76 +342,53 @@ return new Date(date).toLocaleString(
 {
 day:"2-digit",
 month:"2-digit",
+year:"numeric",
 hour:"2-digit",
 minute:"2-digit"
 }
 );
-
 }
 
 
-/* =========================
-   NEWS
-========================= */
+/* NEWS */
 
 async function loadNews(){
 
-const container =
-document.getElementById("news-container");
+const container=document.getElementById("news-container");
 
 try{
 
-const data =
-await getJSON("data/news.json");
-
-const articles =
-data.articles || [];
+const data=await getJSON("data/news.json");
+const articles=data.articles||[];
 
 if(!articles.length){
-
-container.innerHTML =
-"<p>لا توجد أخبار متاحة حاليًا.</p>";
-
+container.innerHTML="<p>لا توجد أخبار متاحة حاليًا.</p>";
 return;
-
 }
 
-container.innerHTML = `
-
+container.innerHTML=`
 <div class="cards">
 
-${articles.slice(0,18).map(article => `
+${articles.slice(0,18).map(article=>`
 
 <div class="card">
 
 ${
 article.urlToImage
 ?
-`<img
-src="${article.urlToImage}"
-alt=""
-loading="lazy">
-`
-:
-""
+`<img src="${article.urlToImage}" alt="" loading="lazy">`
+:""
 }
 
 <span class="badge">📰 كرة القدم</span>
 
-<h3>
-${article.title || "خبر كروي"}
-</h3>
+<h3>${article.title||"خبر كروي"}</h3>
 
-<p class="small">
-${article.description || ""}
-</p>
+<p class="small">${article.description||""}</p>
 
-<p class="small">
-${article.source?.name || ""}
-</p>
+<p class="small">${article.source?.name||""}</p>
 
-<a
-class="read"
+<a class="read"
 href="${article.url}"
 target="_blank"
 rel="noopener noreferrer">
@@ -496,78 +400,60 @@ rel="noopener noreferrer">
 `).join("")}
 
 </div>
-
 `;
 
 }catch(error){
 
 console.error(error);
 
-container.innerHTML =
+container.innerHTML=
 '<div class="error">⚠️ تعذر تحميل الأخبار.</div>';
-
+}
 }
 
-}
 
-
-/* =========================
-   MATCHES
-========================= */
+/* MATCHES */
 
 async function loadFootball(){
 
 try{
 
-const data =
-await getJSON("data/matches.json");
+const data=await getJSON("data/matches.json");
 
-const matches =
-data.matches || [];
+const matches=data.matches||[];
 
-const upcoming =
-matches.filter(m =>
-m.status === "SCHEDULED" ||
-m.status === "TIMED"
+const upcoming=matches.filter(
+m=>m.status==="SCHEDULED"||m.status==="TIMED"
 );
 
-const finished =
-matches.filter(m =>
-m.status === "FINISHED"
+const finished=matches.filter(
+m=>m.status==="FINISHED"
 );
 
-
-/* UPCOMING */
-
-const matchesContainer =
-document.getElementById(
-"matches-container"
-);
+const matchesContainer=
+document.getElementById("matches-container");
 
 if(!upcoming.length){
 
-matchesContainer.innerHTML =
+matchesContainer.innerHTML=
 "<p>لا توجد مباريات قادمة حاليًا.</p>";
 
 }else{
 
-matchesContainer.innerHTML = `
-
+matchesContainer.innerHTML=`
 <div class="cards">
 
-${upcoming.slice(0,30).map(m => `
+${upcoming.slice(0,30).map(m=>`
 
 <div class="card">
 
 <span class="badge">
-${m.competition?.name || "مباراة"}
+${m.competition?.name||"مباراة"}
 </span>
 
 <h3>
 ${team(m.homeTeam)}
-<br>
-🆚
-<br>
+<br>🆚<br>
 ${team(m.awayTeam)}
 </h3>
 
@@ -580,197 +466,205 @@ ${team(m.awayTeam)}
 `).join("")}
 
 </div>
-
 `;
-
 }
 
-
-/* RESULTS */
-
-const resultsContainer =
-document.getElementById(
-"results-container"
-);
+const resultsContainer=
+document.getElementById("results-container");
 
 if(!finished.length){
 
-resultsContainer.innerHTML =
+resultsContainer.innerHTML=
 "<p>لا توجد نتائج حاليًا.</p>";
 
 }else{
 
-resultsContainer.innerHTML = `
-
+resultsContainer.innerHTML=`
 <div class="cards">
 
-${finished.slice(0,30).map(m => `
+${finished.slice(0,30).map(m=>`
 
 <div class="card">
 
 <span class="badge">
-${m.competition?.name || "مباراة"}
+${m.competition?.name||"مباراة"}
 </span>
 
 <h3>
 ${team(m.homeTeam)}
-<br>
-🆚
-<br>
+<br>🆚<br>
 ${team(m.awayTeam)}
 </h3>
 
 <div class="score">
-
-${m.score?.fullTime?.home ?? "-"}
+${m.score?.fullTime?.home??"-"}
  -
-${m.score?.fullTime?.away ?? "-"}
-
+${m.score?.fullTime?.away??"-"}
 </div>
 
-<p class="small">
-انتهت
-</p>
+<p class="small">انتهت</p>
 
 </div>
 
 `).join("")}
 
 </div>
-
 `;
-
 }
 
 }catch(error){
 
 console.error(error);
 
-document.getElementById(
-"matches-container"
-).innerHTML =
+document.getElementById("matches-container").innerHTML=
 '<div class="error">⚠️ تعذر تحميل المباريات.</div>';
 
-document.getElementById(
-"results-container"
-).innerHTML =
+document.getElementById("results-container").innerHTML=
 '<div class="error">⚠️ تعذر تحميل النتائج.</div>';
-
+}
 }
 
-}
 
-
-/* =========================
-   TRANSFERS
-========================= */
+/* TRANSFERS */
 
 async function loadTransfers(){
 
-const container =
-document.getElementById(
-"transfers-container"
-);
+const container=
+document.getElementById("transfers-container");
 
 try{
 
-const data =
-await getJSON("data/transfers.json");
+const data=await getJSON("data/transfers.json");
 
-const transfers =
-data.response || [];
+let transfers=data.response||[];
 
 if(!transfers.length){
 
-container.innerHTML =
+container.innerHTML=
 "<p>لا توجد انتقالات متاحة حاليًا.</p>";
 
 return;
-
 }
 
-let html = "";
 
-transfers.forEach(item => {
+/*
+نحوّل كل انتقال إلى سجل مستقل
+ثم نرتبه من الأحدث إلى الأقدم
+*/
 
-const player =
-item.player?.name ||
-"لاعب";
+let list=[];
 
-const transferList =
-item.transfers || [];
+transfers.forEach(item=>{
 
-transferList.forEach(t => {
+const player=item.player||{};
+const records=item.transfers||[];
 
-html += `
+records.forEach(t=>{
+
+list.push({
+
+player:player.name||"لاعب",
+
+date:t.date||"",
+
+type:t.type||"",
+
+from:t.teams?.out?.name||"غير معروف",
+
+to:t.teams?.in?.name||"غير معروف"
+
+});
+
+});
+
+});
+
+
+/* ترتيب حسب التاريخ */
+
+list.sort((a,b)=>{
+
+const dateA=
+a.date?new Date(a.date).getTime():0;
+
+const dateB=
+b.date?new Date(b.date).getTime():0;
+
+return dateB-dateA;
+
+});
+
+
+/* أحدث 30 انتقالًا */
+
+list=list.slice(0,30);
+
+
+if(!list.length){
+
+container.innerHTML=
+"<p>لا توجد انتقالات متاحة حاليًا.</p>";
+
+return;
+}
+
+
+container.innerHTML=list.map(t=>`
 
 <div class="transfer">
 
-<b>👤 ${player}</b>
+<div class="player">
+👤 ${t.player}
+</div>
 
-<br><br>
+<div class="clubs">
 
-<span>
-${t.teams?.in?.name || "غير معروف"}
-</span>
+<span>${t.from}</span>
 
-<strong>
- ← انتقال من →
-</strong>
+<span class="arrow">→</span>
 
-<span>
-${t.teams?.out?.name || "غير معروف"}
-</span>
-
-<br>
-
-<span class="small">
-📅 ${t.date || ""}
-</span>
+<strong>${t.to}</strong>
 
 </div>
 
-`;
+<div class="date">
 
-});
+📅 ${t.date||"التاريخ غير متوفر"}
 
-});
+${t.type?` — ${t.type}`:""}
 
-container.innerHTML = html ||
-"<p>لا توجد انتقالات متاحة.</p>";
+</div>
+
+</div>
+
+`).join("");
+
 
 }catch(error){
 
 console.error(error);
 
-container.innerHTML =
+container.innerHTML=
 '<div class="error">⚠️ تعذر تحميل الانتقالات.</div>';
-
+}
 }
 
-}
 
-
-/* =========================
-   TABLE
-========================= */
+/* TABLE */
 
 function tableHTML(rows){
 
-if(!rows || !rows.length){
-
+if(!rows||!rows.length){
 return "<p>لا توجد بيانات.</p>";
-
 }
 
-return `
+return`
 
 <div style="overflow-x:auto">
 
 <table>
 
 <thead>
-
 <tr>
 <th>#</th>
 <th>الفريق</th>
@@ -780,34 +674,29 @@ return `
 <th>خ</th>
 <th>النقاط</th>
 </tr>
-
 </thead>
 
 <tbody>
 
-${rows.map(r => `
+${rows.map(r=>`
 
 <tr>
 
-<td>${r.position ?? "-"}</td>
+<td>${r.position??"-"}</td>
 
 <td>
-${r.team?.shortName ||
-r.team?.name ||
-"-"}
+${r.team?.shortName||r.team?.name||"-"}
 </td>
 
-<td>${r.playedGames ?? "-"}</td>
+<td>${r.playedGames??"-"}</td>
 
-<td>${r.won ?? "-"}</td>
+<td>${r.won??"-"}</td>
 
-<td>${r.draw ?? "-"}</td>
+<td>${r.draw??"-"}</td>
 
-<td>${r.lost ?? "-"}</td>
+<td>${r.lost??"-"}</td>
 
-<td>
-<b>${r.points ?? "-"}</b>
-</td>
+<td><b>${r.points??"-"}</b></td>
 
 </tr>
 
@@ -818,71 +707,50 @@ r.team?.name ||
 </table>
 
 </div>
-
 `;
-
 }
 
 
-/* =========================
-   STANDINGS
-========================= */
+/* STANDINGS */
 
 async function loadStandings(){
 
 try{
 
-const pl =
-await getJSON(
+const pl=await getJSON(
 "data/premier-league-standings.json"
 );
 
-document.getElementById(
-"plTable"
-).innerHTML =
-tableHTML(
-pl.standings?.[0]?.table || []
-);
+document.getElementById("plTable").innerHTML=
+tableHTML(pl.standings?.[0]?.table||[]);
 
 
-const la =
-await getJSON(
+const la=await getJSON(
 "data/la-liga-standings.json"
 );
 
-document.getElementById(
-"laTable"
-).innerHTML =
-tableHTML(
-la.standings?.[0]?.table || []
-);
+document.getElementById("laTable").innerHTML=
+tableHTML(la.standings?.[0]?.table||[]);
 
 }catch(error){
 
 console.error(error);
-
+}
 }
 
-}
 
-
-/* =========================
-   SCORERS
-========================= */
+/* SCORERS */
 
 function scorersHTML(data){
 
-const scorers =
-data.scorers || [];
+const scorers=data.scorers||[];
 
 if(!scorers.length){
-
 return "<p>لا توجد بيانات.</p>";
-
 }
 
 return scorers.slice(0,15).map(
-(s,i) => `
+(s,i)=>`
 
 <div style="
 padding:10px 0;
@@ -890,27 +758,22 @@ border-bottom:1px solid #eee;
 ">
 
 <b>
-${i+1}.
-${s.player?.name || "لاعب"}
+${i+1}. ${s.player?.name||"لاعب"}
 </b>
 
 <br>
 
 <span class="small">
 
-${s.team?.shortName ||
-s.team?.name ||
-""}
+${s.team?.shortName||s.team?.name||""}
 
- — ⚽ ${s.goals ?? 0}
+— ⚽ ${s.goals??0}
 
 </span>
 
 </div>
-
 `
 ).join("");
-
 }
 
 
@@ -918,51 +781,37 @@ async function loadScorers(){
 
 try{
 
-const pl =
-await getJSON(
+const pl=await getJSON(
 "data/premier-league-scorers.json"
 );
 
-document.getElementById(
-"plScorers"
-).innerHTML =
+document.getElementById("plScorers").innerHTML=
 scorersHTML(pl);
 
 
-const la =
-await getJSON(
+const la=await getJSON(
 "data/la-liga-scorers.json"
 );
 
-document.getElementById(
-"laScorers"
-).innerHTML =
+document.getElementById("laScorers").innerHTML=
 scorersHTML(la);
 
 }catch(error){
 
 console.error(error);
-
+}
 }
 
-}
 
-
-/* =========================
-   START
-========================= */
+/* START */
 
 loadNews();
-
 loadFootball();
-
 loadTransfers();
-
 loadStandings();
-
 loadScorers();
 
 </script>
 
 </body>
-</html>
+  </html>

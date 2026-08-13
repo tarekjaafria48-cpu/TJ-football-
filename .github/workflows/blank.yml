@@ -2,13 +2,24 @@ name: TJ Football API
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"
 
 jobs:
-  test-api:
+  update-football:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Test football API
+      - name: Get football data
+        env:
+          FOOTBALL_API_TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
         run: |
-          curl -H "X-Auth-Token: ${{ secrets.FOOTBALL_API_TOKEN }}" \
-          https://api.football-data.org/v4/matches
+          curl -s \
+            -H "X-Auth-Token: $FOOTBALL_API_TOKEN" \
+            "https://api.football-data.org/v4/matches" \
+            -o matches.json
+
+      - name: Show result
+        run: |
+          echo "Football data downloaded successfully."
+          head -c 500 matches.json

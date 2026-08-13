@@ -3,7 +3,7 @@ name: TJ Football API
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 */6 * * *"
+    - cron: "0 */12 * * *"
 
 permissions:
   contents: write
@@ -17,23 +17,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-
-      - name: Prepare data folder
-        run: |
-          mkdir -p data
-
+      - name: Prepare data
+        run: mkdir -p data
 
       # =========================
-      # FOOTBALL MATCHES
+      # FOOTBALL-DATA.ORG
       # =========================
 
       - name: Get football matches
         env:
           TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
         run: |
-
           TODAY=$(date -u +%Y-%m-%d)
-
           DAY3=$(date -u -d "+3 days" +%Y-%m-%d)
 
           curl -s \
@@ -41,66 +36,41 @@ jobs:
             "https://api.football-data.org/v4/matches?dateFrom=$TODAY&dateTo=$DAY3&limit=500" \
             -o data/matches.json
 
-
-      # =========================
-      # PREMIER LEAGUE STANDINGS
-      # =========================
-
       - name: Get Premier League standings
         env:
           TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
         run: |
-
           curl -s \
             -H "X-Auth-Token: $TOKEN" \
             "https://api.football-data.org/v4/competitions/PL/standings" \
             -o data/premier-league-standings.json
 
-
-      # =========================
-      # PREMIER LEAGUE SCORERS
-      # =========================
-
       - name: Get Premier League scorers
         env:
           TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
         run: |
-
           curl -s \
             -H "X-Auth-Token: $TOKEN" \
             "https://api.football-data.org/v4/competitions/PL/scorers?limit=20" \
             -o data/premier-league-scorers.json
 
-
-      # =========================
-      # LA LIGA STANDINGS
-      # =========================
-
       - name: Get La Liga standings
         env:
           TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
         run: |
-
           curl -s \
             -H "X-Auth-Token: $TOKEN" \
             "https://api.football-data.org/v4/competitions/PD/standings" \
             -o data/la-liga-standings.json
 
-
-      # =========================
-      # LA LIGA SCORERS
-      # =========================
-
       - name: Get La Liga scorers
         env:
           TOKEN: ${{ secrets.FOOTBALL_API_TOKEN }}
         run: |
-
           curl -s \
             -H "X-Auth-Token: $TOKEN" \
             "https://api.football-data.org/v4/competitions/PD/scorers?limit=20" \
             -o data/la-liga-scorers.json
-
 
       # =========================
       # NEWS
@@ -110,42 +80,103 @@ jobs:
         env:
           NEWS_KEY: ${{ secrets.NEWS_API_KEY }}
         run: |
-
           curl -s \
             "https://newsapi.org/v2/everything?q=football&language=en&sortBy=publishedAt&pageSize=30&apiKey=$NEWS_KEY" \
             -o data/news.json
 
-
       # =========================
       # TRANSFERS
       # =========================
+      # Several major clubs.
+      # API-Football /transfers accepts team IDs.
 
-      - name: Get football transfers
+      - name: Get transfers
         env:
           API_KEY: ${{ secrets.API_FOOTBALL_KEY }}
         run: |
 
-          curl -s \
-            -H "x-apisports-key: $API_KEY" \
-            "https://v3.football.api-sports.io/transfers?player=276" \
-            -o data/transfers.json
+          echo '{"transfers":[]}' > data/transfers.json
 
+          for TEAM in 33 40 42 49 50 529 541 157 492 496; do
+
+            echo "Getting transfers for team $TEAM"
+
+            curl -s \
+              -H "x-apisports-key: $API_KEY" \
+              "https://v3.football.api-sports.io/transfers?team=$TEAM" \
+              -o "data/transfer_$TEAM.json"
+
+          done
+
+          python3 <<'PY'
+          import json
+          import glob
+
+          output = []
+
+          for filename in glob.glob("data/transfer_*.json"):
+
+              try:
+                  with open(filename, "r", encoding="utf-8") as f:
+                      data = json.load(f)
+
+                  for item in data.get("response", []):
+                      output.append(item)
+
+              except Exception as e:
+                  print("Could not read:", filename, e)
+
+          # Remove duplicate player records
+          unique = {}
+
+          for item in output:
+              player = item.get("player", {})
+              pid = player.get("id")
+
+              if pid is not None:
+                  unique[pid] = item
+
+          result = {
+              "get": "transfers",
+              "results": len(unique),
+              "response": list(unique.values())
+          }
+
+          with open(
+              "data/transfers.json",
+              "w",
+              encoding="utf-8"
+          ) as f:
+              json.dump(
+                  result,
+                  f,
+                  ensure_ascii=False,
+                  indent=2
+              )
+
+          print("Transfer records:", len(unique))
+          PY
+
+          rm -f data/transfer_*.json
 
       # =========================
-      # CHECK DATA
+      # CHECK
       # =========================
 
-      - name: Check downloaded files
+      - name: Check data
         run: |
-
-          echo "TJ Football data:"
-
+          echo "Files:"
           ls -lh data/
 
-          echo "Transfers file:"
+          echo "Transfers:"
+          python3 - <<'PY'
+          import json
 
-          cat data/transfers.json
+          with open("data/transfers.json", encoding="utf-8") as f:
+              data = json.load(f)
 
+          print("Transfer records:", len(data.get("response", [])))
+          PY
 
       # =========================
       # SAVE
@@ -155,19 +186,13 @@ jobs:
         run: |
 
           git config user.name "TJ Football Bot"
-
           git config user.email "actions@github.com"
 
           git add data/
 
           if git diff --cached --quiet; then
-
             echo "No changes."
-
           else
-
             git commit -m "Update TJ Football data"
-
             git push
-
           fi

@@ -1,0 +1,14 @@
+name: TJ Football API
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Test football API
+        run: |
+          curl -H "X-Auth-Token: ${{ secrets.FOOTBALL_API_TOKEN }}" \
+          https://api.football-data.org/v4/matches

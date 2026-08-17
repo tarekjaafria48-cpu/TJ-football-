@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,1926 +9,375 @@
 
 <style>
 
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
-
 body{
-font-family:Arial,Tahoma,sans-serif;
-background:#f4f6fa;
-color:#111827;
+    margin:0;
+    font-family:Arial,Tahoma,sans-serif;
+    background:#f3f5f9;
+    color:#111827;
 }
 
 header{
-background:linear-gradient(135deg,#071a52,#0b3ca8,#d90416);
-color:white;
-position:sticky;
-top:0;
-z-index:1000;
-box-shadow:0 4px 15px #0003;
+    background:linear-gradient(135deg,#071a52,#0b3ca8,#d90416);
+    color:white;
+    padding:20px;
+    text-align:center;
 }
 
-.header{
-max-width:1200px;
-margin:auto;
-padding:14px 18px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:20px;
-}
-
-.brand{
-font-size:24px;
-font-weight:900;
-white-space:nowrap;
-}
-
-nav{
-display:flex;
-gap:5px;
-flex-wrap:wrap;
-}
-
-nav button{
-border:0;
-background:transparent;
-color:white;
-padding:10px 14px;
-border-radius:8px;
-font-weight:bold;
-cursor:pointer;
-}
-
-nav button:hover{
-background:#ffffff25;
-}
-
-.hero{
-background:linear-gradient(135deg,#071a52,#1249b5);
-color:white;
-padding:45px 18px;
-}
-
-.hero-inner{
-max-width:1200px;
-margin:auto;
-}
-
-.hero h1{
-font-size:48px;
-margin-bottom:12px;
-}
-
-.hero p{
-max-width:700px;
-line-height:1.8;
-color:#dbe7ff;
+h1{
+    margin:0;
+    font-size:32px;
 }
 
 main{
-max-width:1200px;
-margin:auto;
-padding:25px 15px 60px;
+    max-width:1100px;
+    margin:auto;
+    padding:25px 15px;
 }
 
-section{
-margin-bottom:40px;
-scroll-margin-top:90px;
-}
-
-.title{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:18px;
-}
-
-.title h2{
-font-size:25px;
-}
-
-.status{
-background:white;
-padding:14px;
-border-radius:12px;
-margin-bottom:20px;
-box-shadow:0 3px 15px #0000000d;
-font-weight:bold;
-text-align:center;
-}
-
-.filters{
-background:white;
-padding:15px;
-border-radius:14px;
-margin-bottom:18px;
-display:grid;
-grid-template-columns:1fr 200px 200px;
-gap:10px;
-}
-
-.filters input,
-.filters select{
-padding:12px;
-border:1px solid #ddd;
-border-radius:9px;
-outline:none;
-background:#fafafa;
+#status{
+    background:white;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:20px;
+    text-align:center;
+    font-weight:bold;
+    box-shadow:0 3px 15px #0001;
 }
 
 .matches{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
-gap:16px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:15px;
 }
 
-.card{
-background:white;
-border-radius:16px;
-padding:17px;
-box-shadow:0 4px 18px #0000000d;
-border:1px solid #edf0f5;
+.match{
+    background:white;
+    border-radius:16px;
+    padding:18px;
+    box-shadow:0 4px 15px #0001;
 }
 
-.match-card{
-cursor:pointer;
-transition:.2s;
-}
-
-.match-card:hover{
-transform:translateY(-3px);
-}
-
-.match-head{
-display:flex;
-justify-content:space-between;
-margin-bottom:18px;
-}
-
-.league{
-font-size:12px;
-font-weight:bold;
-color:#555;
-}
-
-.date{
-font-size:11px;
-color:#999;
+.top{
+    display:flex;
+    justify-content:space-between;
+    color:#777;
+    font-size:12px;
+    margin-bottom:20px;
 }
 
 .teams{
-display:grid;
-grid-template-columns:1fr 70px 1fr;
-align-items:center;
-text-align:center;
-gap:5px;
+    display:grid;
+    grid-template-columns:1fr 70px 1fr;
+    align-items:center;
+    text-align:center;
 }
 
 .team{
-font-weight:bold;
-font-size:14px;
+    font-weight:bold;
 }
 
-.team-logo{
-width:58px;
-height:58px;
-object-fit:contain;
-display:block;
-margin:0 auto 8px;
+.logo{
+    width:60px;
+    height:60px;
+    object-fit:contain;
+    display:block;
+    margin:0 auto 8px;
 }
 
 .score{
-font-size:26px;
-font-weight:900;
+    font-size:25px;
+    font-weight:900;
 }
 
-.status-match{
-text-align:center;
-font-size:12px;
-font-weight:bold;
-margin-top:15px;
+.status{
+    text-align:center;
+    margin-top:15px;
+    font-weight:bold;
 }
 
 .finished{
-color:#059669;
+    color:#059669;
 }
 
 .live{
-color:#dc2626;
+    color:#dc2626;
 }
 
 .scheduled{
-color:#2563eb;
+    color:#2563eb;
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:15px;
-}
-
-.empty{
-background:white;
-padding:30px;
-border-radius:15px;
-text-align:center;
-color:#777;
-}
-
-.news-title{
-font-weight:bold;
-font-size:17px;
-line-height:1.5;
-margin:8px 0;
-}
-
-.news-text{
-font-size:13px;
-color:#666;
-line-height:1.7;
-}
-
-.transfer-player{
-font-size:18px;
-font-weight:bold;
-margin-bottom:15px;
-}
-
-.transfer{
-display:grid;
-grid-template-columns:1fr 40px 1fr;
-text-align:center;
-align-items:center;
-}
-
-.arrow{
-font-size:22px;
-color:#d90416;
-font-weight:bold;
-}
-
-.table{
-background:white;
-border-radius:15px;
-overflow:auto;
-box-shadow:0 4px 15px #0000000d;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-min-width:600px;
-}
-
-th,td{
-padding:12px;
-text-align:center;
-border-bottom:1px solid #eee;
-font-size:13px;
-}
-
-th{
-background:#071a52;
-color:white;
-}
-
-.scorers{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:12px;
-}
-
-.scorer{
-background:white;
-padding:15px;
-border-radius:14px;
-display:flex;
-align-items:center;
-gap:12px;
-box-shadow:0 3px 15px #0000000d;
-}
-
-.rank{
-width:35px;
-height:35px;
-border-radius:50%;
-background:#071a52;
-color:white;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-}
-
-.scorer-info{
-flex:1;
-}
-
-.scorer-name{
-font-weight:bold;
-}
-
-.scorer-team{
-font-size:11px;
-color:#777;
-margin-top:4px;
-}
-
-.goals{
-font-size:22px;
-font-weight:900;
-}
-
-footer{
-background:#071a52;
-color:white;
-text-align:center;
-padding:30px;
-}
-
-footer p{
-color:#cbd5e1;
-margin-top:8px;
-font-size:12px;
-}
-
-.modal{
-display:none;
-position:fixed;
-inset:0;
-background:#0009;
-z-index:3000;
-align-items:center;
-justify-content:center;
-padding:15px;
-}
-
-.modal.show{
-display:flex;
-}
-
-.modal-box{
-background:white;
-width:100%;
-max-width:650px;
-border-radius:18px;
-padding:25px;
-position:relative;
-}
-
-.close{
-position:absolute;
-left:15px;
-top:15px;
-border:0;
-background:#eee;
-width:35px;
-height:35px;
-border-radius:50%;
-font-size:20px;
-cursor:pointer;
-}
-
-.detail{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:20px;
-text-align:center;
-margin:30px 0;
-}
-
-.detail-team{
-width:150px;
-font-weight:bold;
-}
-
-.detail-logo{
-width:75px;
-height:75px;
-object-fit:contain;
-display:block;
-margin:0 auto 10px;
-}
-
-.detail-score{
-font-size:32px;
-font-weight:900;
-}
-
-.info{
-background:#f4f6fa;
-padding:15px;
-border-radius:12px;
-line-height:2;
-font-size:13px;
-}
-
-@media(max-width:800px){
-
-.header{
-flex-direction:column;
-}
-
-nav{
-justify-content:center;
-}
-
-.hero h1{
-font-size:36px;
-}
-
-.filters{
-grid-template-columns:1fr;
-}
-
-}
-
-@media(max-width:500px){
-
-.teams{
-grid-template-columns:1fr 55px 1fr;
-}
-
-.team-logo{
-width:48px;
-height:48px;
-}
-
-.detail-team{
-width:100px;
-}
-
+.error{
+    color:#dc2626;
 }
 
 </style>
 </head>
 
+
 <body>
 
 <header>
 
-<div class="header">
-
-<div class="brand">
-⚽ TJ Football
-</div>
-
-<nav>
-
-<button onclick="scrollToSection('home')">
-الرئيسية
-</button>
-
-<button onclick="scrollToSection('matches')">
-المباريات
-</button>
-
-<button onclick="scrollToSection('news')">
-الأخبار
-</button>
-
-<button onclick="scrollToSection('transfers')">
-الانتقالات
-</button>
-
-<button onclick="scrollToSection('standings')">
-الترتيب
-</button>
-
-<button onclick="scrollToSection('scorers')">
-الهدافون
-</button>
-
-</nav>
-
-</div>
+<h1>⚽ TJ Football</h1>
 
 </header>
 
 
-<section class="hero" id="home">
-
-<div class="hero-inner">
-
-<h1>TJ Football ⚽</h1>
-
-<p>
-كل ما يخص كرة القدم في مكان واحد:
-المباريات، النتائج، الأخبار، الانتقالات،
-ترتيب البطولات والهدافون.
-</p>
-
-</div>
-
-</section>
-
-
 <main>
 
-<div id="globalStatus" class="status">
+<div id="status">
 ⏳ جاري تحميل المباريات...
 </div>
 
 
-<section id="matches">
-
-<div class="title">
-
-<h2>⚽ المباريات والنتائج</h2>
-
-<span id="matchCount">
-0 مباراة
-</span>
-
-</div>
-
-
-<div class="filters">
-
-<input
-id="search"
-type="text"
-placeholder="🔎 ابحث عن فريق..."
-oninput="renderMatches()"
->
-
-<select id="leagueFilter"
-onchange="renderMatches()">
-
-<option value="all">
-كل البطولات
-</option>
-
-</select>
-
-
-<select id="statusFilter"
-onchange="renderMatches()">
-
-<option value="all">
-كل الحالات
-</option>
-
-<option value="live">
-🔴 مباشر
-</option>
-
-<option value="finished">
-✅ انتهت
-</option>
-
-<option value="scheduled">
-🕐 قادمة
-</option>
-
-</select>
-
-</div>
-
-
-<div id="matchesList" class="matches">
-
-<div class="empty">
-⏳ جاري تحميل المباريات...
-</div>
-
-</div>
-
-</section>
-
-
-<section id="news">
-
-<div class="title">
-<h2>📰 الأخبار</h2>
-</div>
-
-<div id="newsList" class="grid">
-
-<div class="empty">
-⏳ جاري تحميل الأخبار...
-</div>
-
-</div>
-
-</section>
-
-
-<section id="transfers">
-
-<div class="title">
-<h2>🔄 الانتقالات</h2>
-</div>
-
-<div id="transfersList" class="grid">
-
-<div class="empty">
-⏳ جاري تحميل الانتقالات...
-</div>
-
-</div>
-
-</section>
-
-
-<section id="standings">
-
-<div class="title">
-<h2>🏆 الترتيب</h2>
-</div>
-
-<select
-id="standingSelect"
-onchange="loadStandings()"
-style="padding:12px;border-radius:8px;border:1px solid #ddd;margin-bottom:15px;">
-
-<option value="la-liga">
-La Liga
-</option>
-
-<option value="premier-league">
-Premier League
-</option>
-
-</select>
-
-<div id="standingsList" class="table">
-
-<div class="empty">
-⏳ جاري تحميل الترتيب...
-</div>
-
-</div>
-
-</section>
-
-
-<section id="scorers">
-
-<div class="title">
-<h2>👟 الهدافون</h2>
-</div>
-
-<select
-id="scorerSelect"
-onchange="loadScorers()"
-style="padding:12px;border-radius:8px;border:1px solid #ddd;margin-bottom:15px;">
-
-<option value="la-liga">
-La Liga
-</option>
-
-<option value="premier-league">
-Premier League
-</option>
-
-</select>
-
-<div id="scorersList" class="scorers">
-
-<div class="empty">
-⏳ جاري تحميل الهدافين...
-</div>
-
-</div>
-
-</section>
+<div id="matches" class="matches"></div>
 
 </main>
 
 
-<div id="modal" class="modal">
-
-<div class="modal-box">
-
-<button class="close" onclick="closeModal()">
-×
-</button>
-
-<div id="modalContent"></div>
-
-</div>
-
-</div>
-
-
-<footer>
-
-<strong>
-⚽ TJ Football
-</strong>
-
-<p>
-Football • Matches • News • Transfers • Standings • Scorers
-</p>
-
-<p>
-© 2026 TJ Football
-</p>
-
-</footer>
-
-
 <script>
 
-let matches = [];
-let news = [];
-let transfers = [];
+fetch("./data/matches.json")
+
+.then(function(response){
+
+    if(!response.ok){
+
+        throw new Error(
+            "HTTP " + response.status
+        );
+
+    }
+
+    return response.json();
+
+})
+
+.then(function(data){
+
+    console.log("DATA:",data);
+
+    /*
+    البنية التي أكدنا أنها موجودة عندك:
+    
+    {
+        "filters": {...},
+        "matches": [...]
+    }
+    */
+
+    if(!data.matches){
+
+        throw new Error(
+            "لم يتم العثور على matches داخل JSON"
+        );
+
+    }
 
 
-/* =========================
-FETCH
-========================= */
-
-async function getJSON(file){
-
-const response = await fetch(
-"./data/" + file
-);
-
-if(!response.ok){
-
-throw new Error(
-file + " HTTP " + response.status
-);
-
-}
-
-return await response.json();
-
-}
+    var matches = data.matches;
 
 
-/* =========================
-HELPERS
-========================= */
-
-function escapeHTML(value){
-
-return String(value ?? "")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
+    document.getElementById("status").innerHTML =
+        "✅ تم تحميل " + matches.length + " مباريات";
 
 
-function getTeamName(team){
-
-if(!team)
-return "Unknown";
-
-if(typeof team === "string")
-return team;
-
-return team.name || "Unknown";
-
-}
+    var container =
+        document.getElementById("matches");
 
 
-function getLogo(team){
-
-if(!team || typeof team === "string")
-return "";
-
-return team.logo || "";
-
-}
+    container.innerHTML = "";
 
 
-/* =========================
-MATCHES
-========================= */
+    matches.forEach(function(match){
 
-async function loadMatches(){
+        var home =
+            match.homeTeam || {};
 
-try{
-
-const data =
-await getJSON("matches.json");
+        var away =
+            match.awayTeam || {};
 
 
-/*
-البنية المؤكدة عندك:
-{
- filters:{...},
- matches:[...]
-}
-*/
+        var homeName =
+            home.name || "Home";
 
-if(!data || !Array.isArray(data.matches)){
-
-throw new Error(
-"matches.json لا يحتوي على matches[]"
-);
-
-}
+        var awayName =
+            away.name || "Away";
 
 
-matches = data.matches;
+        var homeLogo =
+            home.logo || "";
+
+        var awayLogo =
+            away.logo || "";
 
 
-document.getElementById(
-"matchCount"
-).textContent =
-matches.length + " مباراة";
+        var homeScore =
+            match.homeScore === null ||
+            match.homeScore === undefined
+            ? "-"
+            : match.homeScore;
 
 
-createLeagueFilter();
-
-renderMatches();
-
-
-document.getElementById(
-"globalStatus"
-).innerHTML =
-"✅ تم تحميل " +
-matches.length +
-" مباريات بنجاح";
+        var awayScore =
+            match.awayScore === null ||
+            match.awayScore === undefined
+            ? "-"
+            : match.awayScore;
 
 
-}catch(error){
+        var statusText =
+            "🕐 قادمة";
 
-console.error(error);
-
-document.getElementById(
-"globalStatus"
-).innerHTML =
-"❌ حدث خطأ: " +
-escapeHTML(error.message);
+        var statusClass =
+            "scheduled";
 
 
-document.getElementById(
-"matchesList"
-).innerHTML =
+        if(match.status === "finished"){
 
-`<div class="empty">
-❌ تعذر تحميل المباريات
-<br><br>
-${escapeHTML(error.message)}
-</div>`;
+            statusText =
+                "✅ انتهت";
 
-}
+            statusClass =
+                "finished";
 
-}
+        }
 
 
-function createLeagueFilter(){
+        if(match.status === "live"){
 
-const select =
-document.getElementById(
-"leagueFilter"
-);
+            statusText =
+                "🔴 مباشر";
 
-const leagues = [];
+            statusClass =
+                "live";
 
-matches.forEach(match=>{
+        }
 
-if(
-match.league &&
-!leagues.includes(match.league)
-){
 
-leagues.push(match.league);
+        var card =
+            document.createElement("div");
 
-}
+
+        card.className =
+            "match";
+
+
+        card.innerHTML =
+
+        '<div class="top">' +
+
+            '<span>' +
+            (match.league || "Football") +
+            '</span>' +
+
+            '<span>' +
+            (match.date || "") +
+            '</span>' +
+
+        '</div>' +
+
+
+        '<div class="teams">' +
+
+
+            '<div class="team">' +
+
+                (
+                    homeLogo
+
+                    ?
+
+                    '<img class="logo" src="' +
+                    homeLogo +
+                    '" onerror="this.style.display=\'none\'">' 
+
+                    :
+
+                    ''
+                ) +
+
+                '<div>' +
+                homeName +
+                '</div>' +
+
+            '</div>' +
+
+
+            '<div class="score">' +
+
+                homeScore +
+                ' - ' +
+                awayScore +
+
+            '</div>' +
+
+
+            '<div class="team">' +
+
+                (
+                    awayLogo
+
+                    ?
+
+                    '<img class="logo" src="' +
+                    awayLogo +
+                    '" onerror="this.style.display=\'none\'">' 
+
+                    :
+
+                    ''
+                ) +
+
+                '<div>' +
+                awayName +
+                '</div>' +
+
+            '</div>' +
+
+
+        '</div>' +
+
+
+        '<div class="status ' +
+        statusClass +
+        '">' +
+
+        statusText +
+
+        '</div>';
+
+
+        container.appendChild(card);
+
+    });
+
+})
+
+
+.catch(function(error){
+
+    console.error(error);
+
+
+    document.getElementById("status").innerHTML =
+
+        '<span class="error">' +
+
+        '❌ حدث خطأ أثناء تحميل المباريات' +
+
+        '<br><br>' +
+
+        error.message +
+
+        '</span>';
 
 });
 
+</script>
 
-select.innerHTML =
-`
-<option value="all">
-كل البطولات
-</option>
-`;
 
+</body>
 
-leagues.forEach(league=>{
-
-select.innerHTML +=
-`
-<option value="${escapeHTML(league)}">
-${escapeHTML(league)}
-</option>
-`;
-
-});
-
-}
-
-
-function renderMatches(){
-
-const list =
-document.getElementById(
-"matchesList"
-);
-
-const search =
-document.getElementById(
-"search"
-).value
-.toLowerCase()
-.trim();
-
-
-const league =
-document.getElementById(
-"leagueFilter"
-).value;
-
-
-const status =
-document.getElementById(
-"statusFilter"
-).value;
-
-
-const filtered =
-matches.filter(match=>{
-
-const home =
-getTeamName(match.homeTeam);
-
-const away =
-getTeamName(match.awayTeam);
-
-
-const searchOK =
-!search ||
-
-(
-home +
-" " +
-away +
-" " +
-(match.league || "")
-)
-.toLowerCase()
-.includes(search);
-
-
-const leagueOK =
-league === "all" ||
-match.league === league;
-
-
-const statusOK =
-status === "all" ||
-match.status === status;
-
-
-return searchOK &&
-leagueOK &&
-statusOK;
-
-});
-
-
-if(filtered.length === 0){
-
-list.innerHTML =
-`
-<div class="empty">
-لا توجد مباريات مطابقة.
-</div>
-`;
-
-return;
-
-}
-
-
-list.innerHTML =
-filtered.map(match=>{
-
-return createMatchCard(match);
-
-}).join("");
-
-}
-
-
-function createMatchCard(match){
-
-const home =
-match.homeTeam || {};
-
-const away =
-match.awayTeam || {};
-
-
-const homeLogo =
-getLogo(home);
-
-const awayLogo =
-getLogo(away);
-
-
-let statusText =
-"🕐 قادمة";
-
-let statusClass =
-"scheduled";
-
-
-if(match.status === "finished"){
-
-statusText =
-"✅ انتهت";
-
-statusClass =
-"finished";
-
-}
-
-
-if(match.status === "live"){
-
-statusText =
-"🔴 مباشر";
-
-statusClass =
-"live";
-
-}
-
-
-const homeScore =
-match.homeScore === null ||
-match.homeScore === undefined
-? "-"
-: match.homeScore;
-
-
-const awayScore =
-match.awayScore === null ||
-match.awayScore === undefined
-? "-"
-: match.awayScore;
-
-
-const encoded =
-encodeURIComponent(
-JSON.stringify(match)
-);
-
-
-return `
-
-<article
-class="card match-card"
-onclick='openMatch("${encoded}")'
->
-
-<div class="match-head">
-
-<span class="league">
-${escapeHTML(match.league)}
-</span>
-
-<span class="date">
-${escapeHTML(match.date)}
-</span>
-
-</div>
-
-
-<div class="teams">
-
-
-<div class="team">
-
-${
-homeLogo
-?
-`
-<img
-class="team-logo"
-src="${escapeHTML(homeLogo)}"
-alt="${escapeHTML(getTeamName(home))}"
-onerror="this.style.display='none'"
->
-`
-:
-""
-}
-
-${escapeHTML(
-getTeamName(home)
-)}
-
-</div>
-
-
-<div>
-
-<div class="score">
-
-${homeScore}
--
-${awayScore}
-
-</div>
-
-</div>
-
-
-<div class="team">
-
-${
-awayLogo
-?
-`
-<img
-class="team-logo"
-src="${escapeHTML(awayLogo)}"
-alt="${escapeHTML(getTeamName(away))}"
-onerror="this.style.display='none'"
->
-`
-:
-""
-}
-
-${escapeHTML(
-getTeamName(away)
-)}
-
-</div>
-
-
-</div>
-
-
-<div class="status-match ${statusClass}">
-
-${statusText}
-
-</div>
-
-
-</article>
-
-`;
-
-}
-
-
-/* =========================
-NEWS
-========================= */
-
-async function loadNews(){
-
-try{
-
-const data =
-await getJSON("news.json");
-
-
-news =
-Array.isArray(data)
-? data
-: Array.isArray(data.news)
-? data.news
-: [];
-
-
-const list =
-document.getElementById(
-"newsList"
-);
-
-
-if(news.length === 0){
-
-list.innerHTML =
-`
-<div class="empty">
-لا توجد أخبار حاليًا.
-</div>
-`;
-
-return;
-
-}
-
-
-list.innerHTML =
-news.slice(0,12)
-.map(item=>{
-
-return `
-
-<article class="card">
-
-<div style="color:#d90416;font-size:12px;font-weight:bold">
-${escapeHTML(
-item.category ||
-item.league ||
-"Football"
-)}
-</div>
-
-<div class="news-title">
-
-${escapeHTML(
-item.title ||
-item.headline ||
-"خبر رياضي"
-)}
-
-</div>
-
-<div class="news-text">
-
-${escapeHTML(
-item.description ||
-item.summary ||
-item.content ||
-""
-)}
-
-</div>
-
-<div style="color:#999;font-size:11px;margin-top:10px">
-
-${escapeHTML(
-item.date ||
-item.publishedAt ||
-""
-)}
-
-</div>
-
-</article>
-
-`;
-
-}).join("");
-
-
-}catch(error){
-
-console.warn(
-"news.json",
-error
-);
-
-
-document.getElementById(
-"newsList"
-).innerHTML =
-
-`
-<div class="empty">
-📰 الأخبار غير متوفرة حاليًا.
-</div>
-`;
-
-}
-
-}
-
-
-/* =========================
-TRANSFERS
-========================= */
-
-async function loadTransfers(){
-
-try{
-
-const data =
-await getJSON(
-"transfers.json"
-);
-
-
-transfers =
-Array.isArray(data)
-? data
-: Array.isArray(data.transfers)
-? data.transfers
-: [];
-
-
-const list =
-document.getElementById(
-"transfersList"
-);
-
-
-if(!transfers.length){
-
-list.innerHTML =
-`
-<div class="empty">
-لا توجد انتقالات حاليًا.
-</div>
-`;
-
-return;
-
-}
-
-
-list.innerHTML =
-transfers.slice(0,12)
-.map(item=>{
-
-const player =
-item.player?.name ||
-item.player ||
-item.name ||
-"لاعب";
-
-
-const from =
-item.from?.name ||
-item.from ||
-"—";
-
-
-const to =
-item.to?.name ||
-item.to ||
-"—";
-
-
-return `
-
-<article class="card">
-
-<div class="transfer-player">
-
-🔄 ${escapeHTML(player)}
-
-</div>
-
-<div class="transfer">
-
-<div>
-${escapeHTML(from)}
-</div>
-
-<div class="arrow">
-←
-</div>
-
-<div>
-${escapeHTML(to)}
-</div>
-
-</div>
-
-</article>
-
-`;
-
-}).join("");
-
-
-}catch(error){
-
-console.warn(
-"transfers.json",
-error
-);
-
-
-document.getElementById(
-"transfersList"
-).innerHTML =
-
-`
-<div class="empty">
-🔄 الانتقالات غير متوفرة حاليًا.
-</div>
-`;
-
-}
-
-}
-
-
-/* =========================
-STANDINGS
-========================= */
-
-async function loadStandings(){
-
-const league =
-document.getElementById(
-"standingSelect"
-).value;
-
-
-const box =
-document.getElementById(
-"standingsList"
-);
-
-
-box.innerHTML =
-`
-<div class="empty">
-⏳ جاري تحميل الترتيب...
-</div>
-`;
-
-
-try{
-
-const data =
-await getJSON(
-league + "-standings.json"
-);
-
-
-let rows =
-Array.isArray(data)
-? data
-: data.standings ||
-data.data ||
-[];
-
-
-if(
-rows.length &&
-Array.isArray(rows[0])
-){
-
-rows = rows[0];
-
-}
-
-
-if(!rows.length){
-
-throw new Error(
-"لا توجد بيانات"
-);
-
-}
-
-
-box.innerHTML =
-
-`
-<table>
-
-<thead>
-
-<tr>
-
-<th>#</th>
-<th>الفريق</th>
-<th>لعب</th>
-<th>ف</th>
-<th>ت</th>
-<th>خ</th>
-<th>نقاط</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-${
-rows.slice(0,30)
-.map((row,index)=>{
-
-const team =
-row.team || row;
-
-
-const name =
-getTeamName(team);
-
-
-const logo =
-getLogo(team);
-
-
-return `
-
-<tr>
-
-<td>
-${index + 1}
-</td>
-
-<td>
-
-${
-logo
-?
-`
-<img
-src="${escapeHTML(logo)}"
-style="width:28px;height:28px;object-fit:contain;vertical-align:middle"
-onerror="this.style.display='none'"
->
-`
-:
-""
-}
-
-${escapeHTML(name)}
-
-</td>
-
-<td>
-${row.played ?? row.games ?? "-"}
-</td>
-
-<td>
-${row.wins ?? "-"}
-</td>
-
-<td>
-${row.draws ?? "-"}
-</td>
-
-<td>
-${row.losses ?? "-"}
-</td>
-
-<td>
-<strong>
-${row.points ?? row.pts ?? "-"}
-</strong>
-</td>
-
-</tr>
-
-`;
-
-}).join("")
-}
-
-</tbody>
-
-</table>
-`;
-
-}catch(error){
-
-console.warn(
-"standings",
-error
-);
-
-
-box.innerHTML =
-`
-<div class="empty">
-🏆 الترتيب غير متوفر حاليًا.
-</div>
-`;
-
-}
-
-}
-
-
-/* =========================
-SCORERS
-========================= */
-
-async function loadScorers(){
-
-const league =
-document.getElementById(
-"scorerSelect"
-).value;
-
-
-const box =
-document.getElementById(
-"scorersList"
-);
-
-
-box.innerHTML =
-`
-<div class="empty">
-⏳ جاري تحميل الهدافين...
-</div>
-`;
-
-
-try{
-
-const data =
-await getJSON(
-league + "-scorers.json"
-);
-
-
-let rows =
-Array.isArray(data)
-? data
-: data.scorers ||
-data.players ||
-data.data ||
-[];
-
-
-if(
-rows.length &&
-Array.isArray(rows[0])
-){
-
-rows = rows[0];
-
-}
-
-
-if(!rows.length){
-
-throw new Error(
-"لا توجد بيانات"
-);
-
-}
-
-
-box.innerHTML =
-rows.slice(0,20)
-.map((row,index)=>{
-
-const player =
-row.player || row;
-
-
-const playerName =
-typeof player === "string"
-? player
-: player.name ||
-"لاعب";
-
-
-const team =
-row.team || {};
-
-
-const teamName =
-typeof team === "string"
-? team
-: team.name ||
-"";
-
-
-const goals =
-row.goals ??
-row.total ??
-row.count ??
-"-";
-
-
-return `
-
-<div class="scorer">
-
-<div class="rank">
-${index + 1}
-</div>
-
-<div class="scorer-info">
-
-<div class="scorer-name">
-${escapeHTML(playerName)}
-</div>
-
-<div class="scorer-team">
-${escapeHTML(teamName)}
-</div>
-
-</div>
-
-<div class="goals">
-${escapeHTML(goals)}
-</div>
-
-</div>
-
-`;
-
-}).join("");
-
-
-}catch(error){
-
-console.warn(
-"scorers",
-error
-);
-
-
-box.innerHTML =
-`
-<div class="empty">
-👟 الهدافون غير متوفرين حاليًا.
-</div>
-`;
-
-}
-
-}
-
-
-/* =========================
-MATCH MODAL
-========================= */
-
-function openMatch(encoded){
-
-try{
-
-const match =
-JSON.parse(
-decodeURIComponent(encoded)
-);
-
-
-const home =
-match.homeTeam || {};
-
-const away =
-match.awayTeam || {};
-
-
-const homeLogo =
-getLogo(home);
-
-const awayLogo =
-getLogo(away);
-
-
-const homeScore =
-match.homeScore ?? "-";
-
-const awayScore =
-match.awayScore ?? "-";
-
-
-document.getElementById(
-"modalContent"
-).innerHTML =
-
-`
-
-<h2 style="text-align:center">
-${escapeHTML(
-match.league
-)}
-</h2>
-
-<div style="text-align:center;color:#777;margin-top:8px">
-${escapeHTML(
-match.date
-)}
-</div>
-
-
-<div class="detail">
-
-
-<div class="detail-team">
-
-${
-homeLogo
-?
-`
-<img
-class="detail-logo"
-src="${escapeHTML(homeLogo)}"
-onerror="this.style.display='none'"
->
-`
-:
-""
-}
-
-${escapeHTML(
-getTeamName(home)
-)}
-
-</div>
-
-
-<div class="detail-score">
-
-${homeScore}
--
-${awayScore}
-
-</div>
-
-
-<div class="detail-team">
-
-${
-awayLogo
-?
-`
-<img
-class="detail-logo"
-src="${escapeHTML(awayLogo)}"
-onerror="this.style.display='none'"
->
-`
-:
-""
-}
-
-${escapeHTML(
-getTeamName(away)
-)}
-
-</div>
-
-
-</div>
-
-
-<div class="info">
-
-<strong>الحالة:</strong>
-
-${
-match.status === "live"
-?"🔴 مباشر"
-:
-match.status === "finished"
-?"✅ انتهت"
-:"🕐 قادمة"
-}
-
-<br>
-
-<strong>البطولة:</strong>
-${escapeHTML(match.league)}
-
-<br>
-
-<strong>التاريخ:</strong>
-${escapeHTML(match.date)}
-
-</div>
-
-`;
-
-
-document
-.getElementById("modal")
-.classList.add("show");
-
-
-}catch(error){
-
-console.error(error);
-
-}
-
-}
-
-
-function closeModal(){
-
-document
-.getElementById("modal")
-.classList.remove("show");
-
-}
-
-
-document
-.getElementById("modal")
-.addEventListener(
-"click",
-function(event){
-
-if(event.target === this){
-
-closeModal();
-
-}
-
-});
-
-
-/* =========================
-NAVIGATION
-====================
+</html>

@@ -3,16 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#071a52">
 
   <title>TJ Football ⚽</title>
 
   <style>
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -24,59 +20,45 @@
     }
 
     body {
-      font-family:
-        Arial,
-        Tahoma,
-        sans-serif;
-
-      background: #f4f6fa;
+      font-family: Arial, Tahoma, sans-serif;
+      background: #f3f5f9;
       color: #111827;
     }
 
     button,
-    input,
-    select {
+    input {
       font-family: inherit;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
+    button {
+      cursor: pointer;
     }
 
-
-    /* ================= HEADER ================= */
+    /* HEADER */
 
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-
-      background:
-        linear-gradient(
-          135deg,
-          #071a52,
-          #0b2f87,
-          #e30613
-        );
-
       color: white;
-
-      box-shadow:
-        0 4px 20px rgba(0,0,0,.18);
+      background: linear-gradient(
+        135deg,
+        #06184b,
+        #0b328f,
+        #e30613
+      );
+      box-shadow: 0 4px 20px rgba(0,0,0,.18);
     }
 
-    .topbar {
+    .top {
       max-width: 1200px;
       margin: auto;
-
-      padding: 13px 18px;
+      padding: 12px 16px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-      gap: 15px;
+      gap: 12px;
     }
 
     .logo {
@@ -84,18 +66,17 @@
       align-items: center;
       gap: 10px;
 
-      font-size: 25px;
+      font-size: 24px;
       font-weight: 900;
     }
 
-    .logo-ball {
+    .ball {
       width: 42px;
       height: 42px;
 
+      border-radius: 50%;
       background: white;
       color: #071a52;
-
-      border-radius: 50%;
 
       display: flex;
       align-items: center;
@@ -104,26 +85,18 @@
       font-size: 22px;
     }
 
-    .live {
+    .live-badge {
       background: #e30613;
-
       padding: 7px 12px;
-
       border-radius: 20px;
-
       font-size: 11px;
       font-weight: bold;
     }
 
-
-    /* ================= NAV ================= */
-
     nav {
-      background: rgba(0,0,0,.18);
-
       overflow-x: auto;
-
       scrollbar-width: none;
+      background: rgba(0,0,0,.16);
     }
 
     nav::-webkit-scrollbar {
@@ -133,22 +106,15 @@
     .nav-inner {
       max-width: 1200px;
       margin: auto;
-
       display: flex;
-
       min-width: max-content;
     }
 
     .nav-btn {
       border: 0;
       background: transparent;
-
       color: white;
-
       padding: 13px 17px;
-
-      cursor: pointer;
-
       font-size: 13px;
       font-weight: bold;
     }
@@ -158,77 +124,54 @@
       color: #071a52;
     }
 
-
-    /* ================= MAIN ================= */
+    /* MAIN */
 
     main {
       max-width: 1200px;
-
       margin: auto;
-
-      padding: 18px 14px 50px;
+      padding: 16px 12px 45px;
     }
 
-
-    /* ================= HERO ================= */
-
     .hero {
+      margin-bottom: 18px;
+      padding: 32px 24px;
       border-radius: 20px;
-
-      padding: 35px 25px;
-
-      margin-bottom: 20px;
-
       color: white;
 
-      background:
-        linear-gradient(
-          135deg,
-          #071a52,
-          #0b2f87,
-          #e30613
-        );
+      background: linear-gradient(
+        135deg,
+        #06184b,
+        #0b328f,
+        #e30613
+      );
 
-      box-shadow:
-        0 8px 25px rgba(0,0,0,.15);
+      box-shadow: 0 8px 25px rgba(0,0,0,.14);
     }
 
     .hero h1 {
       font-size: clamp(30px, 6vw, 48px);
-
       margin-bottom: 10px;
     }
 
     .hero p {
-      max-width: 700px;
-
       line-height: 1.8;
-
-      opacity: .9;
+      max-width: 750px;
+      opacity: .92;
     }
 
     .hero-buttons {
+      margin-top: 18px;
       display: flex;
-
       flex-wrap: wrap;
-
-      gap: 10px;
-
-      margin-top: 20px;
+      gap: 9px;
     }
 
     .hero-button {
       border: 0;
-
+      padding: 11px 17px;
+      border-radius: 10px;
       background: white;
       color: #071a52;
-
-      padding: 11px 18px;
-
-      border-radius: 10px;
-
-      cursor: pointer;
-
       font-weight: bold;
     }
 
@@ -237,246 +180,172 @@
       color: white;
     }
 
-
-    /* ================= SECTION ================= */
+    /* SECTION */
 
     .section {
       background: white;
-
       border-radius: 16px;
-
-      padding: 18px;
-
-      margin-bottom: 20px;
-
-      box-shadow:
-        0 3px 15px rgba(0,0,0,.06);
+      padding: 17px;
+      margin-bottom: 18px;
+      box-shadow: 0 3px 15px rgba(0,0,0,.06);
     }
 
     .section-title {
       display: flex;
-
       align-items: center;
       justify-content: space-between;
 
-      gap: 10px;
-
-      margin-bottom: 15px;
-
       border-right: 5px solid #e30613;
-
       padding-right: 10px;
+      margin-bottom: 15px;
     }
 
     .section-title h2 {
-      font-size: 21px;
+      font-size: 20px;
     }
 
     .section-title span {
       color: #6b7280;
-
-      font-size: 12px;
+      font-size: 11px;
     }
 
-
-    /* ================= SEARCH ================= */
+    /* SEARCH */
 
     .search {
       width: 100%;
-
       border: 1px solid #d1d5db;
-
       border-radius: 10px;
-
       padding: 12px;
-
       outline: none;
-
-      margin-bottom: 13px;
-
+      margin-bottom: 12px;
       font-size: 14px;
     }
 
     .search:focus {
-      border-color: #071a52;
+      border-color: #0b328f;
     }
 
-
-    /* ================= FILTERS ================= */
+    /* FILTER */
 
     .filters {
       display: flex;
-
       flex-wrap: wrap;
-
-      gap: 8px;
-
-      margin-bottom: 15px;
+      gap: 7px;
+      margin-bottom: 14px;
     }
 
     .filter {
       border: 1px solid #d1d5db;
-
       background: white;
-
-      padding: 8px 13px;
-
       border-radius: 9px;
-
-      cursor: pointer;
-
-      font-weight: bold;
-
+      padding: 8px 13px;
       font-size: 12px;
+      font-weight: bold;
     }
 
     .filter.active,
     .filter:hover {
-      background: #071a52;
       color: white;
-
+      background: #071a52;
       border-color: #071a52;
     }
 
-
-    /* ================= MATCHES ================= */
+    /* MATCH GRID */
 
     .grid {
       display: grid;
-
       grid-template-columns:
-        repeat(
-          auto-fit,
-          minmax(275px, 1fr)
-        );
-
-      gap: 13px;
+        repeat(auto-fit, minmax(270px, 1fr));
+      gap: 12px;
     }
 
     .match-card {
       background: #fafafa;
-
       border: 1px solid #e5e7eb;
-
       border-radius: 14px;
-
       padding: 14px;
-
-      cursor: pointer;
-
       transition: .2s;
     }
 
     .match-card:hover {
-      transform: translateY(-3px);
-
-      box-shadow:
-        0 8px 20px rgba(0,0,0,.08);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,.08);
     }
 
     .league {
       color: #6b7280;
-
       font-size: 11px;
-
       font-weight: bold;
-
-      margin-bottom: 10px;
+      margin-bottom: 9px;
     }
 
-    .status {
+    .match-status {
       text-align: center;
-
-      font-size: 12px;
-
+      font-size: 11px;
       font-weight: bold;
-
       margin-bottom: 10px;
     }
 
-    .status.live {
+    .match-status.live {
       color: #e30613;
     }
 
-    .status.finished {
+    .match-status.finished {
       color: #16a34a;
     }
 
-    .status.scheduled {
+    .match-status.scheduled {
       color: #2563eb;
     }
 
     .teams {
       display: grid;
-
-      grid-template-columns:
-        1fr 65px 1fr;
-
+      grid-template-columns: 1fr 60px 1fr;
       align-items: center;
-
-      gap: 7px;
+      gap: 5px;
     }
 
     .team {
       text-align: center;
-
       font-size: 13px;
-
       font-weight: bold;
     }
 
     .team img {
       width: 48px;
       height: 48px;
-
       object-fit: contain;
-
       display: block;
-
-      margin:
-        0 auto 7px;
+      margin: 0 auto 7px;
     }
 
     .score {
       text-align: center;
-
-      font-size: 21px;
-
+      font-size: 20px;
       font-weight: 900;
     }
 
     .match-time {
       text-align: center;
-
       color: #6b7280;
-
-      font-size: 11px;
-
-      margin-top: 11px;
+      font-size: 10px;
+      margin-top: 10px;
     }
 
-
-    /* ================= NEWS ================= */
+    /* NEWS */
 
     .news-card {
-      border: 1px solid #e5e7eb;
-
-      border-radius: 13px;
-
       overflow: hidden;
-
+      border: 1px solid #e5e7eb;
+      border-radius: 13px;
       background: white;
     }
 
     .news-image {
       width: 100%;
-
-      height: 150px;
-
+      height: 145px;
       object-fit: cover;
-
       display: block;
-
       background: #e5e7eb;
     }
 
@@ -486,94 +355,66 @@
 
     .news-content h3 {
       font-size: 15px;
-
       line-height: 1.5;
-
       margin-bottom: 7px;
     }
 
     .news-content p {
       color: #6b7280;
-
       font-size: 12px;
-
       line-height: 1.6;
     }
 
     .news-date {
       display: block;
-
-      margin-top: 9px;
-
       color: #e30613;
-
       font-size: 10px;
-
-      font-weight: bold;
+      margin-top: 8px;
     }
 
-
-    /* ================= TRANSFERS ================= */
+    /* TRANSFERS */
 
     .transfer {
       display: grid;
-
-      grid-template-columns:
-        1fr auto 1fr;
-
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
+      gap: 10px;
 
-      gap: 12px;
-
-      padding: 13px;
-
-      border:
-        1px solid #e5e7eb;
-
-      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 8px;
 
       background: #fafafa;
+      border: 1px solid #e5e7eb;
+      border-radius: 11px;
     }
 
     .club {
       display: flex;
-
       align-items: center;
-
-      gap: 8px;
-
-      font-size: 13px;
-
+      gap: 7px;
+      font-size: 12px;
       font-weight: bold;
     }
 
     .club img {
       width: 32px;
       height: 32px;
-
       object-fit: contain;
+    }
+
+    .transfer-player {
+      text-align: center;
+      font-weight: 900;
+      font-size: 12px;
     }
 
     .arrow {
       color: #e30613;
-
+      text-align: center;
       font-size: 22px;
-
-      font-weight: 900;
-
-      text-align: center;
     }
 
-    .player {
-      text-align: center;
-
-      font-weight: 900;
-
-      font-size: 13px;
-    }
-
-
-    /* ================= TABLE ================= */
+    /* TABLE */
 
     .table-wrap {
       overflow-x: auto;
@@ -581,84 +422,58 @@
 
     table {
       width: 100%;
-
       min-width: 520px;
-
       border-collapse: collapse;
     }
 
     th {
       background: #071a52;
-
       color: white;
     }
 
     th,
     td {
-      padding: 10px 7px;
-
+      padding: 9px 7px;
       text-align: center;
-
-      border-bottom:
-        1px solid #e5e7eb;
-
+      border-bottom: 1px solid #e5e7eb;
       font-size: 12px;
     }
 
     .club-name {
       display: flex;
-
       align-items: center;
-
       gap: 7px;
-
       text-align: right;
-
       font-weight: bold;
     }
 
     .club-name img {
       width: 27px;
       height: 27px;
-
       object-fit: contain;
     }
 
-
-    /* ================= SCORERS ================= */
-
-    .scorers {
-      display: grid;
-
-      gap: 8px;
-    }
+    /* SCORERS */
 
     .scorer {
       display: grid;
-
-      grid-template-columns:
-        35px 1fr auto;
-
+      grid-template-columns: 35px 1fr auto;
       align-items: center;
-
-      gap: 10px;
+      gap: 9px;
 
       padding: 11px;
 
-      border:
-        1px solid #e5e7eb;
-
+      border: 1px solid #e5e7eb;
       border-radius: 10px;
+
+      margin-bottom: 7px;
     }
 
     .rank {
-      color: #e30613;
-
-      font-size: 19px;
-
-      font-weight: 900;
-
       text-align: center;
+      color: #e30613;
+      font-size: 18px;
+      font-weight: 900;
     }
 
     .scorer-name {
@@ -667,53 +482,37 @@
 
     .scorer-team {
       color: #6b7280;
-
-      font-size: 11px;
-
+      font-size: 10px;
       margin-top: 3px;
     }
 
     .goals {
       color: #071a52;
-
-      font-size: 18px;
-
+      font-size: 17px;
       font-weight: 900;
     }
 
-
-    /* ================= LOADING / EMPTY ================= */
+    /* LOADING */
 
     .loading,
     .empty {
-      text-align: center;
-
       padding: 25px;
-
+      text-align: center;
       color: #6b7280;
-
       background: #fafafa;
-
       border-radius: 10px;
     }
 
     .spinner {
-      width: 30px;
-      height: 30px;
+      width: 29px;
+      height: 29px;
+      margin: 0 auto 9px;
 
-      margin:
-        0 auto 10px;
-
-      border:
-        4px solid #e5e7eb;
-
-      border-top-color:
-        #e30613;
-
+      border: 4px solid #e5e7eb;
+      border-top-color: #e30613;
       border-radius: 50%;
 
-      animation:
-        spin .8s linear infinite;
+      animation: spin .8s linear infinite;
     }
 
     @keyframes spin {
@@ -722,33 +521,29 @@
       }
     }
 
-    .error {
+    /* ERROR */
+
+    #errorBox {
       display: none;
 
       padding: 12px;
-
       margin-bottom: 15px;
 
-      border-radius: 10px;
-
       background: #fff1f2;
-
+      border: 1px solid #fecdd3;
       color: #be123c;
 
-      border: 1px solid #fecdd3;
+      border-radius: 10px;
+      font-size: 12px;
     }
 
-
-    /* ================= FOOTER ================= */
+    /* FOOTER */
 
     footer {
-      background: #071a52;
-
-      color: white;
-
-      text-align: center;
-
       padding: 25px 15px;
+      text-align: center;
+      color: white;
+      background: #071a52;
     }
 
     footer strong {
@@ -757,39 +552,27 @@
 
     footer p {
       margin-top: 7px;
-
-      opacity: .75;
-
+      opacity: .7;
       font-size: 11px;
     }
 
-
-    /* ================= MOBILE ================= */
-
     @media(max-width:600px) {
-
-      .topbar {
-        padding: 10px 12px;
-      }
 
       .logo {
         font-size: 20px;
       }
 
-      .logo-ball {
-        width: 35px;
-        height: 35px;
-
-        font-size: 18px;
+      .ball {
+        width: 36px;
+        height: 36px;
       }
 
-      .live {
+      .live-badge {
         font-size: 9px;
       }
 
       main {
-        padding:
-          12px 9px 35px;
+        padding: 10px 8px 35px;
       }
 
       .hero {
@@ -809,86 +592,58 @@
       }
 
       .arrow {
-        transform:
-          rotate(90deg);
+        transform: rotate(90deg);
       }
     }
-
   </style>
 </head>
 
-
 <body>
-
-
-<!-- ================= HEADER ================= -->
 
 <header>
 
-  <div class="topbar">
+  <div class="top">
 
     <div class="logo">
-
-      <div class="logo-ball">
-        ⚽
-      </div>
-
-      <span>
-        TJ Football
-      </span>
-
+      <div class="ball">⚽</div>
+      TJ Football
     </div>
 
-    <div class="live">
+    <div class="live-badge">
       🔴 LIVE FOOTBALL
     </div>
 
   </div>
 
-
   <nav>
 
     <div class="nav-inner">
 
-      <button
-        class="nav-btn"
-        onclick="go('home')">
+      <button class="nav-btn" onclick="goTo('home')">
         🏠 الرئيسية
       </button>
 
-      <button
-        class="nav-btn"
-        onclick="go('matches')">
+      <button class="nav-btn" onclick="goTo('matches')">
         ⚽ المباريات
       </button>
 
-      <button
-        class="nav-btn"
-        onclick="go('results')">
+      <button class="nav-btn" onclick="goTo('results')">
         🏆 النتائج
       </button>
 
-      <button
-        class="nav-btn"
-        onclick="go('news')">
+      <button class="nav-btn" onclick="goTo('news')">
         📰 الأخبار
       </button>
 
-      <button
-        class="nav-btn"
-        onclick="go('transfers')">
+      <button class="nav-btn" onclick="goTo('transfers')">
         🔄 الانتقالات
       </button>
 
-      <button
-        class="nav-btn"
-        onclick="go('standings')">
+      <button class="nav-btn" onclick="goTo('standings')">
         📊 الترتيب
       </button>
 
-      <button
-        class="nav-btn"
-        onclick="go('scorers')">
+      <button class="nav-btn" onclick="goTo('scorers')">
         🥅 الهدافون
       </button>
 
@@ -901,373 +656,294 @@
 
 <main>
 
+  <!-- HERO -->
 
-<!-- ================= HERO ================= -->
+  <section id="home" class="hero">
 
-<section
-  id="home"
-  class="hero">
+    <h1>
+      TJ Football ⚽
+    </h1>
 
-  <h1>
-    TJ Football ⚽
-  </h1>
+    <p>
+      منصتك لمتابعة كرة القدم:
+      المباريات، النتائج، الأخبار،
+      الانتقالات، الترتيب والهدافين.
+    </p>
 
-  <p>
-    عالم كرة القدم بين يديك.
-    تابع المباريات والنتائج والأخبار
-    والانتقالات وترتيب البطولات والهدافين.
-  </p>
+    <div class="hero-buttons">
 
+      <button
+        class="hero-button"
+        onclick="goTo('matches')">
+        ⚽ مباريات
+      </button>
 
-  <div class="hero-buttons">
-
-    <button
-      class="hero-button"
-      onclick="go('matches')">
-      ⚽ مباريات اليوم
-    </button>
-
-    <button
-      class="hero-button red"
-      onclick="go('news')">
-      📰 آخر الأخبار
-    </button>
-
-  </div>
-
-</section>
-
-
-<div
-  id="error"
-  class="error">
-</div>
-
-
-<!-- ================= MATCHES ================= -->
-
-<section
-  id="matches"
-  class="section">
-
-  <div class="section-title">
-
-    <h2>
-      ⚽ المباريات
-    </h2>
-
-    <span id="matchesCount">
-      جاري...
-    </span>
-
-  </div>
-
-
-  <input
-    id="matchSearch"
-    class="search"
-    placeholder="🔎 ابحث عن فريق..."
-    oninput="renderMatches()"
-  >
-
-
-  <div class="filters">
-
-    <button
-      class="filter active"
-      onclick="setFilter('all',this)">
-      الكل
-    </button>
-
-    <button
-      class="filter"
-      onclick="setFilter('live',this)">
-      🔴 مباشر
-    </button>
-
-    <button
-      class="filter"
-      onclick="setFilter('scheduled',this)">
-      🕐 القادمة
-    </button>
-
-    <button
-      class="filter"
-      onclick="setFilter('finished',this)">
-      ✅ انتهت
-    </button>
-
-  </div>
-
-
-  <div
-    id="matchesContainer"
-    class="grid">
-
-    <div class="loading">
-
-      <div class="spinner"></div>
-
-      جاري تحميل المباريات...
+      <button
+        class="hero-button red"
+        onclick="goTo('news')">
+        📰 الأخبار
+      </button>
 
     </div>
 
-  </div>
-
-</section>
+  </section>
 
 
-<!-- ================= RESULTS ================= -->
-
-<section
-  id="results"
-  class="section">
-
-  <div class="section-title">
-
-    <h2>
-      🏆 آخر النتائج
-    </h2>
-
-    <span>
-      المباريات المنتهية
-    </span>
-
-  </div>
+  <div id="errorBox"></div>
 
 
-  <div
-    id="resultsContainer"
-    class="grid">
+  <!-- MATCHES -->
 
-    <div class="loading">
-      جاري تحميل النتائج...
+  <section id="matches" class="section">
+
+    <div class="section-title">
+
+      <h2>⚽ المباريات</h2>
+
+      <span id="matchesCount">
+        تحميل...
+      </span>
+
     </div>
 
-  </div>
+    <input
+      id="matchSearch"
+      class="search"
+      type="text"
+      placeholder="🔎 ابحث عن فريق..."
+      oninput="renderMatches()"
+    >
 
-</section>
+    <div class="filters">
 
+      <button
+        class="filter active"
+        onclick="changeMatchFilter('all',this)">
+        الكل
+      </button>
 
-<!-- ================= NEWS ================= -->
+      <button
+        class="filter"
+        onclick="changeMatchFilter('live',this)">
+        🔴 مباشر
+      </button>
 
-<section
-  id="news"
-  class="section">
+      <button
+        class="filter"
+        onclick="changeMatchFilter('scheduled',this)">
+        🕐 القادمة
+      </button>
 
-  <div class="section-title">
+      <button
+        class="filter"
+        onclick="changeMatchFilter('finished',this)">
+        ✅ انتهت
+      </button>
 
-    <h2>
-      📰 آخر الأخبار
-    </h2>
-
-    <span id="newsCount">
-      جاري...
-    </span>
-
-  </div>
-
-
-  <input
-    id="newsSearch"
-    class="search"
-    placeholder="🔎 ابحث في الأخبار..."
-    oninput="renderNews()"
-  >
-
-
-  <div
-    id="newsContainer"
-    class="grid">
-
-    <div class="loading">
-      جاري تحميل الأخبار...
     </div>
 
-  </div>
+    <div id="matchesContainer" class="grid">
 
-</section>
+      <div class="loading">
+        <div class="spinner"></div>
+        جاري تحميل المباريات...
+      </div>
 
-
-<!-- ================= TRANSFERS ================= -->
-
-<section
-  id="transfers"
-  class="section">
-
-  <div class="section-title">
-
-    <h2>
-      🔄 الانتقالات
-    </h2>
-
-    <span>
-      سوق الانتقالات
-    </span>
-
-  </div>
-
-
-  <div
-    id="transfersContainer">
-
-    <div class="loading">
-      جاري تحميل الانتقالات...
     </div>
 
-  </div>
-
-</section>
+  </section>
 
 
-<!-- ================= STANDINGS ================= -->
+  <!-- RESULTS -->
 
-<section
-  id="standings"
-  class="section">
+  <section id="results" class="section">
 
-  <div class="section-title">
+    <div class="section-title">
 
-    <h2>
-      📊 ترتيب البطولات
-    </h2>
+      <h2>🏆 النتائج</h2>
 
-    <span>
-      La Liga / Premier League
-    </span>
+      <span>
+        آخر المباريات المنتهية
+      </span>
 
-  </div>
-
-
-  <div class="filters">
-
-    <button
-      class="filter active"
-      onclick="showLeague('laliga',this)">
-      🇪🇸 La Liga
-    </button>
-
-    <button
-      class="filter"
-      onclick="showLeague('premier',this)">
-      🏴 Premier League
-    </button>
-
-  </div>
-
-
-  <div class="table-wrap">
-
-    <table>
-
-      <thead>
-
-        <tr>
-
-          <th>
-            #
-          </th>
-
-          <th>
-            الفريق
-          </th>
-
-          <th>
-            لعب
-          </th>
-
-          <th>
-            ف
-          </th>
-
-          <th>
-            ت
-          </th>
-
-          <th>
-            خ
-          </th>
-
-          <th>
-            نقاط
-          </th>
-
-        </tr>
-
-      </thead>
-
-
-      <tbody
-        id="standingsContainer">
-
-        <tr>
-          <td colspan="7">
-            جاري تحميل الترتيب...
-          </td>
-        </tr>
-
-      </tbody>
-
-    </table>
-
-  </div>
-
-</section>
-
-
-<!-- ================= SCORERS ================= -->
-
-<section
-  id="scorers"
-  class="section">
-
-  <div class="section-title">
-
-    <h2>
-      🥅 الهدافون
-    </h2>
-
-    <span>
-      أفضل الهدافين
-    </span>
-
-  </div>
-
-
-  <div class="filters">
-
-    <button
-      class="filter active"
-      onclick="showScorers('laliga',this)">
-      🇪🇸 La Liga
-    </button>
-
-    <button
-      class="filter"
-      onclick="showScorers('premier',this)">
-      🏴 Premier League
-    </button>
-
-  </div>
-
-
-  <div
-    id="scorersContainer"
-    class="scorers">
-
-    <div class="loading">
-      جاري تحميل الهدافين...
     </div>
 
-  </div>
+    <div id="resultsContainer" class="grid">
 
-</section>
+      <div class="loading">
+        جاري تحميل النتائج...
+      </div>
 
+    </div>
+
+  </section>
+
+
+  <!-- NEWS -->
+
+  <section id="news" class="section">
+
+    <div class="section-title">
+
+      <h2>📰 الأخبار</h2>
+
+      <span id="newsCount">
+        تحميل...
+      </span>
+
+    </div>
+
+    <input
+      id="newsSearch"
+      class="search"
+      type="text"
+      placeholder="🔎 ابحث في الأخبار..."
+      oninput="renderNews()"
+    >
+
+    <div id="newsContainer" class="grid">
+
+      <div class="loading">
+        جاري تحميل الأخبار...
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TRANSFERS -->
+
+  <section id="transfers" class="section">
+
+    <div class="section-title">
+
+      <h2>🔄 الانتقالات</h2>
+
+      <span>
+        آخر الانتقالات
+      </span>
+
+    </div>
+
+    <div id="transfersContainer">
+
+      <div class="loading">
+        جاري تحميل الانتقالات...
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STANDINGS -->
+
+  <section id="standings" class="section">
+
+    <div class="section-title">
+
+      <h2>📊 الترتيب</h2>
+
+      <span>
+        البطولات
+      </span>
+
+    </div>
+
+    <div class="filters">
+
+      <button
+        class="filter active"
+        onclick="loadStandings('laliga',this)">
+        🇪🇸 La Liga
+      </button>
+
+      <button
+        class="filter"
+        onclick="loadStandings('premier',this)">
+        🏴 Premier League
+      </button>
+
+    </div>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>#</th>
+            <th>الفريق</th>
+            <th>لعب</th>
+            <th>ف</th>
+            <th>ت</th>
+            <th>خ</th>
+            <th>نقاط</th>
+          </tr>
+
+        </thead>
+
+        <tbody id="standingsContainer">
+
+          <tr>
+            <td colspan="7">
+              جاري تحميل الترتيب...
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- SCORERS -->
+
+  <section id="scorers" class="section">
+
+    <div class="section-title">
+
+      <h2>🥅 الهدافون</h2>
+
+      <span>
+        أفضل الهدافين
+      </span>
+
+    </div>
+
+    <div class="filters">
+
+      <button
+        class="filter active"
+        onclick="loadScorers('laliga',this)">
+        🇪🇸 La Liga
+      </button>
+
+      <button
+        class="filter"
+        onclick="loadScorers('premier',this)">
+        🏴 Premier League
+      </button>
+
+    </div>
+
+    <div id="scorersContainer">
+
+      <div class="loading">
+        جاري تحميل الهدافين...
+      </div>
+
+    </div>
+
+  </section>
 
 </main>
 
-
-<!-- ================= FOOTER ================= -->
 
 <footer>
 
@@ -1276,7 +952,7 @@
   </strong>
 
   <p>
-    Football • News • Matches • Transfers • Results
+    Football • Matches • Results • News • Transfers
   </p>
 
   <p>
@@ -1288,18 +964,15 @@
 
 <script>
 
-
-/* =========================================================
+/* ==========================================================
    TJ FOOTBALL
-   INDEX
-========================================================= */
+   COMPLETE INDEX
+========================================================== */
 
 
-/* ================= VARIABLES ================= */
-
-let matches = [];
-let news = [];
-let transfers = [];
+let matchesData = [];
+let newsData = [];
+let transfersData = [];
 
 let laLigaStandings = [];
 let premierStandings = [];
@@ -1308,91 +981,208 @@ let laLigaScorers = [];
 let premierScorers = [];
 
 let matchFilter = "all";
-let currentLeague = "laliga";
 
 
-/* ================= LOAD JSON ================= */
+/* ==========================================================
+   LOAD JSON
+========================================================== */
 
-async function loadJSON(file) {
+async function getJSON(file) {
 
   try {
 
-    const response =
-      await fetch(
-        "data/" + file + "?v=" + Date.now()
-      );
+    const response = await fetch(
+      "data/" + file + "?v=" + Date.now()
+    );
 
     if (!response.ok) {
       throw new Error(
-        response.status +
-        " " +
-        response.statusText
+        file +
+        " : HTTP " +
+        response.status
       );
     }
 
     return await response.json();
 
-  } catch(error) {
+  } catch (error) {
 
     console.error(
-      "TJ Football:",
-      file,
+      "TJ Football JSON Error:",
       error
     );
 
+    showError(
+      "Impossible de charger : " + file
+    );
+
     return null;
-
   }
-
 }
 
 
-/* ================= START ================= */
+/* ==========================================================
+   EXTRACT ARRAY
+========================================================== */
 
-async function start() {
+function extractArray(data, preferredKey) {
 
-  matches =
-    normalizeArray(
-      await loadJSON("matches.json")
+  if (!data) {
+    return [];
+  }
+
+
+  /* Array direct */
+
+  if (Array.isArray(data)) {
+    return data;
+  }
+
+
+  /* Key requested */
+
+  if (
+    preferredKey &&
+    Array.isArray(data[preferredKey])
+  ) {
+    return data[preferredKey];
+  }
+
+
+  /* Common keys */
+
+  const keys = [
+    "matches",
+    "news",
+    "transfers",
+    "response",
+    "data",
+    "results",
+    "items",
+    "standings",
+    "scorers"
+  ];
+
+
+  for (const key of keys) {
+
+    if (Array.isArray(data[key])) {
+      return data[key];
+    }
+
+  }
+
+
+  return [];
+}
+
+
+/* ==========================================================
+   START
+========================================================== */
+
+async function startApp() {
+
+  console.log(
+    "TJ Football loading..."
+  );
+
+
+  const matchesJSON =
+    await getJSON("matches.json");
+
+
+  /*
+    IMPORTANT:
+    Your matches.json starts with:
+
+    {
+      "filters": {...},
+      "matches": [...]
+    }
+
+    So we explicitly read data.matches.
+  */
+
+  matchesData =
+    extractArray(
+      matchesJSON,
+      "matches"
     );
 
-  news =
-    normalizeArray(
-      await loadJSON("news.json")
+
+  const newsJSON =
+    await getJSON("news.json");
+
+  newsData =
+    extractArray(
+      newsJSON,
+      "news"
     );
 
-  transfers =
-    normalizeArray(
-      await loadJSON("transfers.json")
+
+  const transfersJSON =
+    await getJSON("transfers.json");
+
+  transfersData =
+    extractArray(
+      transfersJSON,
+      "transfers"
+    );
+
+
+  const laStandingsJSON =
+    await getJSON(
+      "la-liga-standings.json"
     );
 
   laLigaStandings =
-    normalizeArray(
-      await loadJSON(
-        "la-liga-standings.json"
-      )
+    extractArray(
+      laStandingsJSON,
+      "standings"
+    );
+
+
+  const plStandingsJSON =
+    await getJSON(
+      "premier-league-standings.json"
     );
 
   premierStandings =
-    normalizeArray(
-      await loadJSON(
-        "premier-league-standings.json"
-      )
+    extractArray(
+      plStandingsJSON,
+      "standings"
+    );
+
+
+  const laScorersJSON =
+    await getJSON(
+      "la-liga-scorers.json"
     );
 
   laLigaScorers =
-    normalizeArray(
-      await loadJSON(
-        "la-liga-scorers.json"
-      )
+    extractArray(
+      laScorersJSON,
+      "scorers"
+    );
+
+
+  const plScorersJSON =
+    await getJSON(
+      "premier-league-scorers.json"
     );
 
   premierScorers =
-    normalizeArray(
-      await loadJSON(
-        "premier-league-scorers.json"
-      )
+    extractArray(
+      plScorersJSON,
+      "scorers"
     );
+
+
+  console.log(
+    "Matches:",
+    matchesData
+  );
 
 
   renderMatches();
@@ -1403,14 +1193,14 @@ async function start() {
 
   renderTransfers();
 
-  showLeague(
+  loadStandings(
     "laliga",
     document.querySelector(
       "#standings .filter"
     )
   );
 
-  showScorers(
+  loadScorers(
     "laliga",
     document.querySelector(
       "#scorers .filter"
@@ -1420,93 +1210,82 @@ async function start() {
 }
 
 
-/* ================= NORMALIZE ================= */
+/* ==========================================================
+   ERROR
+========================================================== */
 
-function normalizeArray(data) {
+function showError(message) {
 
-  if (!data) {
-    return [];
+  const box =
+    document.getElementById(
+      "errorBox"
+    );
+
+  if (!box) {
+    return;
   }
 
-  if (Array.isArray(data)) {
-    return data;
-  }
+  box.style.display = "block";
 
-  if (Array.isArray(data.matches)) {
-    return data.matches;
-  }
-
-  if (Array.isArray(data.news)) {
-    return data.news;
-  }
-
-  if (Array.isArray(data.transfers)) {
-    return data.transfers;
-  }
-
-  if (Array.isArray(data.response)) {
-    return data.response;
-  }
-
-  if (Array.isArray(data.data)) {
-    return data.data;
-  }
-
-  return [];
+  box.innerHTML =
+    "⚠️ " +
+    escapeHTML(message);
 
 }
 
 
-/* ================= STATUS ================= */
+/* ==========================================================
+   STATUS
+========================================================== */
 
-function getStatus(match) {
+function getMatchStatus(match) {
 
-  const raw = String(
-    match.status ||
-    match.state ||
-    match.fixtureStatus ||
-    ""
-  ).toLowerCase();
+  const status =
+    String(
+      match.status ||
+      match.state ||
+      match.fixture?.status?.short ||
+      match.fixture?.status?.long ||
+      ""
+    ).toLowerCase();
 
 
   if (
-    raw.includes("live") ||
-    raw === "1h" ||
-    raw === "2h" ||
-    raw === "ht" ||
-    raw.includes("progress")
+    status.includes("live") ||
+    status === "1h" ||
+    status === "2h" ||
+    status === "ht" ||
+    status.includes("progress")
   ) {
-
     return "live";
-
   }
 
 
   if (
-    raw.includes("finished") ||
-    raw.includes("complete") ||
-    raw === "ft" ||
-    raw.includes("ended")
+    status.includes("finish") ||
+    status.includes("complete") ||
+    status === "ft" ||
+    status.includes("ended")
   ) {
-
     return "finished";
-
   }
 
+
+  /*
+    API-Football may use:
+    TBD / NS
+  */
 
   return "scheduled";
-
 }
 
 
-/* ================= LOGO ================= */
+/* ==========================================================
+   TEAM
+========================================================== */
 
-function getLogo(name, logo) {
+function getTeam(match, side) {
 
-  if (logo) {
-    return logo;
-  }
-
-
-  const n =
-   
+  if (
+    match.teams &&
+    match.teams[side]

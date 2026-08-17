@@ -1,682 +1,1130 @@
-<!-- ============================= -->
-<!-- TJ FOOTBALL NEWS & TRANSFERS -->
-<!-- ضع هذا الجزء داخل <body> -->
-<!-- ============================= -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<section class="tj-extra-section">
+  <title>TJ Football ⚽</title>
+  <meta name="description" content="TJ Football - أخبار كرة القدم، المباريات، النتائج، الترتيب والانتقالات">
+  <meta name="theme-color" content="#e30613">
 
-  <div class="tj-extra-header">
-    <div>
-      <span class="tj-extra-label">TJ FOOTBALL</span>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Tahoma, sans-serif;
+      background: #f3f4f6;
+      color: #111827;
+      min-height: 100vh;
+    }
+
+    button,
+    input,
+    select {
+      font-family: inherit;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      background: linear-gradient(135deg, #071a52, #e30613);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,.18);
+    }
+
+    .topbar {
+      max-width: 1200px;
+      margin: auto;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 25px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .logo-ball {
+      width: 42px;
+      height: 42px;
+      background: white;
+      color: #071a52;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 23px;
+    }
+
+    .live-badge {
+      background: #ef233c;
+      border-radius: 20px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: bold;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      50% {
+        opacity: .55;
+      }
+    }
+
+    nav {
+      background: rgba(0,0,0,.18);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      min-width: max-content;
+    }
+
+    .nav-btn {
+      border: 0;
+      background: transparent;
+      color: white;
+      padding: 14px 18px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .nav-btn:hover,
+    .nav-btn.active {
+      background: white;
+      color: #071a52;
+    }
+
+    /* ================= MAIN ================= */
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px 15px 50px;
+    }
+
+    .hero {
+      background:
+        linear-gradient(135deg, rgba(7,26,82,.96), rgba(227,6,19,.88)),
+        radial-gradient(circle at top left, #fff, transparent);
+      color: white;
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,.15);
+    }
+
+    .hero h1 {
+      font-size: clamp(27px, 5vw, 44px);
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      opacity: .9;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .hero-btn {
+      border: 0;
+      border-radius: 10px;
+      padding: 11px 18px;
+      cursor: pointer;
+      font-weight: bold;
+      background: white;
+      color: #071a52;
+    }
+
+    .hero-btn.red {
+      background: #e30613;
+      color: white;
+    }
+
+    /* ================= SECTIONS ================= */
+
+    .section {
+      background: white;
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 15px rgba(0,0,0,.07);
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      border-right: 5px solid #e30613;
+      padding-right: 10px;
+    }
+
+    .section-title h2 {
+      font-size: 21px;
+    }
+
+    .section-title span {
+      color: #6b7280;
+      font-size: 13px;
+    }
+
+    /* ================= FILTERS ================= */
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 16px;
+    }
+
+    .filter-btn {
+      border: 1px solid #d1d5db;
+      background: white;
+      border-radius: 9px;
+      padding: 9px 14px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: #071a52;
+      color: white;
+      border-color: #071a52;
+    }
+
+    .search-box {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      outline: none;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    .search-box:focus {
+      border-color: #071a52;
+    }
+
+    /* ================= MATCHES ================= */
+
+    .matches-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 13px;
+    }
+
+    .match-card {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 15px;
+      transition: .2s;
+      cursor: pointer;
+    }
+
+    .match-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(0,0,0,.08);
+    }
+
+    .league {
+      font-size: 12px;
+      color: #6b7280;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .match-status {
+      text-align: center;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .live {
+      color: #e30613;
+    }
+
+    .finished {
+      color: #16a34a;
+    }
+
+    .scheduled {
+      color: #2563eb;
+    }
+
+    .teams {
+      display: grid;
+      grid-template-columns: 1fr 70px 1fr;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .team {
+      text-align: center;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .team img {
+      display: block;
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      margin: 0 auto 7px;
+    }
+
+    .score {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .match-time {
+      text-align: center;
+      color: #6b7280;
+      font-size: 12px;
+      margin-top: 12px;
+    }
+
+    /* ================= NEWS ================= */
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 15px;
+    }
+
+    .news-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 13px;
+      overflow: hidden;
+      background: white;
+      transition: .2s;
+    }
+
+    .news-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(0,0,0,.08);
+    }
+
+    .news-image {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      background: #e5e7eb;
+    }
+
+    .news-content {
+      padding: 13px;
+    }
+
+    .news-content h3 {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+
+    .news-content p {
+      color: #6b7280;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .news-date {
+      display: block;
+      margin-top: 10px;
+      color: #e30613;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    /* ================= TRANSFERS ================= */
+
+    .transfer-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .transfer {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 12px;
+      padding: 13px;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      background: #fafafa;
+    }
+
+    .transfer-player {
+      font-weight: bold;
+    }
+
+    .transfer-club {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 13px;
+    }
+
+    .transfer-club:last-child {
+      justify-content: flex-start;
+    }
+
+    .transfer-club img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+
+    .arrow {
+      color: #e30613;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* ================= TABLE ================= */
+
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 500px;
+    }
+
+    th,
+    td {
+      padding: 11px 8px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    th {
+      background: #071a52;
+      color: white;
+    }
+
+    .club-name {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .club-name img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    /* ================= SCORERS ================= */
+
+    .scorers {
+      display: grid;
+      gap: 9px;
+    }
+
+    .scorer {
+      display: grid;
+      grid-template-columns: 40px 1fr auto;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+    }
+
+    .rank {
+      font-size: 20px;
+      font-weight: 900;
+      color: #e30613;
+      text-align: center;
+    }
+
+    .scorer-name {
+      font-weight: bold;
+    }
+
+    .goals {
+      font-size: 18px;
+      font-weight: 900;
+      color: #071a52;
+    }
+
+    /* ================= LOADING ================= */
+
+    .loading {
+      text-align: center;
+      padding: 25px;
+      color: #6b7280;
+    }
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 4px solid #e5e7eb;
+      border-top-color: #e30613;
+      border-radius: 50%;
+      margin: 0 auto 10px;
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .empty {
+      text-align: center;
+      padding: 25px;
+      color: #6b7280;
+    }
+
+    .error {
+      background: #fff1f2;
+      color: #be123c;
+      border: 1px solid #fecdd3;
+      padding: 12px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      display: none;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: #071a52;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 20px;
+    }
+
+    footer strong {
+      color: #ff3344;
+    }
+
+    footer p {
+      margin-top: 7px;
+      opacity: .75;
+      font-size: 12px;
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 600px) {
+
+      .topbar {
+        padding: 11px 12px;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+
+      .logo-ball {
+        width: 35px;
+        height: 35px;
+        font-size: 19px;
+      }
+
+      .live-badge {
+        font-size: 10px;
+      }
+
+      main {
+        padding: 12px 10px 35px;
+      }
+
+      .hero {
+        padding: 22px 17px;
+      }
+
+      .section {
+        padding: 13px;
+        border-radius: 12px;
+      }
+
+      .transfer {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .transfer-club,
+      .transfer-club:last-child {
+        justify-content: center;
+      }
+
+      .arrow {
+        transform: rotate(90deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="topbar">
+    <div class="logo">
+      <div class="logo-ball">⚽</div>
+      <span>TJ Football</span>
+    </div>
+
+    <div class="live-badge">
+      🔴 LIVE FOOTBALL
+    </div>
+  </div>
+
+  <nav>
+    <div class="nav-inner">
+
+      <button class="nav-btn active" onclick="scrollToSection('home')">
+        🏠 الرئيسية
+      </button>
+
+      <button class="nav-btn" onclick="scrollToSection('matches')">
+        ⚽ المباريات
+      </button>
+
+      <button class="nav-btn" onclick="scrollToSection('results')">
+        🏆 النتائج
+      </button>
+
+      <button class="nav-btn" onclick="scrollToSection('news')">
+        📰 الأخبار
+      </button>
+
+      <button class="nav-btn" onclick="scrollToSection('transfers')">
+        🔄 الانتقالات
+      </button>
+
+      <button class="nav-btn" onclick="scrollToSection('standings')">
+        📊 الترتيب
+      </button>
+
+      <button class="nav-btn" onclick="scrollToSection('scorers')">
+        🥅 الهدافون
+      </button>
+
+    </div>
+  </nav>
+
+</header>
+
+<main>
+
+  <!-- ================= HOME ================= -->
+
+  <section id="home" class="hero">
+
+    <h1>TJ Football ⚽</h1>
+
+    <p>
+      كل أخبار كرة القدم في مكان واحد.
+      المباريات، النتائج، الأخبار، الانتقالات،
+      ترتيب البطولات والهدافين.
+    </p>
+
+    <div class="hero-actions">
+
+      <button class="hero-btn" onclick="scrollToSection('matches')">
+        ⚽ مباريات اليوم
+      </button>
+
+      <button class="hero-btn red" onclick="scrollToSection('news')">
+        📰 آخر الأخبار
+      </button>
+
+    </div>
+
+  </section>
+
+  <div id="globalError" class="error"></div>
+
+  <!-- ================= MATCHES ================= -->
+
+  <section id="matches" class="section">
+
+    <div class="section-title">
+      <h2>⚽ المباريات</h2>
+      <span id="matchesCount">0 مباراة</span>
+    </div>
+
+    <input
+      id="matchSearch"
+      class="search-box"
+      type="search"
+      placeholder="🔎 ابحث عن فريق..."
+      oninput="renderMatches()"
+    >
+
+    <div class="filters">
+
+      <button
+        class="filter-btn active"
+        onclick="setMatchFilter('all', this)"
+      >
+        الكل
+      </button>
+
+      <button
+        class="filter-btn"
+        onclick="setMatchFilter('live', this)"
+      >
+        🔴 مباشر
+      </button>
+
+      <button
+        class="filter-btn"
+        onclick="setMatchFilter('scheduled', this)"
+      >
+        🕐 القادمة
+      </button>
+
+      <button
+        class="filter-btn"
+        onclick="setMatchFilter('finished', this)"
+      >
+        ✅ انتهت
+      </button>
+
+    </div>
+
+    <div id="matchesContainer" class="matches-grid">
+
+      <div class="loading">
+        <div class="spinner"></div>
+        جاري تحميل المباريات...
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= RESULTS ================= -->
+
+  <section id="results" class="section">
+
+    <div class="section-title">
+      <h2>🏆 آخر النتائج</h2>
+      <span>نتائج المباريات</span>
+    </div>
+
+    <div id="resultsContainer" class="matches-grid">
+
+      <div class="loading">
+        <div class="spinner"></div>
+        جاري تحميل النتائج...
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= NEWS ================= -->
+
+  <section id="news" class="section">
+
+    <div class="section-title">
       <h2>📰 آخر الأخبار</h2>
+      <span id="newsCount">0 خبر</span>
     </div>
-  </div>
 
-  <div id="newsContainer" class="tj-news-grid">
-    <div class="tj-loading">
-      جاري تحميل الأخبار...
+    <input
+      id="newsSearch"
+      class="search-box"
+      type="search"
+      placeholder="🔎 ابحث في الأخبار..."
+      oninput="renderNews()"
+    >
+
+    <div id="newsContainer" class="news-grid">
+
+      <div class="loading">
+        <div class="spinner"></div>
+        جاري تحميل الأخبار...
+      </div>
+
     </div>
-  </div>
 
-</section>
+  </section>
 
 
-<section class="tj-extra-section">
+  <!-- ================= TRANSFERS ================= -->
 
-  <div class="tj-extra-header">
-    <div>
-      <span class="tj-extra-label">TRANSFERS</span>
+  <section id="transfers" class="section">
+
+    <div class="section-title">
       <h2>🔄 آخر الانتقالات</h2>
+      <span>سوق الانتقالات</span>
     </div>
-  </div>
 
-  <div id="transfersContainer" class="tj-transfers-list">
-    <div class="tj-loading">
-      جاري تحميل الانتقالات...
+    <div id="transfersContainer" class="transfer-list">
+
+      <div class="loading">
+        <div class="spinner"></div>
+        جاري تحميل الانتقالات...
+      </div>
+
     </div>
-  </div>
 
-</section>
-
-
-<style>
-
-.tj-extra-section {
-  max-width: 1100px;
-  margin: 35px auto;
-  padding: 0 20px;
-}
-
-.tj-extra-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 18px;
-}
-
-.tj-extra-label {
-  color: #ff3158;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 1.5px;
-}
-
-.tj-extra-header h2 {
-  margin-top: 5px;
-  font-size: 25px;
-  font-weight: 900;
-}
+  </section>
 
 
-/* NEWS */
+  <!-- ================= STANDINGS ================= -->
 
-.tj-news-grid {
-  display: grid;
-  grid-template-columns:
-    repeat(3, 1fr);
-  gap: 16px;
-}
+  <section id="standings" class="section">
 
-.tj-news-card {
-  overflow: hidden;
-  border-radius: 20px;
+    <div class="section-title">
+      <h2>📊 ترتيب البطولة</h2>
+      <span>الترتيب الحالي</span>
+    </div>
 
-  background:
-    rgba(7,18,32,.96);
+    <div class="table-wrapper">
 
-  border:
-    1px solid rgba(255,255,255,.08);
+      <table>
 
-  transition: .25s;
-}
+        <thead>
 
-.tj-news-card:hover {
-  transform: translateY(-4px);
-  border-color:
-    rgba(255,49,88,.35);
-}
+          <tr>
+            <th>#</th>
+            <th>الفريق</th>
+            <th>لعب</th>
+            <th>ف</th>
+            <th>ت</th>
+            <th>خ</th>
+            <th>نقاط</th>
+          </tr>
 
-.tj-news-image {
-  width: 100%;
-  height: 175px;
+        </thead>
 
-  object-fit: cover;
+        <tbody id="standingsContainer">
 
-  display: block;
+          <tr>
+            <td colspan="7">
+              جاري تحميل الترتيب...
+            </td>
+          </tr>
 
-  background:
-    linear-gradient(
-      135deg,
-      #152c4d,
-      #071321
-    );
-}
+        </tbody>
 
-.tj-news-content {
-  padding: 16px;
-}
+      </table>
 
-.tj-news-title {
-  font-size: 17px;
-  font-weight: 900;
-  line-height: 1.5;
-}
+    </div>
 
-.tj-news-description {
-  margin-top: 8px;
-
-  color: #8fa1b8;
-
-  font-size: 13px;
-  line-height: 1.7;
-}
-
-.tj-news-date {
-  margin-top: 12px;
-
-  color: #ff3158;
-
-  font-size: 11px;
-  font-weight: bold;
-}
+  </section>
 
 
-/* TRANSFERS */
+  <!-- ================= SCORERS ================= -->
 
-.tj-transfers-list {
-  display: grid;
-  gap: 10px;
-}
+  <section id="scorers" class="section">
 
-.tj-transfer-card {
-  display: grid;
+    <div class="section-title">
+      <h2>🥅 الهدافون</h2>
+      <span>أفضل الهدافين</span>
+    </div>
 
-  grid-template-columns:
-    1fr 80px 1fr;
+    <div id="scorersContainer" class="scorers">
 
-  align-items: center;
+      <div class="loading">
+        <div class="spinner"></div>
+        جاري تحميل الهدافين...
+      </div>
 
-  padding: 15px;
+    </div>
 
-  border-radius: 17px;
+  </section>
 
-  background:
-    rgba(7,18,32,.96);
-
-  border:
-    1px solid rgba(255,255,255,.08);
-}
-
-.tj-transfer-player {
-  font-weight: 900;
-  font-size: 15px;
-}
-
-.tj-transfer-team {
-  color: #8fa1b8;
-  font-size: 12px;
-  margin-top: 4px;
-}
-
-.tj-transfer-arrow {
-  text-align: center;
-
-  font-size: 22px;
-
-  color: #ff3158;
-}
-
-.tj-transfer-status {
-  text-align: center;
-
-  color: #62d68b;
-
-  font-size: 11px;
-  font-weight: 900;
-}
-
-.tj-loading,
-.tj-empty {
-  padding: 35px 20px;
-
-  text-align: center;
-
-  border-radius: 18px;
-
-  background:
-    rgba(7,18,32,.95);
-
-  border:
-    1px solid rgba(255,255,255,.08);
-
-  color: #8fa1b8;
-}
+</main>
 
 
-@media (max-width: 750px) {
+<footer>
 
-  .tj-news-grid {
-    grid-template-columns: 1fr;
-  }
+  <strong>TJ Football ⚽</strong>
 
-  .tj-news-image {
-    height: 190px;
-  }
+  <p>
+    Football • News • Matches • Transfers • Results
+  </p>
 
-  .tj-transfer-card {
-    grid-template-columns:
-      1fr 50px 1fr;
-  }
+  <p>
+    © 2026 TJ Football — جميع الحقوق محفوظة
+  </p>
 
-}
-
-</style>
+</footer>
 
 
 <script>
 
-(function () {
+/* =========================================================
+   TJ FOOTBALL
+   MAIN INDEX JAVASCRIPT
+========================================================= */
 
-  "use strict";
+
+/* ================= DATA ================= */
+
+let matches = [];
+let news = [];
+let transfers = [];
+let standings = [];
+let scorers = [];
+
+let matchFilter = "all";
 
 
-  /*
-   * حماية النصوص القادمة من JSON
-   */
+/* ================= SAFE JSON ================= */
 
-  function safe(value) {
+async function loadJSON(path, fallback = []) {
 
-    if (
-      value === null ||
-      value === undefined
-    ) {
-      return "";
+  try {
+
+    const response = await fetch(path, {
+      cache: "no-store"
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        "HTTP " + response.status + " : " + path
+      );
     }
 
-    return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+    const data = await response.json();
+
+    /*
+      يسمح للكود بقراءة:
+      { "matches": [] }
+      أو
+      { "news": [] }
+      أو مصفوفة مباشرة
+    */
+
+    if (Array.isArray(data)) {
+      return data;
+    }
+
+    if (Array.isArray(data.matches)) {
+      return data.matches;
+    }
+
+    if (Array.isArray(data.news)) {
+      return data.news;
+    }
+
+    if (Array.isArray(data.transfers)) {
+      return data.transfers;
+    }
+
+    if (Array.isArray(data.standings)) {
+      return data.standings;
+    }
+
+    if (Array.isArray(data.scorers)) {
+      return data.scorers;
+    }
+
+    return fallback;
+
+  } catch (error) {
+
+    console.warn(
+      "TJ Football: failed to load",
+      path,
+      error
+    );
+
+    return fallback;
+  }
+}
+
+
+/* ================= INITIALIZE ================= */
+
+async function init() {
+
+  try {
+
+    const [
+      matchesData,
+      newsData,
+      transfersData,
+      standingsData,
+      scorersData
+    ] = await Promise.all([
+
+      loadJSON("data/matches.json"),
+      loadJSON("data/news.json"),
+      loadJSON("data/transfers.json"),
+      loadJSON("data/standings.json"),
+      loadJSON("data/scorers.json")
+
+    ]);
+
+    matches = matchesData;
+    news = newsData;
+    transfers = transfersData;
+    standings = standingsData;
+    scorers = scorersData;
+
+
+    renderMatches();
+    renderResults();
+    renderNews();
+    renderTransfers();
+    renderStandings();
+    renderScorers();
+
+
+  } catch (error) {
+
+    console.error(error);
+
+    showGlobalError(
+      "حدث خطأ أثناء تحميل بيانات TJ Football."
+    );
 
   }
 
+}
 
-  /*
-   * NEWS
-   *
-   * المصدر:
-   * /data/news.json
-   */
 
-  async function loadNews() {
+/* ================= ERROR ================= */
 
-    const container =
-      document.getElementById(
-        "newsContainer"
-      );
+function showGlobalError(message) {
 
-    if (!container) return;
+  const box = document.getElementById("globalError");
 
+  box.textContent = message;
+  box.style.display = "block";
 
-    try {
+}
 
-      const response =
-        await fetch(
-          "/data/news.json",
-          {
-            cache: "no-store"
-          }
-        );
 
+/* ================= LOGO ================= */
 
-      if (!response.ok) {
+function getLogo(team, logo) {
 
-        throw new Error(
-          "HTTP " + response.status
-        );
-
-      }
-
-
-      const data =
-        await response.json();
-
-
-      /*
-       * دعم أكثر من شكل للـ JSON
-       */
-
-      let news = [];
-
-      if (Array.isArray(data)) {
-
-        news = data;
-
-      } else if (
-        Array.isArray(data.news)
-      ) {
-
-        news = data.news;
-
-      } else if (
-        Array.isArray(data.articles)
-      ) {
-
-        news = data.articles;
-
-      }
-
-
-      if (!news.length) {
-
-        container.innerHTML = `
-          <div class="tj-empty">
-            📰 لا توجد أخبار حاليًا
-          </div>
-        `;
-
-        return;
-
-      }
-
-
-      /*
-       * عرض أول 12 خبر
-       */
-
-      container.innerHTML =
-        news
-          .slice(0, 12)
-          .map(function (article) {
-
-            const title =
-              article.title ||
-              article.name ||
-              "خبر رياضي";
-
-
-            const description =
-              article.description ||
-              article.summary ||
-              "";
-
-
-            const image =
-              article.image ||
-              article.urlToImage ||
-              article.thumbnail ||
-              "";
-
-
-            const date =
-              article.date ||
-              article.publishedAt ||
-              "";
-
-
-            const link =
-              article.url ||
-              article.link ||
-              "#";
-
-
-            return `
-
-              <article class="tj-news-card">
-
-                ${
-                  image
-                    ? `
-                      <img
-                        class="tj-news-image"
-                        src="${safe(image)}"
-                        alt=""
-                        loading="lazy"
-                        onerror="
-                          this.style.display='none'
-                        "
-                      >
-                    `
-                    : `
-                      <div
-                        class="tj-news-image"
-                        style="
-                          display:flex;
-                          align-items:center;
-                          justify-content:center;
-                          font-size:45px;
-                        "
-                      >
-                        ⚽
-                      </div>
-                    `
-                }
-
-
-                <div class="tj-news-content">
-
-                  <div class="tj-news-title">
-                    ${safe(title)}
-                  </div>
-
-
-                  ${
-                    description
-                      ? `
-                        <div class="
-                          tj-news-description
-                        ">
-                          ${safe(
-                            description
-                          )}
-                        </div>
-                      `
-                      : ""
-                  }
-
-
-                  ${
-                    date
-                      ? `
-                        <div
-                          class="tj-news-date"
-                        >
-                          ${safe(date)}
-                        </div>
-                      `
-                      : ""
-                  }
-
-
-                  ${
-                    link !== "#"
-                      ? `
-                        <a
-                          href="${safe(link)}"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style="
-                            display:inline-block;
-                            margin-top:12px;
-                            color:#61a5ff;
-                            font-size:12px;
-                            font-weight:bold;
-                            text-decoration:none;
-                          "
-                        >
-                          قراءة الخبر ←
-                        </a>
-                      `
-                      : ""
-                  }
-
-                </div>
-
-              </article>
-
-            `;
-
-          })
-          .join("");
-
-
-    } catch (error) {
-
-      console.error(
-        "TJ News Error:",
-        error
-      );
-
-
-      container.innerHTML = `
-        <div class="tj-empty">
-          ⚠️ تعذر تحميل الأخبار
-        </div>
-      `;
-
-    }
-
+  if (logo) {
+    return logo;
   }
 
+  const name = String(team || "")
+    .toLowerCase()
+    .trim();
 
-  /*
-   * TRANSFERS
-   *
-   * في البداية نقرأ:
-   * /data/transfers.json
-   *
-   * إذا لم يوجد الملف
-   * لا نكسر الموقع.
-   */
+  const logos = {
 
-  async function loadTransfers() {
+    "barcelona":
+      "images/barcelona.png",
 
-    const container =
-      document.getElementById(
-        "transfersContainer"
-      );
+    "real madrid":
+      "images/realmadrid.png",
 
-    if (!container) return;
+    "marseille":
+      "images/marseille.png",
 
+    "paris saint germain":
+      "images/psg.png",
 
-    try {
+    "psg":
+      "images/psg.png",
 
-      const response =
-        await fetch(
-          "/data/transfers.json",
-          {
-            cache: "no-store"
-          }
-        );
+    "liverpool":
+      "images/liverpool.png",
 
+    "manchester united":
+      "images/manchester-united.png",
 
-      if (!response.ok) {
+    "manchester city":
+      "images/manchester-city.png",
 
-        throw new Error(
-          "HTTP " + response.status
-        );
+    "arsenal":
+      "images/arsenal.png",
 
-      }
+    "chelsea":
+      "images/chelsea.png",
 
+    "bayern munich":
+      "images/bayern.png",
 
-      const data =
-        await response.json();
+    "juventus":
+      "images/juventus.png",
 
+    "inter":
+      "images/inter.png",
 
-      let transfers = [];
+    "ac milan":
+      "images/ac-milan.png"
 
+  };
 
-      if (Array.isArray(data)) {
-
-        transfers = data;
-
-      } else if (
-        Array.isArray(data.transfers)
-      ) {
-
-        transfers =
-          data.transfers;
-
-      }
+  return logos[name] || "images/default-team.png";
+}
 
 
-      if (!transfers.length) {
+/* ================= MATCH STATUS ================= */
 
-        container.innerHTML = `
-          <div class="tj-empty">
-            🔄 لا توجد انتقالات حاليًا
-          </div>
-        `;
+function normalizeStatus(match) {
 
-        return;
+  const status = String(
+    match.status ||
+    match.state ||
+    ""
+  ).toLowerCase();
 
-      }
-
-
-      container.innerHTML =
-        transfers
-          .slice(0, 20)
-          .map(function (transfer) {
-
-            const player =
-              transfer.player ||
-              transfer.name ||
-              "لاعب";
-
-
-            const from =
-              transfer.from ||
-              transfer.fromTeam ||
-              "غير معروف";
-
-
-            const to =
-              transfer.to ||
-              transfer.toTeam ||
-              "غير معروف";
-
-
-            return `
-
-              <div class="tj-transfer-card">
-
-                <div>
-
-                  <div
-                    class="tj-transfer-player"
-                  >
-                    ${safe(player)}
-                  </div>
-
-                  <div
-                    class="tj-transfer-team"
-                  >
-                    ${safe(from)}
-                  </div>
-
-                </div>
-
-
-                <div
-                  class="tj-transfer-arrow"
-                >
-                  →
-                </div>
-
-
-                <div>
-
-                  <div
-                    class="tj-transfer-player"
-                  >
-                    ${safe(to)}
-                  </div>
-
-                  <div
-                    class="tj-transfer-team"
-                  >
-                    انتقال
-                  </div>
-
-                </div>
-
-              </div>
-
-            `;
-
-          })
-          .join("");
-
-
-    } catch (error) {
-
-      console.warn(
-        "Transfers file not available:",
-        error
-      );
-
-
-      container.innerHTML = `
-        <div class="tj-empty">
-          🔄 لا توجد بيانات انتقالات حاليًا
-        </div>
-      `;
-
-    }
-
-  }
-
-
-  /*
-   * START
-   */
-
-  loadNews();
-  loadTransfers();
-
-
-})();
-
-</script>
+  if (
+    status.includes("live") ||
+    status === "1h" ||
+    status === "2h" ||
+    status === "ht"
+  ) {
+    return "live";
+  

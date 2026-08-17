@@ -20,39 +20,34 @@ scroll-behavior:smooth;
 body{
 margin:0;
 font-family:Arial,Tahoma,sans-serif;
-background:#f3f5f9;
+background:#f4f6fa;
 color:#111827;
 }
 
-button,
-input,
-select{
-font-family:inherit;
-}
+/* HEADER */
 
 header{
+background:linear-gradient(135deg,#071a52,#0b3ca8,#d90416);
+color:white;
 position:sticky;
 top:0;
 z-index:1000;
-background:linear-gradient(135deg,#06164a,#0b3b9f,#d90416);
-color:white;
-box-shadow:0 4px 18px #0003;
+box-shadow:0 4px 15px #0003;
 }
 
 .header{
-max-width:1250px;
+max-width:1200px;
 margin:auto;
 padding:14px 18px;
 display:flex;
 align-items:center;
 justify-content:space-between;
-gap:20px;
+gap:15px;
 }
 
-.logo-title{
-font-size:24px;
+.brand{
+font-size:25px;
 font-weight:900;
-white-space:nowrap;
 }
 
 nav{
@@ -65,30 +60,32 @@ nav button{
 border:0;
 background:transparent;
 color:white;
-padding:10px 13px;
+padding:9px 12px;
 border-radius:8px;
 font-weight:bold;
 cursor:pointer;
 }
 
 nav button:hover{
-background:#ffffff22;
+background:#ffffff25;
 }
 
+/* HERO */
+
 .hero{
-background:linear-gradient(135deg,#06164a,#1048ad);
+background:linear-gradient(135deg,#071a52,#1249b5);
 color:white;
 padding:45px 18px;
 }
 
 .hero-inner{
-max-width:1250px;
+max-width:1200px;
 margin:auto;
 }
 
 .hero h1{
-margin:0 0 12px;
-font-size:clamp(34px,6vw,58px);
+font-size:clamp(36px,6vw,58px);
+margin:0 0 10px;
 }
 
 .hero p{
@@ -97,14 +94,16 @@ line-height:1.8;
 color:#dbe7ff;
 }
 
+/* MAIN */
+
 main{
-max-width:1250px;
+max-width:1200px;
 margin:auto;
 padding:25px 15px 60px;
 }
 
 section{
-margin-bottom:42px;
+margin-bottom:45px;
 scroll-margin-top:90px;
 }
 
@@ -112,7 +111,7 @@ scroll-margin-top:90px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-margin-bottom:16px;
+margin-bottom:18px;
 }
 
 .section-title h2{
@@ -120,64 +119,67 @@ margin:0;
 font-size:25px;
 }
 
-.global-status{
+/* STATUS */
+
+.status-box{
 background:white;
-border-radius:13px;
-padding:14px;
+border-radius:14px;
+padding:15px;
 margin-bottom:20px;
 text-align:center;
 font-weight:bold;
 box-shadow:0 3px 15px #0001;
 }
 
+/* FILTERS */
+
 .filters{
-display:grid;
-grid-template-columns:1fr 200px 200px;
-gap:10px;
 background:white;
 padding:15px;
 border-radius:14px;
 margin-bottom:18px;
+display:grid;
+grid-template-columns:1fr 200px 200px;
+gap:10px;
 box-shadow:0 3px 15px #0001;
 }
 
 .filters input,
-.filters select{
-width:100%;
+.filters select,
+.section-select{
 padding:12px;
-border:1px solid #d9dde5;
+border:1px solid #ddd;
 border-radius:9px;
+background:#fff;
 outline:none;
-background:#fafbfc;
 }
 
-.matches-grid{
+/* MATCHES */
+
+.matches{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(285px,1fr));
 gap:16px;
 }
 
-.card{
+.match{
 background:white;
-border-radius:16px;
+border-radius:17px;
 padding:17px;
-border:1px solid #edf0f5;
 box-shadow:0 4px 18px #0001;
-}
-
-.match-card{
+border:1px solid #edf0f5;
 cursor:pointer;
 transition:.2s;
 }
 
-.match-card:hover{
+.match:hover{
 transform:translateY(-3px);
 }
 
-.match-head{
+.match-top{
 display:flex;
 justify-content:space-between;
-gap:10px;
+gap:8px;
 margin-bottom:18px;
 }
 
@@ -194,7 +196,7 @@ color:#999;
 
 .teams{
 display:grid;
-grid-template-columns:1fr 70px 1fr;
+grid-template-columns:1fr 65px 1fr;
 align-items:center;
 text-align:center;
 gap:5px;
@@ -214,15 +216,15 @@ margin:0 auto 8px;
 }
 
 .score{
-font-size:26px;
+font-size:27px;
 font-weight:900;
 }
 
 .match-status{
 text-align:center;
-margin-top:15px;
 font-size:12px;
 font-weight:bold;
+margin-top:15px;
 }
 
 .finished{
@@ -237,10 +239,19 @@ color:#dc2626;
 color:#2563eb;
 }
 
-.content-grid{
+/* OTHER CARDS */
+
+.grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:15px;
+}
+
+.card{
+background:white;
+border-radius:15px;
+padding:17px;
+box-shadow:0 3px 15px #0001;
 }
 
 .news-title{
@@ -264,29 +275,30 @@ margin-top:10px;
 
 .transfer-player{
 font-size:18px;
-font-weight:900;
+font-weight:bold;
 margin-bottom:15px;
 }
 
-.transfer-row{
+.transfer{
 display:grid;
 grid-template-columns:1fr 40px 1fr;
 align-items:center;
 text-align:center;
-gap:5px;
 }
 
 .arrow{
 font-size:22px;
-font-weight:bold;
 color:#d90416;
+font-weight:bold;
 }
 
-.table-wrap{
+/* TABLE */
+
+.table-container{
 background:white;
 border-radius:15px;
 overflow:auto;
-box-shadow:0 4px 18px #0001;
+box-shadow:0 3px 15px #0001;
 }
 
 table{
@@ -297,15 +309,23 @@ min-width:600px;
 
 th,
 td{
-padding:12px 10px;
+padding:12px;
 text-align:center;
-border-bottom:1px solid #edf0f5;
+border-bottom:1px solid #eee;
 font-size:13px;
 }
 
 th{
-background:#06164a;
+background:#071a52;
 color:white;
+}
+
+/* SCORERS */
+
+.scorers{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:12px;
 }
 
 .scorer{
@@ -322,7 +342,7 @@ box-shadow:0 3px 15px #0001;
 width:36px;
 height:36px;
 border-radius:50%;
-background:#06164a;
+background:#071a52;
 color:white;
 display:flex;
 align-items:center;
@@ -349,6 +369,8 @@ font-size:22px;
 font-weight:900;
 }
 
+/* EMPTY */
+
 .empty{
 background:white;
 padding:30px;
@@ -357,25 +379,7 @@ text-align:center;
 color:#777;
 }
 
-.small-select{
-padding:11px;
-border:1px solid #ddd;
-border-radius:8px;
-background:white;
-margin-bottom:15px;
-}
-
-footer{
-background:#06164a;
-color:white;
-text-align:center;
-padding:30px 15px;
-}
-
-footer p{
-color:#cbd5e1;
-font-size:12px;
-}
+/* MODAL */
 
 .modal{
 display:none;
@@ -388,7 +392,7 @@ justify-content:center;
 padding:15px;
 }
 
-.modal.show{
+.modal.open{
 display:flex;
 }
 
@@ -407,9 +411,10 @@ position:relative;
 position:absolute;
 left:15px;
 top:15px;
-width:35px;
-height:35px;
 border:0;
+background:#eee;
+width:36px;
+height:36px;
 border-radius:50%;
 font-size:20px;
 cursor:pointer;
@@ -417,8 +422,8 @@ cursor:pointer;
 
 .detail{
 display:flex;
-justify-content:center;
 align-items:center;
+justify-content:center;
 gap:20px;
 text-align:center;
 margin:30px 0;
@@ -443,12 +448,28 @@ font-weight:900;
 }
 
 .info{
-background:#f3f5f9;
+background:#f4f6fa;
 padding:15px;
 border-radius:12px;
 line-height:2;
 font-size:13px;
 }
+
+/* FOOTER */
+
+footer{
+background:#071a52;
+color:white;
+text-align:center;
+padding:30px 15px;
+}
+
+footer p{
+font-size:12px;
+color:#cbd5e1;
+}
+
+/* MOBILE */
 
 @media(max-width:800px){
 
@@ -494,33 +515,33 @@ width:100px;
 
 <div class="header">
 
-<div class="logo-title">
+<div class="brand">
 ⚽ TJ Football
 </div>
 
 <nav>
 
-<button onclick="scrollToId('home')">
+<button onclick="go('home')">
 الرئيسية
 </button>
 
-<button onclick="scrollToId('matches')">
+<button onclick="go('matches')">
 المباريات
 </button>
 
-<button onclick="scrollToId('news')">
+<button onclick="go('news')">
 الأخبار
 </button>
 
-<button onclick="scrollToId('transfers')">
+<button onclick="go('transfers')">
 الانتقالات
 </button>
 
-<button onclick="scrollToId('standings')">
+<button onclick="go('standings')">
 الترتيب
 </button>
 
-<button onclick="scrollToId('scorers')">
+<button onclick="go('scorers')">
 الهدافون
 </button>
 
@@ -540,7 +561,7 @@ TJ Football ⚽
 </h1>
 
 <p>
-منصتك لمتابعة كرة القدم:
+موقعك لمتابعة كرة القدم:
 المباريات والنتائج والأخبار
 والانتقالات والترتيب والهدافين.
 </p>
@@ -553,7 +574,7 @@ TJ Football ⚽
 <main>
 
 
-<div id="globalStatus" class="global-status">
+<div id="status" class="status-box">
 ⏳ جاري تحميل المباريات...
 </div>
 
@@ -568,8 +589,8 @@ TJ Football ⚽
 ⚽ المباريات والنتائج
 </h2>
 
-<span id="matchCount">
-0
+<span id="count">
+0 مباراة
 </span>
 
 </div>
@@ -578,16 +599,12 @@ TJ Football ⚽
 <div class="filters">
 
 <input
-id="searchInput"
-type="search"
+id="search"
+type="text"
 placeholder="🔎 ابحث عن فريق..."
-oninput="renderMatches()"
 >
 
-
-<select
-id="leagueFilter"
-onchange="renderMatches()">
+<select id="league">
 
 <option value="all">
 كل البطولات
@@ -595,10 +612,7 @@ onchange="renderMatches()">
 
 </select>
 
-
-<select
-id="statusFilter"
-onchange="renderMatches()">
+<select id="matchStatus">
 
 <option value="all">
 كل الحالات
@@ -623,7 +637,7 @@ onchange="renderMatches()">
 
 <div
 id="matchesList"
-class="matches-grid">
+class="matches">
 
 <div class="empty">
 ⏳ جاري تحميل المباريات...
@@ -641,7 +655,7 @@ class="matches-grid">
 <div class="section-title">
 
 <h2>
-📰 الأخبار
+📰 آخر الأخبار
 </h2>
 
 </div>
@@ -649,10 +663,10 @@ class="matches-grid">
 
 <div
 id="newsList"
-class="content-grid">
+class="grid">
 
 <div class="empty">
-⏳ جاري تحميل الأخبار...
+جاري تحميل الأخبار...
 </div>
 
 </div>
@@ -667,7 +681,7 @@ class="content-grid">
 <div class="section-title">
 
 <h2>
-🔄 الانتقالات
+🔄 آخر الانتقالات
 </h2>
 
 </div>
@@ -675,10 +689,10 @@ class="content-grid">
 
 <div
 id="transfersList"
-class="content-grid">
+class="grid">
 
 <div class="empty">
-⏳ جاري تحميل الانتقالات...
+جاري تحميل الانتقالات...
 </div>
 
 </div>
@@ -693,7 +707,7 @@ class="content-grid">
 <div class="section-title">
 
 <h2>
-🏆 الترتيب
+🏆 ترتيب البطولات
 </h2>
 
 </div>
@@ -701,8 +715,7 @@ class="content-grid">
 
 <select
 id="standingLeague"
-class="small-select"
-onchange="loadStandings()">
+class="section-select">
 
 <option value="la-liga">
 🇪🇸 La Liga
@@ -717,10 +730,11 @@ onchange="loadStandings()">
 
 <div
 id="standingsList"
-class="table-wrap">
+class="table-container"
+style="margin-top:15px;">
 
 <div class="empty">
-⏳ جاري تحميل الترتيب...
+جاري تحميل الترتيب...
 </div>
 
 </div>
@@ -743,8 +757,7 @@ class="table-wrap">
 
 <select
 id="scorerLeague"
-class="small-select"
-onchange="loadScorers()">
+class="section-select">
 
 <option value="la-liga">
 🇪🇸 La Liga
@@ -759,10 +772,11 @@ onchange="loadScorers()">
 
 <div
 id="scorersList"
-class="content-grid">
+class="scorers"
+style="margin-top:15px;">
 
 <div class="empty">
-⏳ جاري تحميل الهدافين...
+جاري تحميل الهدافين...
 </div>
 
 </div>
@@ -783,10 +797,8 @@ class="modal">
 
 <button
 class="close"
-onclick="closeModal()">
-
+id="closeModal">
 ×
-
 </button>
 
 <div id="modalContent"></div>
@@ -803,7 +815,7 @@ onclick="closeModal()">
 </strong>
 
 <p>
-Matches • News • Transfers • Standings • Scorers
+Football • Matches • News • Transfers • Standings • Scorers
 </p>
 
 <p>
@@ -815,92 +827,66 @@ Matches • News • Transfers • Standings • Scorers
 
 <script>
 
+/* =========================================
+   TJ FOOTBALL
+   ========================================= */
 
-/* =====================================
-   TJ FOOTBALL ENGINE
-===================================== */
 
+/* DATA */
 
 let matches = [];
 
 
-/* =====================================
-   SAFE JSON
-===================================== */
+/* -----------------------------------------
+   LOAD JSON
+   ----------------------------------------- */
 
-async function loadJSON(file){
+function getJSON(file){
 
-try{
+return fetch("./data/" + file)
 
-const response =
-await fetch(
-"./data/" + file + "?v=" + Date.now(),
-{
-cache:"no-store"
-}
-);
-
+.then(function(response){
 
 if(!response.ok){
 
 throw new Error(
-file +
-" HTTP " +
-response.status
+file + " : HTTP " + response.status
 );
 
 }
 
+return response.json();
 
-return await response.json();
-
-
-}catch(error){
-
-console.warn(
-"Could not load:",
-file,
-error
-);
-
-return null;
-
-}
+});
 
 }
 
 
-/* =====================================
-   ESCAPE
-===================================== */
+/* -----------------------------------------
+   BASIC HELPERS
+   ----------------------------------------- */
 
-function safe(value){
+function text(value){
 
 return String(
-value ?? ""
-)
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
+value === undefined ||
+value === null
+? ""
+: value
+);
 
 }
 
-
-/* =====================================
-   TEAM
-===================================== */
 
 function teamName(team){
 
 if(!team)
-return "Unknown";
+return "";
 
 if(typeof team === "string")
 return team;
 
-return team.name || "Unknown";
+return team.name || "";
 
 }
 
@@ -918,29 +904,34 @@ return team.logo || "";
 }
 
 
-/* =====================================
-   LOAD MATCHES
-===================================== */
+/* -----------------------------------------
+   MATCHES
+   ----------------------------------------- */
 
-async function loadMatches(){
+function loadMatches(){
 
-const data =
-await loadJSON(
-"matches.json"
-);
+getJSON("matches.json")
 
+.then(function(data){
+
+/*
+   IMPORTANT:
+   Your real JSON is:
+
+   {
+      filters:{...},
+      matches:[...]
+   }
+*/
 
 if(
 !data ||
 !Array.isArray(data.matches)
 ){
 
-document.getElementById(
-"globalStatus"
-).innerHTML =
-"❌ matches.json غير صحيح";
-
-return;
+throw new Error(
+"matches array not found"
+);
 
 }
 
@@ -949,34 +940,42 @@ matches =
 data.matches;
 
 
-/* العدد */
+/* COUNT */
 
 document.getElementById(
-"matchCount"
+"count"
 ).textContent =
 matches.length +
 " مباراة";
 
 
-/* البطولات */
+/* LEAGUES */
 
-const leagues =
-[
-...new Set(
-matches.map(
-m => m.league
-)
-)
-];
+var leagues = [];
+
+matches.forEach(function(match){
+
+if(
+match.league &&
+leagues.indexOf(match.league) === -1
+){
+
+leagues.push(
+match.league
+);
+
+}
+
+});
 
 
-const leagueFilter =
+var league =
 document.getElementById(
-"leagueFilter"
+"league"
 );
 
 
-leagueFilter.innerHTML =
+league.innerHTML =
 `
 <option value="all">
 كل البطولات
@@ -984,110 +983,116 @@ leagueFilter.innerHTML =
 `;
 
 
-leagues.forEach(
-league => {
+leagues.forEach(function(item){
 
-leagueFilter.innerHTML +=
+league.innerHTML +=
 `
-<option value="${safe(league)}">
-${safe(league)}
+<option value="${item}">
+${item}
 </option>
 `;
 
 });
 
 
-/* عرض */
+/* DISPLAY */
 
 renderMatches();
 
 
+/* STATUS */
+
 document.getElementById(
-"globalStatus"
-).innerHTML =
+"status"
+).textContent =
 "✅ تم تحميل " +
 matches.length +
-" مباريات بنجاح";
+" مباريات";
+
+
+})
+
+.catch(function(error){
+
+console.error(error);
+
+document.getElementById(
+"status"
+).textContent =
+"❌ خطأ في تحميل المباريات";
+
+
+document.getElementById(
+"matchesList"
+).innerHTML =
+`
+<div class="empty">
+❌ لم يتم تحميل المباريات.
+<br><br>
+${error.message}
+</div>
+`;
+
+});
 
 }
 
 
-/* =====================================
-   RENDER MATCHES
-===================================== */
+/* -----------------------------------------
+   RENDER
+   ----------------------------------------- */
 
 function renderMatches(){
 
-const container =
+var container =
 document.getElementById(
 "matchesList"
 );
 
 
-const search =
+var search =
 document.getElementById(
-"searchInput"
+"search"
 ).value
-.toLowerCase()
-.trim();
+.toLowerCase();
 
 
-const league =
+var league =
 document.getElementById(
-"leagueFilter"
+"league"
 ).value;
 
 
-const status =
+var status =
 document.getElementById(
-"statusFilter"
+"matchStatus"
 ).value;
 
 
-const filtered =
-matches.filter(
-match => {
+var result =
+matches.filter(function(match){
 
+var home =
+teamName(match.homeTeam)
+.toLowerCase();
 
-const home =
-teamName(
-match.homeTeam
-)
+var away =
+teamName(match.awayTeam)
 .toLowerCase();
 
 
-const away =
-teamName(
-match.awayTeam
-)
-.toLowerCase();
-
-
-const competition =
-String(
-match.league || ""
-)
-.toLowerCase();
-
-
-const searchOK =
+var searchOK =
 !search ||
-(
-home +
-" " +
-away +
-" " +
-competition
-)
-.includes(search);
+home.includes(search) ||
+away.includes(search);
 
 
-const leagueOK =
+var leagueOK =
 league === "all" ||
 match.league === league;
 
 
-const statusOK =
+var statusOK =
 status === "all" ||
 match.status === status;
 
@@ -1101,12 +1106,12 @@ statusOK
 });
 
 
-if(!filtered.length){
+if(!result.length){
 
 container.innerHTML =
 `
 <div class="empty">
-لا توجد مباريات.
+لا توجد مباريات مطابقة.
 </div>
 `;
 
@@ -1115,62 +1120,45 @@ return;
 }
 
 
-container.innerHTML =
-filtered
-.map(
-match =>
-createMatch(match)
-)
-.join("");
-
-}
+container.innerHTML = "";
 
 
-/* =====================================
-   MATCH CARD
-===================================== */
+result.forEach(function(match){
 
-function createMatch(match){
+var card =
+document.createElement(
+"article"
+);
 
-const home =
+card.className =
+"match";
+
+
+var home =
 match.homeTeam || {};
 
-const away =
+var away =
 match.awayTeam || {};
 
 
-const homeName =
-teamName(home);
-
-const awayName =
-teamName(away);
-
-
-const homeLogo =
-teamLogo(home);
-
-const awayLogo =
-teamLogo(away);
-
-
-const homeScore =
+var homeScore =
 match.homeScore === null ||
 match.homeScore === undefined
 ? "-"
 : match.homeScore;
 
 
-const awayScore =
+var awayScore =
 match.awayScore === null ||
 match.awayScore === undefined
 ? "-"
 : match.awayScore;
 
 
-let statusText =
+var statusText =
 "🕐 قادمة";
 
-let statusClass =
+var statusClass =
 "scheduled";
 
 
@@ -1196,30 +1184,17 @@ statusClass =
 }
 
 
-/*
-نضع البيانات في DOM
-بدون onclick معقد.
-*/
+card.innerHTML =
 
-const id =
-String(match.id);
-
-
-return `
-
-<article
-class="card match-card"
-data-match-id="${safe(id)}"
->
-
-<div class="match-head">
+`
+<div class="match-top">
 
 <span class="league">
-${safe(match.league)}
+${text(match.league)}
 </span>
 
 <span class="date">
-${safe(match.date)}
+${text(match.date)}
 </span>
 
 </div>
@@ -1231,21 +1206,20 @@ ${safe(match.date)}
 <div class="team">
 
 ${
-homeLogo
+teamLogo(home)
 ?
 `
 <img
 class="team-logo"
-src="${safe(homeLogo)}"
+src="${teamLogo(home)}"
 alt=""
-onerror="this.style.display='none'"
 >
 `
 :
 ""
 }
 
-${safe(homeName)}
+${teamName(home)}
 
 </div>
 
@@ -1262,21 +1236,20 @@ ${awayScore}
 <div class="team">
 
 ${
-awayLogo
+teamLogo(away)
 ?
 `
 <img
 class="team-logo"
-src="${safe(awayLogo)}"
+src="${teamLogo(away)}"
 alt=""
-onerror="this.style.display='none'"
 >
 `
 :
 ""
 }
 
-${safe(awayName)}
+${teamName(away)}
 
 </div>
 
@@ -1291,92 +1264,78 @@ class="match-status ${statusClass}"
 ${statusText}
 
 </div>
-
-</article>
-
 `;
 
-}
 
-
-/* =====================================
-   MATCH CLICK
-===================================== */
-
-document
-.getElementById("matchesList")
-.addEventListener(
+card.addEventListener(
 "click",
-function(event){
-
-const card =
-event.target.closest(
-".match-card"
-);
-
-
-if(!card)
-return;
-
-
-const id =
-card.dataset.matchId;
-
-
-const match =
-matches.find(
-m =>
-String(m.id) ===
-String(id)
-);
-
-
-if(!match)
-return;
-
+function(){
 
 openMatch(match);
 
 });
 
 
-/* =====================================
+container.appendChild(card);
+
+});
+
+}
+
+
+/* -----------------------------------------
+   SEARCH / FILTERS
+   ----------------------------------------- */
+
+document.getElementById(
+"search"
+).addEventListener(
+"input",
+renderMatches
+);
+
+
+document.getElementById(
+"league"
+).addEventListener(
+"change",
+renderMatches
+);
+
+
+document.getElementById(
+"matchStatus"
+).addEventListener(
+"change",
+renderMatches
+);
+
+
+/* -----------------------------------------
    MATCH MODAL
-===================================== */
+   ----------------------------------------- */
 
 function openMatch(match){
 
-const home =
+var home =
 match.homeTeam || {};
 
-const away =
+var away =
 match.awayTeam || {};
 
 
-const homeLogo =
-teamLogo(home);
-
-const awayLogo =
-teamLogo(away);
-
-
-const homeScore =
-match.homeScore ?? "-";
-
-const awayScore =
-match.awayScore ?? "-";
-
-
-let status =
+var status =
 "🕐 قادمة";
 
 
 if(match.status === "finished")
-status = "✅ انتهت";
+status =
+"✅ انتهت";
 
 
 if(match.status === "live")
-status = "🔴 مباشر";
+status =
+"🔴 مباشر";
 
 
 document.getElementById(
@@ -1384,13 +1343,12 @@ document.getElementById(
 ).innerHTML =
 
 `
-
 <h2 style="text-align:center">
-${safe(match.league)}
+${text(match.league)}
 </h2>
 
 <p style="text-align:center;color:#777">
-${safe(match.date)}
+${text(match.date)}
 </p>
 
 
@@ -1400,29 +1358,28 @@ ${safe(match.date)}
 <div class="detail-team">
 
 ${
-homeLogo
+teamLogo(home)
 ?
 `
 <img
 class="detail-logo"
-src="${safe(homeLogo)}"
-alt=""
+src="${teamLogo(home)}"
 >
 `
 :
 ""
 }
 
-${safe(teamName(home))}
+${teamName(home)}
 
 </div>
 
 
 <div class="detail-score">
 
-${homeScore}
+${match.homeScore ?? "-"}
 -
-${awayScore}
+${match.awayScore ?? "-"}
 
 </div>
 
@@ -1430,20 +1387,19 @@ ${awayScore}
 <div class="detail-team">
 
 ${
-awayLogo
+teamLogo(away)
 ?
 `
 <img
 class="detail-logo"
-src="${safe(awayLogo)}"
-alt=""
+src="${teamLogo(away)}"
 >
 `
 :
 ""
 }
 
-${safe(teamName(away))}
+${teamName(away)}
 
 </div>
 
@@ -1453,102 +1409,78 @@ ${safe(teamName(away))}
 
 <div class="info">
 
-<strong>
-الحالة:
-</strong>
-
+<strong>الحالة:</strong>
 ${status}
 
 <br>
 
-<strong>
-البطولة:
-</strong>
-
-${safe(match.league)}
+<strong>البطولة:</strong>
+${text(match.league)}
 
 <br>
 
-<strong>
-التاريخ:
-</strong>
-
-${safe(match.date)}
+<strong>التاريخ:</strong>
+${text(match.date)}
 
 </div>
-
 `;
 
 
-document
-.getElementById("modal")
-.classList.add("show");
+document.getElementById(
+"modal"
+).classList.add("open");
 
 }
 
 
-function closeModal(){
+document.getElementById(
+"closeModal"
+).addEventListener(
+"click",
+function(){
 
-document
-.getElementById("modal")
-.classList.remove("show");
+document.getElementById(
+"modal"
+).classList.remove("open");
 
-}
+});
 
 
-document
-.getElementById("modal")
-.addEventListener(
+document.getElementById(
+"modal"
+).addEventListener(
 "click",
 function(event){
 
 if(event.target === this){
 
-closeModal();
+this.classList.remove("open");
 
 }
 
 });
 
 
-/* =====================================
+/* -----------------------------------------
    NEWS
-===================================== */
+   ----------------------------------------- */
 
-async function loadNews(){
+function loadNews(){
 
-const box =
+getJSON("news.json")
+
+.then(function(data){
+
+var list =
+Array.isArray(data)
+? data
+: data.news || [];
+
+
+var box =
 document.getElementById(
 "newsList"
 );
-
-
-const data =
-await loadJSON(
-"news.json"
-);
-
-
-if(!data){
-
-box.innerHTML =
-`
-<div class="empty">
-📰 الأخبار غير متوفرة حاليًا.
-</div>
-`;
-
-return;
-
-}
-
-
-const list =
-Array.isArray(data)
-? data
-: Array.isArray(data.news)
-? data.news
-: [];
 
 
 if(!list.length){
@@ -1565,16 +1497,26 @@ return;
 }
 
 
-box.innerHTML =
+box.innerHTML = "";
+
+
 list.slice(0,12)
-.map(item => {
+.forEach(function(item){
 
-return `
+var card =
+document.createElement(
+"article"
+);
 
-<article class="card">
+card.className =
+"card";
 
+
+card.innerHTML =
+
+`
 <div class="league">
-${safe(
+${text(
 item.category ||
 item.league ||
 "Football"
@@ -1582,84 +1524,74 @@ item.league ||
 </div>
 
 <div class="news-title">
-
-${safe(
+${text(
 item.title ||
 item.headline ||
 "خبر رياضي"
 )}
-
 </div>
 
 <div class="news-text">
-
-${safe(
+${text(
 item.description ||
 item.summary ||
 item.content ||
 ""
 )}
-
 </div>
 
 <div class="meta">
-
-${safe(
+${text(
 item.date ||
 item.publishedAt ||
 ""
 )}
-
 </div>
-
-</article>
-
 `;
 
+
+box.appendChild(card);
+
+});
+
 })
-.join("");
+
+.catch(function(){
+
+document.getElementById(
+"newsList"
+).innerHTML =
+`
+<div class="empty">
+📰 الأخبار غير متوفرة حاليًا.
+</div>
+`;
+
+});
 
 }
 
 
-/* =====================================
+/* -----------------------------------------
    TRANSFERS
-===================================== */
+   ----------------------------------------- */
 
-async function loadTransfers(){
+function loadTransfers(){
 
-const box =
+getJSON("transfers.json")
+
+.then(function(data){
+
+var list =
+Array.isArray(data)
+? data
+: data.transfers || [];
+
+
+var box =
 document.getElementById(
 "transfersList"
 );
-
-
-const data =
-await loadJSON(
-"transfers.json"
-);
-
-
-if(!data){
-
-box.innerHTML =
-`
-<div class="empty">
-🔄 الانتقالات غير متوفرة حاليًا.
-</div>
-`;
-
-return;
-
-}
-
-
-const list =
-Array.isArray(data)
-? data
-: Array.isArray(data.transfers)
-? data.transfers
-: [];
 
 
 if(!list.length){
@@ -1676,18 +1608,18 @@ return;
 }
 
 
-box.innerHTML =
+box.innerHTML = "";
+
+
 list.slice(0,12)
-.map(item => {
+.forEach(function(item){
 
-
-let player =
+var player =
 item.player;
 
 if(typeof player === "object")
 player =
-player?.name;
-
+player.name;
 
 player =
 player ||
@@ -1695,47 +1627,50 @@ item.name ||
 "لاعب";
 
 
-let from =
+var from =
 item.from;
 
 if(typeof from === "object")
 from =
-from?.name;
-
+from.name;
 
 from =
 from ||
 "—";
 
 
-let to =
+var to =
 item.to;
 
 if(typeof to === "object")
 to =
-to?.name;
-
+to.name;
 
 to =
 to ||
 "—";
 
 
-return `
+var card =
+document.createElement(
+"article"
+);
 
-<article class="card">
+card.className =
+"card";
 
+
+card.innerHTML =
+
+`
 <div class="transfer-player">
-
-🔄 ${safe(player)}
-
+🔄 ${text(player)}
 </div>
-
 
 <div class="transfer">
 
 <div>
-${safe(from)}
+${text(from)}
 </div>
 
 <div class="arrow">
@@ -1743,37 +1678,51 @@ ${safe(from)}
 </div>
 
 <div>
-${safe(to)}
+${text(to)}
 </div>
 
 </div>
-
-</article>
-
 `;
 
+
+box.appendChild(card);
+
+});
+
 })
-.join("");
+
+.catch(function(){
+
+document.getElementById(
+"transfersList"
+).innerHTML =
+`
+<div class="empty">
+🔄 الانتقالات غير متوفرة حاليًا.
+</div>
+`;
+
+});
 
 }
 
 
-/* =====================================
+/* -----------------------------------------
    STANDINGS
-===================================== */
+   ----------------------------------------- */
 
-async function loadStandings(){
+function loadStandings(){
 
-const box =
-document.getElementById(
-"standingsList"
-);
-
-
-const league =
+var league =
 document.getElementById(
 "standingLeague"
 ).value;
+
+
+var box =
+document.getElementById(
+"standingsList"
+);
 
 
 box.innerHTML =
@@ -1784,28 +1733,13 @@ box.innerHTML =
 `;
 
 
-const data =
-await loadJSON(
-league +
-"-standings.json"
-);
+getJSON(
+league + "-standings.json"
+)
 
+.then(function(data){
 
-if(!data){
-
-box.innerHTML =
-`
-<div class="empty">
-🏆 الترتيب غير متوفر حاليًا.
-</div>
-`;
-
-return;
-
-}
-
-
-let list =
+var list =
 Array.isArray(data)
 ? data
 : data.standings ||
@@ -1824,25 +1758,16 @@ list[0];
 }
 
 
-if(!Array.isArray(list) ||
-!list.length){
+if(!list.length){
 
-box.innerHTML =
-`
-<div class="empty">
-لا توجد بيانات ترتيب.
-</div>
-`;
-
-return;
+throw new Error();
 
 }
 
 
-box.innerHTML =
+var html =
 
 `
-
 <table>
 
 <thead>
@@ -1855,25 +1780,26 @@ box.innerHTML =
 <th>ف</th>
 <th>ت</th>
 <th>خ</th>
-<th>نقاط</th>
+<th>النقاط</th>
 
 </tr>
 
 </thead>
 
 <tbody>
+`;
 
-${
+
 list.slice(0,30)
-.map(
-(row,index) => {
+.forEach(function(row,index){
 
-const team =
+var team =
 row.team || row;
 
 
-return `
+html +=
 
+`
 <tr>
 
 <td>
@@ -1881,88 +1807,98 @@ ${index + 1}
 </td>
 
 <td>
-${safe(
-teamName(team)
-)}
+${teamName(team)}
 </td>
 
 <td>
-${safe(
-row.played ??
+${row.played ??
 row.games ??
 row.p ??
-"-"
-)}
+"-"}
 </td>
 
 <td>
-${safe(
-row.wins ??
+${row.wins ??
 row.w ??
-"-"
-)}
+"-"}
 </td>
 
 <td>
-${safe(
-row.draws ??
+${row.draws ??
 row.d ??
-"-"
-)}
+"-"}
 </td>
 
 <td>
-${safe(
-row.losses ??
+${row.losses ??
 row.l ??
-"-"
-)}
+"-"}
 </td>
 
 <td>
 <strong>
-${safe(
-row.points ??
+${row.points ??
 row.pts ??
-"-"
-)}
+"-"}
 </strong>
 </td>
 
 </tr>
-
 `;
 
-}
-)
-.join("")
-}
+});
 
+
+html +=
+`
 </tbody>
-
 </table>
-
 `;
+
+
+box.innerHTML =
+html;
+
+})
+
+.catch(function(){
+
+box.innerHTML =
+`
+<div class="empty">
+🏆 الترتيب غير متوفر حاليًا.
+</div>
+`;
+
+});
 
 }
 
 
-/* =====================================
-   SCORERS
-===================================== */
-
-async function loadScorers(){
-
-const box =
 document.getElementById(
-"scorersList"
+"standingLeague"
+).addEventListener(
+"change",
+loadStandings
 );
 
 
-const league =
+/* -----------------------------------------
+   SCORERS
+   ----------------------------------------- */
+
+function loadScorers(){
+
+var league =
 document.getElementById(
 "scorerLeague"
 ).value;
+
+
+var box =
+document.getElementById(
+"scorersList"
+);
 
 
 box.innerHTML =
@@ -1973,28 +1909,13 @@ box.innerHTML =
 `;
 
 
-const data =
-await loadJSON(
-league +
-"-scorers.json"
-);
+getJSON(
+league + "-scorers.json"
+)
 
+.then(function(data){
 
-if(!data){
-
-box.innerHTML =
-`
-<div class="empty">
-👟 الهدافون غير متوفرين حاليًا.
-</div>
-`;
-
-return;
-
-}
-
-
-let list =
+var list =
 Array.isArray(data)
 ? data
 : data.scorers ||
@@ -2014,25 +1935,74 @@ list[0];
 }
 
 
-if(!Array.isArray(list) ||
-!list.length){
+if(!list.length){
 
-box.innerHTML =
-`
-<div class="empty">
-لا توجد بيانات هدافين.
-</div>
-`;
-
-return;
+throw new Error();
 
 }
 
 
-box.innerHTML =
+box.innerHTML = "";
+
+
 list.slice(0,20)
-.map(
-(row,index) => {
+.forEach(function(row,index){
+
+var player =
+row.player;
 
 
-let playe
+if(typeof player === "object")
+player =
+player.name;
+
+
+player =
+player ||
+row.name ||
+"لاعب";
+
+
+var team =
+row.team;
+
+
+if(typeof team === "object")
+team =
+team.name;
+
+
+team =
+team ||
+"";
+
+
+var goals =
+row.goals ??
+row.total ??
+row.count ??
+"-";
+
+
+var item =
+document.createElement(
+"div"
+);
+
+item.className =
+"scorer";
+
+
+item.innerHTML =
+
+`
+<div class="rank">
+${index + 1}
+</div>
+
+<div class="scorer-info">
+
+<div class="scorer-name">
+${text(player)}
+   </div>
+   

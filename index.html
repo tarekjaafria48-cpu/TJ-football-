@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>TJ Football ⚽</title>
 
 <style>
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #f1f3f6;
+    color: #111;
 }
 
 header {
     background: linear-gradient(135deg, #e50914, #071a52);
     color: white;
     text-align: center;
-    padding: 25px 10px;
+    padding: 28px 10px;
 }
 
 header h1 {
     margin: 0;
+    font-size: 32px;
+}
+
+header p {
+    margin: 8px 0 0;
+    font-size: 18px;
 }
 
 nav {
     background: white;
-    padding: 12px;
     text-align: center;
+    padding: 15px;
 }
 
 button {
     border: 0;
-    padding: 10px 18px;
+    padding: 11px 22px;
     margin: 4px;
-    border-radius: 20px;
+    border-radius: 25px;
+    font-size: 16px;
     font-weight: bold;
 }
 
@@ -51,24 +60,28 @@ main {
     padding: 15px;
 }
 
-.loading {
+.message {
     background: white;
-    padding: 25px;
+    padding: 30px;
+    border-radius: 15px;
     text-align: center;
-    border-radius: 12px;
+    margin-top: 15px;
+    font-size: 18px;
 }
 
 .league {
     background: white;
     margin-top: 15px;
-    border-radius: 12px;
+    border-radius: 15px;
     overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
 }
 
 .league-title {
     background: #071a52;
     color: white;
-    padding: 12px;
+    padding: 14px;
+    font-size: 17px;
     font-weight: bold;
 }
 
@@ -79,7 +92,7 @@ main {
 
 .teams {
     display: grid;
-    grid-template-columns: 1fr 70px 1fr;
+    grid-template-columns: 1fr 80px 1fr;
     align-items: center;
     text-align: center;
 }
@@ -88,122 +101,165 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     font-weight: bold;
 }
 
 .team img {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     object-fit: contain;
 }
 
 .score {
-    font-size: 22px;
+    font-size: 23px;
     font-weight: bold;
 }
 
 .status {
     text-align: center;
-    margin-top: 8px;
+    margin-top: 10px;
+    font-size: 14px;
     color: #e50914;
     font-weight: bold;
 }
-
 </style>
-
 </head>
 
 <body>
 
 <header>
-
-<h1>⚽ TJ Football</h1>
-
-<p>Live Football Scores</p>
-
+    <h1>⚽ TJ Football</h1>
+    <p>Live Football Scores</p>
 </header>
 
 <nav>
-
-<button id="live" class="active">
-🔴 LIVE
-</button>
-
-<button id="all">
-⚽ ALL
-</button>
-
+    <button id="allButton">ALL ⚽</button>
+    <button id="liveButton" class="active">LIVE 🔴</button>
 </nav>
 
 <main>
-
-<div id="app">
-
-<div class="loading">
-⏳ جاري تحميل المباريات...
-</div>
-
-</div>
-
+    <div id="app">
+        <div class="message">
+            ⏳ جاري الاتصال...
+        </div>
+    </div>
 </main>
 
 <script>
 
-var data = [];
+var matches = [];
+var mode = "live";
 
 var app = document.getElementById("app");
-
-var liveButton = document.getElementById("live");
-
-var allButton = document.getElementById("all");
-
-var currentMode = "live";
+var allButton = document.getElementById("allButton");
+var liveButton = document.getElementById("liveButton");
 
 
-async function loadData() {
+function showMessage(text) {
+    app.innerHTML =
+        "<div class='message'>" +
+        text +
+        "</div>";
+}
+
+
+async function loadFootball() {
+
+    showMessage("⏳ جاري جلب المباريات...");
 
     try {
 
-        var response = await fetch("/api/football");
+        var url =
+            "/api/football?time=" +
+            new Date().getTime();
 
-        var json = await response.json();
+        var response =
+            await fetch(url, {
+                method: "GET",
+                cache: "no-store"
+            });
 
-        data = json.response || [];
+        if (!response.ok) {
 
-        render();
+            throw new Error(
+                "HTTP " + response.status
+            );
+
+        }
+
+        var json =
+            await response.json();
+
+
+        console.log("TJ FOOTBALL API:", json);
+
+
+        if (
+            json &&
+            Array.isArray(json.response)
+        ) {
+
+            matches = json.response;
+
+        } else if (
+            Array.isArray(json)
+        ) {
+
+            matches = json;
+
+        } else {
+
+            matches = [];
+
+        }
+
+
+        renderMatches();
 
     } catch (error) {
 
-        app.innerHTML =
-        "<div class='loading'>❌ حدث خطأ في الاتصال بالـ API</div>";
+        console.log("TJ FOOTBALL ERROR:", error);
 
-        console.log(error);
+        showMessage(
+            "❌ خطأ في الاتصال بالـAPI<br><br>" +
+            error.message
+        );
 
     }
 
 }
 
 
-async function render() {
-
-    app.innerHTML = "";
+function renderMatches() {
 
     var list = [];
 
     var i;
 
-    for (i = 0; i < data.length; i++) {
 
-        var match = data[i];
+    for (i = 0; i < matches.length; i++) {
 
-        var status = match.fixture.status.short;
+        var match =
+            matches[i];
 
-        if (currentMode === "all") {
+        if (!match || !match.fixture) {
+            continue;
+        }
+
+
+        if (mode === "all") {
 
             list.push(match);
 
         } else {
+
+            var status =
+                match.fixture.status &&
+                match.fixture.status.short
+                ? match.fixture.status.short
+                : "";
+
 
             if (
                 status === "1H" ||
@@ -225,186 +281,197 @@ async function render() {
 
     if (list.length === 0) {
 
-        app.innerHTML =
-        "<div class='loading'>لا توجد مباريات حاليًا</div>";
+        if (mode === "live") {
+
+            showMessage(
+                "🔴 لا توجد مباريات مباشرة حاليًا"
+            );
+
+        } else {
+
+            showMessage(
+                "⚽ لا توجد مباريات في بيانات الـAPI حاليًا"
+            );
+
+        }
 
         return;
 
     }
 
 
-    var leagues = {};
+    app.innerHTML = "";
 
 
     for (i = 0; i < list.length; i++) {
 
-        var league =
-        list[i].league.name;
+        var match =
+            list[i];
 
-        if (!leagues[league]) {
 
-            leagues[league] = [];
+        var leagueName =
+            match.league &&
+            match.league.name
+            ? match.league.name
+            : "Football";
+
+
+        var country =
+            match.league &&
+            match.league.country
+            ? match.league.country
+            : "";
+
+
+        var home =
+            match.teams &&
+            match.teams.home &&
+            match.teams.home.name
+            ? match.teams.home.name
+            : "Home";
+
+
+        var away =
+            match.teams &&
+            match.teams.away &&
+            match.teams.away.name
+            ? match.teams.away.name
+            : "Away";
+
+
+        var homeLogo =
+            match.teams &&
+            match.teams.home &&
+            match.teams.home.logo
+            ? match.teams.home.logo
+            : "";
+
+
+        var awayLogo =
+            match.teams &&
+            match.teams.away &&
+            match.teams.away.logo
+            ? match.teams.away.logo
+            : "";
+
+
+        var homeScore =
+            match.goals &&
+            match.goals.home !== null &&
+            match.goals.home !== undefined
+            ? match.goals.home
+            : 0;
+
+
+        var awayScore =
+            match.goals &&
+            match.goals.away !== null &&
+            match.goals.away !== undefined
+            ? match.goals.away
+            : 0;
+
+
+        var status =
+            match.fixture.status &&
+            match.fixture.status.short
+            ? match.fixture.status.short
+            : "";
+
+
+        var statusText =
+            status;
+
+
+        if (
+            status === "1H" ||
+            status === "2H" ||
+            status === "HT" ||
+            status === "ET" ||
+            status === "P" ||
+            status === "LIVE"
+        ) {
+
+            statusText = "🔴 LIVE";
+
+            if (
+                match.fixture.status.elapsed
+            ) {
+
+                statusText +=
+                    " " +
+                    match.fixture.status.elapsed +
+                    "'";
+
+            }
 
         }
 
-        leagues[league].push(list[i]);
-
-    }
-
-
-    for (var leagueName in leagues) {
 
         var box =
-        document.createElement("div");
+            document.createElement("div");
 
-        box.className = "league";
+        box.className =
+            "league";
 
 
         var title =
-        document.createElement("div");
+            document.createElement("div");
 
-        title.className = "league-title";
+        title.className =
+            "league-title";
 
         title.textContent =
-        "🏆 " +
-        leagueName;
+            "🏆 " +
+            leagueName +
+            " - " +
+            country;
 
 
         box.appendChild(title);
 
 
-        for (
-            var j = 0;
-            j < leagues[leagueName].length;
-            j++
-        ) {
-
-            var m =
-            leagues[leagueName][j];
-
-
-            var match =
+        var game =
             document.createElement("div");
 
-            match.className = "match";
+        game.className =
+            "match";
 
 
-            var home =
-            m.teams.home.name;
-
-            var away =
-            m.teams.away.name;
-
-
-            var homeLogo =
-            m.teams.home.logo;
-
-            var awayLogo =
-            m.teams.away.logo;
-
-
-            var homeScore =
-            m.goals.home;
-
-            var awayScore =
-            m.goals.away;
-
-
-            if (homeScore === null) {
-
-                homeScore = 0;
-
-            }
-
-
-            if (awayScore === null) {
-
-                awayScore = 0;
-
-            }
-
-
-            var status =
-            m.fixture.status.short;
-
-
-            var statusText =
-            status;
-
-
-            if (
-                status === "1H" ||
-                status === "2H" ||
-                status === "HT" ||
-                status === "ET" ||
-                status === "P" ||
-                status === "LIVE"
-            ) {
-
-                statusText = "🔴 LIVE";
-
-                if (m.fixture.status.elapsed) {
-
-                    statusText =
-                    "🔴 LIVE " +
-                    m.fixture.status.elapsed +
-                    "'";
-
-                }
-
-            }
-
-
-            match.innerHTML =
-
+        game.innerHTML =
             "<div class='teams'>" +
 
-                "<div class='team'>" +
-
-                    "<img src='" +
-                    homeLogo +
-                    "'>" +
-
-                    "<span>" +
-                    home +
-                    "</span>" +
-
-                "</div>" +
-
-
-                "<div class='score'>" +
-
-                    homeScore +
-                    " : " +
-                    awayScore +
-
-                "</div>" +
-
-
-                "<div class='team'>" +
-
-                    "<img src='" +
-                    awayLogo +
-                    "'>" +
-
-                    "<span>" +
-                    away +
-                    "</span>" +
-
-                "</div>" +
-
+            "<div class='team'>" +
+            "<img src='" +
+            homeLogo +
+            "' alt=''>" +
+            "<span>" +
+            home +
+            "</span>" +
             "</div>" +
 
+            "<div class='score'>" +
+            homeScore +
+            " : " +
+            awayScore +
+            "</div>" +
+
+            "<div class='team'>" +
+            "<img src='" +
+            awayLogo +
+            "' alt=''>" +
+            "<span>" +
+            away +
+            "</span>" +
+            "</div>" +
+
+            "</div>" +
 
             "<div class='status'>" +
             statusText +
             "</div>";
 
 
-            box.appendChild(match);
-
-        }
-
+        box.appendChild(game);
 
         app.appendChild(box);
 
@@ -413,43 +480,47 @@ async function render() {
 }
 
 
-liveButton.onclick = function() {
+allButton.onclick =
+function() {
 
-    currentMode = "live";
+    mode = "all";
 
-    liveButton.className = "active";
+    allButton.className =
+        "active";
 
-    allButton.className = "";
+    liveButton.className =
+        "";
 
-    render();
-
-};
-
-
-allButton.onclick = function() {
-
-    currentMode = "all";
-
-    allButton.className = "active";
-
-    liveButton.className = "";
-
-    render();
+    renderMatches();
 
 };
 
 
-loadData();
+liveButton.onclick =
+function() {
+
+    mode = "live";
+
+    liveButton.className =
+        "active";
+
+    allButton.className =
+        "";
+
+    renderMatches();
+
+};
 
 
-setInterval(function() {
+loadFootball();
 
-    loadData();
 
-}, 60000);
+setInterval(
+    loadFootball,
+    60000
+);
 
 </script>
 
 </body>
-
 </html>

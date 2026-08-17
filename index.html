@@ -1,1225 +1,1682 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>TJ Football ⚽</title>
-
-  <meta
-    name="description"
-    content="TJ Football - مباريات، نتائج، أخبار، انتقالات وترتيب أهم البطولات."
-  >
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family:
-        Arial,
-        Tahoma,
-        sans-serif;
-      background: #f4f6fa;
-      color: #111827;
-    }
-
-    button,
-    input,
-    select {
-      font-family: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    /* =========================
-       HEADER
-    ========================= */
-
-    header {
-      background:
-        linear-gradient(
-          135deg,
-          #06184b,
-          #0a318d 55%,
-          #d90416
-        );
-
-      color: white;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow:
-        0 4px 18px rgba(0,0,0,.18);
-    }
-
-    .topbar {
-      max-width: 1250px;
-      margin: auto;
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      padding: 10px 16px;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 900;
-      font-size: 23px;
-      white-space: nowrap;
-    }
-
-    .logo-ball {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: white;
-      color: #071a52;
-      font-size: 22px;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    nav::-webkit-scrollbar {
-      display: none;
-    }
-
-    nav button {
-      border: 0;
-      background: transparent;
-      color: white;
-      padding: 11px 13px;
-      border-radius: 9px;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    nav button:hover,
-    nav button.active {
-      background: rgba(255,255,255,.18);
-    }
-
-    .menu-button {
-      display: none;
-      border: 0;
-      background: white;
-      color: #071a52;
-      border-radius: 9px;
-      width: 42px;
-      height: 42px;
-      font-size: 20px;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      background:
-        linear-gradient(
-          135deg,
-          #071a52,
-          #123f9b
-        );
-
-      color: white;
-      padding: 35px 16px;
-    }
-
-    .hero-inner {
-      max-width: 1250px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      gap: 25px;
-      align-items: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(30px, 5vw, 55px);
-      margin: 0 0 12px;
-    }
-
-    .hero p {
-      color: #dce7ff;
-      line-height: 1.8;
-      margin: 0 0 20px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .primary-btn,
-    .secondary-btn {
-      border: 0;
-      padding: 13px 18px;
-      border-radius: 10px;
-      font-weight: bold;
-    }
-
-    .primary-btn {
-      background: white;
-      color: #071a52;
-    }
-
-    .secondary-btn {
-      background: rgba(255,255,255,.15);
-      color: white;
-      border: 1px solid rgba(255,255,255,.25);
-    }
-
-    .hero-card {
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 18px;
-      padding: 22px;
-    }
-
-    .hero-card-title {
-      font-size: 13px;
-      color: #dce7ff;
-    }
-
-    .hero-stat {
-      font-size: 42px;
-      font-weight: 900;
-      margin-top: 5px;
-    }
-
-    /* =========================
-       MAIN
-    ========================= */
-
-    main {
-      max-width: 1250px;
-      margin: auto;
-      padding: 25px 14px 60px;
-    }
-
-    section {
-      scroll-margin-top: 95px;
-      margin-bottom: 35px;
-    }
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      margin-bottom: 16px;
-    }
-
-    .section-title h2 {
-      margin: 0;
-      font-size: 24px;
-    }
-
-    .section-title span {
-      color: #6b7280;
-      font-size: 13px;
-    }
-
-    /* =========================
-       STATUS
-    ========================= */
-
-    #status {
-      background: white;
-      border-radius: 13px;
-      padding: 14px;
-      text-align: center;
-      margin-bottom: 20px;
-      box-shadow: 0 3px 15px rgba(0,0,0,.05);
-      font-weight: bold;
-    }
-
-    /* =========================
-       SEARCH / FILTERS
-    ========================= */
-
-    .filters {
-      background: white;
-      padding: 15px;
-      border-radius: 15px;
-      margin-bottom: 18px;
-      box-shadow: 0 3px 15px rgba(0,0,0,.05);
-      display: grid;
-      grid-template-columns: 1fr 180px 180px;
-      gap: 10px;
-    }
-
-    .filters input,
-    .filters select {
-      width: 100%;
-      border: 1px solid #d8dce5;
-      background: #fafbfc;
-      padding: 12px;
-      border-radius: 9px;
-      outline: none;
-    }
-
-    .filters input:focus,
-    .filters select:focus {
-      border-color: #123f9b;
-    }
-
-    /* =========================
-       MATCHES
-    ========================= */
-
-    .matches {
-      display: grid;
-      grid-template-columns:
-        repeat(auto-fit, minmax(310px, 1fr));
-      gap: 15px;
-    }
-
-    .match-card {
-      background: white;
-      border-radius: 18px;
-      padding: 17px;
-      box-shadow:
-        0 5px 20px rgba(0,0,0,.07);
-      border: 1px solid #edf0f5;
-      transition: .2s;
-      cursor: pointer;
-    }
-
-    .match-card:hover {
-      transform: translateY(-3px);
-      box-shadow:
-        0 9px 25px rgba(0,0,0,.11);
-    }
-
-    .match-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-
-    .league {
-      color: #6b7280;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    .match-date {
-      color: #9ca3af;
-      font-size: 11px;
-    }
-
-    .teams {
-      display: grid;
-      grid-template-columns: 1fr 75px 1fr;
-      align-items: center;
-      gap: 5px;
-      text-align: center;
-    }
-
-    .team {
-      font-weight: bold;
-      font-size: 14px;
-      min-width: 0;
-    }
-
-    .team-name {
-      display: block;
-      line-height: 1.4;
-    }
-
-    .team-logo {
-      width: 55px;
-      height: 55px;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto 8px;
-    }
-
-    .score {
-      font-size: 24px;
-      font-weight: 900;
-      color: #111827;
-    }
-
-    .score.pending {
-      color: #9ca3af;
-    }
-
-    .match-status {
-      text-align: center;
-      margin-top: 14px;
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    .status-live {
-      color: #dc2626;
-    }
-
-    .status-finished {
-      color: #059669;
-    }
-
-    .status-scheduled {
-      color: #2563eb;
-    }
-
-    .empty {
-      background: white;
-      padding: 30px;
-      text-align: center;
-      border-radius: 15px;
-      color: #6b7280;
-    }
-
-    /* =========================
-       NEWS
-    ========================= */
-
-    .news-grid {
-      display: grid;
-      grid-template-columns:
-        repeat(auto-fit, minmax(260px, 1fr));
-      gap: 15px;
-    }
-
-    .news-card {
-      background: white;
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow:
-        0 4px 18px rgba(0,0,0,.06);
-    }
-
-    .news-category {
-      color: #d90416;
-      font-size: 11px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-
-    .news-card h3 {
-      margin: 0 0 9px;
-      line-height: 1.5;
-      font-size: 17px;
-    }
-
-    .news-card p {
-      color: #6b7280;
-      font-size: 13px;
-      line-height: 1.7;
-      margin: 0;
-    }
-
-    .news-date {
-      color: #9ca3af;
-      font-size: 11px;
-      margin-top: 12px;
-    }
-
-    /* =========================
-       TRANSFERS
-    ========================= */
-
-    .transfer-grid {
-      display: grid;
-      grid-template-columns:
-        repeat(auto-fit, minmax(260px, 1fr));
-      gap: 15px;
-    }
-
-    .transfer-card {
-      background: white;
-      padding: 18px;
-      border-radius: 16px;
-      box-shadow:
-        0 4px 18px rgba(0,0,0,.06);
-    }
-
-    .transfer-player {
-      font-weight: 900;
-      font-size: 18px;
-      margin-bottom: 12px;
-    }
-
-    .transfer-row {
-      display: grid;
-      grid-template-columns: 1fr 40px 1fr;
-      align-items: center;
-      text-align: center;
-      gap: 5px;
-    }
-
-    .arrow {
-      font-size: 20px;
-      color: #d90416;
-      font-weight: bold;
-    }
-
-    .transfer-meta {
-      margin-top: 12px;
-      color: #6b7280;
-      font-size: 12px;
-    }
-
-    /* =========================
-       TABLE
-    ========================= */
-
-    .table-box {
-      background: white;
-      border-radius: 16px;
-      overflow: auto;
-      box-shadow:
-        0 4px 18px rgba(0,0,0,.06);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 600px;
-    }
-
-    th,
-    td {
-      padding: 13px 10px;
-      border-bottom: 1px solid #edf0f5;
-      text-align: center;
-      font-size: 13px;
-    }
-
-    th {
-      background: #071a52;
-      color: white;
-    }
-
-    td:first-child,
-    th:first-child {
-      width: 50px;
-    }
-
-    .club {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 9px;
-      font-weight: bold;
-    }
-
-    .club img {
-      width: 27px;
-      height: 27px;
-      object-fit: contain;
-    }
-
-    /* =========================
-       SCORERS
-    ========================= */
-
-    .scorers {
-      display: grid;
-      grid-template-columns:
-        repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-    }
-
-    .scorer {
-      background: white;
-      border-radius: 15px;
-      padding: 16px;
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      box-shadow:
-        0 4px 15px rgba(0,0,0,.06);
-    }
-
-    .scorer-number {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-      background: #071a52;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-
-    .scorer-info {
-      flex: 1;
-    }
-
-    .scorer-name {
-      font-weight: bold;
-    }
-
-    .scorer-team {
-      color: #777;
-      font-size: 11px;
-      margin-top: 4px;
-    }
-
-    .goals {
-      font-size: 20px;
-      font-weight: 900;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    footer {
-      background: #071a52;
-      color: white;
-      padding: 30px 15px;
-      text-align: center;
-    }
-
-    footer strong {
-      font-size: 22px;
-    }
-
-    footer p {
-      color: #cbd5e1;
-      font-size: 12px;
-    }
-
-    /* =========================
-       MODAL
-    ========================= */
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.65);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 2000;
-      padding: 15px;
-    }
-
-    .modal.show {
-      display: flex;
-    }
-
-    .modal-content {
-      background: white;
-      border-radius: 20px;
-      width: 100%;
-      max-width: 650px;
-      max-height: 90vh;
-      overflow-y: auto;
-      padding: 22px;
-      position: relative;
-    }
-
-    .close {
-      position: absolute;
-      left: 15px;
-      top: 15px;
-      width: 36px;
-      height: 36px;
-      border: 0;
-      border-radius: 50%;
-      background: #f1f3f6;
-      font-size: 20px;
-    }
-
-    .modal-title {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .detail-score {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-      text-align: center;
-    }
-
-    .detail-team {
-      width: 130px;
-      font-weight: bold;
-    }
-
-    .detail-team img {
-      width: 70px;
-      height: 70px;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto 10px;
-    }
-
-    .detail-score-number {
-      font-size: 30px;
-      font-weight: 900;
-    }
-
-    .detail-info {
-      background: #f7f8fb;
-      border-radius: 12px;
-      padding: 15px;
-      margin-top: 20px;
-      line-height: 2;
-      font-size: 13px;
-    }
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 800px) {
-
-      .topbar {
-        flex-wrap: wrap;
-      }
-
-      .menu-button {
-        display: block;
-      }
-
-      nav {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      nav.open {
-        display: flex;
-      }
-
-      nav button {
-        text-align: right;
-      }
-
-      .hero-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .filters {
-        grid-template-columns: 1fr;
-      }
-
-    }
-
-    @media (max-width: 500px) {
-
-      .hero {
-        padding: 25px 14px;
-      }
-
-      .matches {
-        grid-template-columns: 1fr;
-      }
-
-      .teams {
-        grid-template-columns: 1fr 65px 1fr;
-      }
-
-      .team-logo {
-        width: 48px;
-        height: 48px;
-      }
-
-      .score {
-        font-size: 21px;
-      }
-
-      .detail-score {
-        gap: 10px;
-      }
-
-      .detail-team {
-        width: 105px;
-      }
-
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TJ Football ⚽</title>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;
+ font-family:Arial,Tahoma,sans-serif;
+ background:#f3f5f9;
+ color:#111827
+}
+button,input,select{font-family:inherit}
+button{cursor:pointer}
+
+header{
+ position:sticky;
+ top:0;
+ z-index:1000;
+ background:linear-gradient(135deg,#06184b,#0b328f,#d90416);
+ color:#fff;
+ box-shadow:0 4px 18px #0002
+}
+
+.topbar{
+ max-width:1250px;
+ margin:auto;
+ min-height:70px;
+ padding:10px 15px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:15px
+}
+
+.logo{
+ display:flex;
+ align-items:center;
+ gap:10px;
+ font-size:23px;
+ font-weight:900;
+ white-space:nowrap
+}
+
+.ball{
+ width:42px;
+ height:42px;
+ border-radius:50%;
+ background:#fff;
+ color:#071a52;
+ display:flex;
+ align-items:center;
+ justify-content:center
+}
+
+nav{
+ display:flex;
+ gap:5px;
+ overflow-x:auto
+}
+
+nav button{
+ border:0;
+ color:#fff;
+ background:transparent;
+ padding:10px 13px;
+ border-radius:9px;
+ font-weight:bold;
+ white-space:nowrap
+}
+
+nav button:hover,
+nav button.active{
+ background:#ffffff22
+}
+
+.menu{
+ display:none;
+ border:0;
+ background:#fff;
+ color:#071a52;
+ width:42px;
+ height:42px;
+ border-radius:9px;
+ font-size:20px
+}
+
+.hero{
+ color:#fff;
+ background:linear-gradient(135deg,#071a52,#123f9b);
+ padding:40px 15px
+}
+
+.hero-inner{
+ max-width:1250px;
+ margin:auto;
+ display:grid;
+ grid-template-columns:1.5fr 1fr;
+ gap:25px;
+ align-items:center
+}
+
+.hero h1{
+ font-size:clamp(32px,6vw,58px);
+ margin:0 0 12px
+}
+
+.hero p{
+ color:#dce7ff;
+ line-height:1.8
+}
+
+.hero-buttons{
+ display:flex;
+ gap:10px;
+ flex-wrap:wrap
+}
+
+.hero-buttons button{
+ padding:13px 18px;
+ border-radius:10px;
+ border:0;
+ font-weight:bold
+}
+
+.btn-white{
+ background:#fff;
+ color:#071a52
+}
+
+.btn-transparent{
+ background:#ffffff1c;
+ color:#fff;
+ border:1px solid #ffffff33!important
+}
+
+.hero-card{
+ background:#ffffff18;
+ border:1px solid #ffffff22;
+ border-radius:18px;
+ padding:22px
+}
+
+.hero-number{
+ font-size:45px;
+ font-weight:900
+}
+
+main{
+ max-width:1250px;
+ margin:auto;
+ padding:25px 14px 60px
+}
+
+section{
+ margin-bottom:38px;
+ scroll-margin-top:90px
+}
+
+.section-head{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ margin-bottom:15px
+}
+
+.section-head h2{
+ margin:0;
+ font-size:24px
+}
+
+.section-head small{
+ color:#777
+}
+
+#globalStatus{
+ background:#fff;
+ border-radius:13px;
+ padding:14px;
+ margin-bottom:20px;
+ text-align:center;
+ font-weight:bold;
+ box-shadow:0 3px 15px #0000000d
+}
+
+.filters{
+ display:grid;
+ grid-template-columns:1fr 190px 190px;
+ gap:10px;
+ background:#fff;
+ padding:15px;
+ border-radius:15px;
+ margin-bottom:18px;
+ box-shadow:0 3px 15px #0000000d
+}
+
+.filters input,
+.filters select{
+ width:100%;
+ padding:12px;
+ border:1px solid #d9dde6;
+ border-radius:9px;
+ background:#fafbfc;
+ outline:0
+}
+
+.matches{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+ gap:15px
+}
+
+.card{
+ background:#fff;
+ border-radius:17px;
+ padding:17px;
+ box-shadow:0 4px 18px #0000000d;
+ border:1px solid #edf0f5
+}
+
+.match-card{
+ cursor:pointer;
+ transition:.2s
+}
+
+.match-card:hover{
+ transform:translateY(-3px)
+}
+
+.match-top{
+ display:flex;
+ justify-content:space-between;
+ margin-bottom:15px
+}
+
+.league{
+ color:#6b7280;
+ font-size:12px;
+ font-weight:bold
+}
+
+.date{
+ color:#9ca3af;
+ font-size:11px
+}
+
+.teams{
+ display:grid;
+ grid-template-columns:1fr 70px 1fr;
+ align-items:center;
+ text-align:center;
+ gap:5px
+}
+
+.team{
+ font-size:14px;
+ font-weight:bold
+}
+
+.logo{
+ width:55px;
+ height:55px;
+ object-fit:contain;
+ display:block;
+ margin:0 auto 8px
+}
+
+.score{
+ font-size:24px;
+ font-weight:900
+}
+
+.pending{
+ color:#9ca3af
+}
+
+.match-status{
+ text-align:center;
+ margin-top:13px;
+ font-size:12px;
+ font-weight:bold
+}
+
+.live{color:#dc2626}
+.finished{color:#059669}
+.scheduled{color:#2563eb}
+
+.news-grid,
+.transfer-grid,
+.scorer-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+ gap:15px
+}
+
+.news-title{
+ font-size:17px;
+ font-weight:bold;
+ line-height:1.5;
+ margin:8px 0
+}
+
+.news-text{
+ color:#6b7280;
+ line-height:1.7;
+ font-size:13px
+}
+
+.category{
+ color:#d90416;
+ font-size:11px;
+ font-weight:bold
+}
+
+.meta{
+ color:#9ca3af;
+ font-size:11px;
+ margin-top:10px
+}
+
+.transfer-player{
+ font-size:18px;
+ font-weight:900;
+ margin-bottom:14px
+}
+
+.transfer-row{
+ display:grid;
+ grid-template-columns:1fr 35px 1fr;
+ text-align:center;
+ align-items:center;
+ gap:5px
+}
+
+.arrow{
+ color:#d90416;
+ font-size:20px;
+ font-weight:bold
+}
+
+.table-wrap{
+ background:#fff;
+ border-radius:16px;
+ overflow:auto;
+ box-shadow:0 4px 18px #0000000d
+}
+
+table{
+ width:100%;
+ min-width:600px;
+ border-collapse:collapse
+}
+
+th,td{
+ padding:13px 10px;
+ border-bottom:1px solid #edf0f5;
+ text-align:center;
+ font-size:13px
+}
+
+th{
+ background:#071a52;
+ color:#fff
+}
+
+.club{
+ display:flex;
+ align-items:center;
+ gap:8px;
+ text-align:right;
+ font-weight:bold
+}
+
+.club img{
+ width:28px;
+ height:28px;
+ object-fit:contain
+}
+
+.scorer{
+ background:#fff;
+ border-radius:15px;
+ padding:15px;
+ display:flex;
+ align-items:center;
+ gap:12px;
+ box-shadow:0 4px 15px #0000000d
+}
+
+.rank{
+ width:35px;
+ height:35px;
+ border-radius:50%;
+ background:#071a52;
+ color:#fff;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-weight:bold
+}
+
+.scorer-info{flex:1}
+.scorer-name{font-weight:bold}
+.scorer-team{
+ color:#777;
+ font-size:11px;
+ margin-top:4px
+}
+
+.goals{
+ font-size:21px;
+ font-weight:900
+}
+
+.empty{
+ background:#fff;
+ padding:30px;
+ border-radius:15px;
+ text-align:center;
+ color:#6b7280
+}
+
+footer{
+ background:#071a52;
+ color:#fff;
+ text-align:center;
+ padding:30px 15px
+}
+
+footer p{
+ color:#cbd5e1;
+ font-size:12px
+}
+
+.modal{
+ position:fixed;
+ inset:0;
+ background:#0009;
+ z-index:2000;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ padding:15px
+}
+
+.modal.show{display:flex}
+
+.modal-box{
+ background:#fff;
+ width:100%;
+ max-width:650px;
+ max-height:90vh;
+ overflow:auto;
+ border-radius:20px;
+ padding:22px;
+ position:relative
+}
+
+.close{
+ position:absolute;
+ left:15px;
+ top:15px;
+ width:36px;
+ height:36px;
+ border:0;
+ border-radius:50%;
+ font-size:20px
+}
+
+.detail{
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:20px;
+ text-align:center;
+ margin:25px 0
+}
+
+.detail-team{
+ width:140px;
+ font-weight:bold
+}
+
+.detail-team img{
+ width:70px;
+ height:70px;
+ object-fit:contain;
+ display:block;
+ margin:0 auto 10px
+}
+
+.detail-score{
+ font-size:30px;
+ font-weight:900
+}
+
+.info{
+ background:#f5f7fa;
+ border-radius:12px;
+ padding:15px;
+ line-height:2;
+ font-size:13px
+}
+
+@media(max-width:800px){
+
+ .topbar{
+  flex-wrap:wrap
+ }
+
+ .menu{
+  display:block
+ }
+
+ nav{
+  display:none;
+  width:100%;
+  flex-direction:column
+ }
+
+ nav.open{
+  display:flex
+ }
+
+ nav button{
+  text-align:right
+ }
+
+ .hero-inner{
+  grid-template-columns:1fr
+ }
+
+ .filters{
+  grid-template-columns:1fr
+ }
+
+}
+
+@media(max-width:500px){
+
+ .matches{
+  grid-template-columns:1fr
+ }
+
+ .teams{
+  grid-template-columns:1fr 60px 1fr
+ }
+
+ .logo{
+  width:48px;
+  height:48px
+ }
+
+ .detail{
+  gap:5px
+ }
+
+ .detail-team{
+  width:105px
+ }
+
+}
+</style>
 </head>
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header>
 
-  <div class="topbar">
+<div class="topbar">
 
-    <div class="logo">
-      <div class="logo-ball">⚽</div>
-      <span>TJ Football</span>
-    </div>
+<div class="logo">
+<div class="ball">⚽</div>
+<span>TJ Football</span>
+</div>
 
-    <button
-      class="menu-button"
-      onclick="toggleMenu()">
-      ☰
-    </button>
+<button class="menu" onclick="toggleMenu()">☰</button>
 
-    <nav id="nav">
+<nav id="nav">
 
-      <button
-        class="active"
-        onclick="goTo('home', this)">
-        الرئيسية
-      </button>
+<button class="active" onclick="go('home',this)">
+الرئيسية
+</button>
 
-      <button onclick="goTo('matches-section', this)">
-        المباريات
-      </button>
+<button onclick="go('matches',this)">
+المباريات
+</button>
 
-      <button onclick="goTo('news-section', this)">
-        الأخبار
-      </button>
+<button onclick="go('news',this)">
+الأخبار
+</button>
 
-      <button onclick="goTo('transfers-section', this)">
-        الانتقالات
-      </button>
+<button onclick="go('transfers',this)">
+الانتقالات
+</button>
 
-      <button onclick="goTo('standings-section', this)">
-        الترتيب
-      </button>
+<button onclick="go('standings',this)">
+الترتيب
+</button>
 
-      <button onclick="goTo('scorers-section', this)">
-        الهدافون
-      </button>
+<button onclick="go('scorers',this)">
+الهدافون
+</button>
 
-    </nav>
+</nav>
 
-  </div>
-
+</div>
 </header>
 
+<div class="hero" id="home">
 
-<!-- =========================
-     HERO
-========================= -->
+<div class="hero-inner">
 
-<div
-  class="hero"
-  id="home">
+<div>
 
-  <div class="hero-inner">
+<h1>TJ Football ⚽</h1>
 
-    <div>
+<p>
+منصة كرة قدم تجمع المباريات والنتائج
+والأخبار والانتقالات والترتيب والهدافين
+في واجهة واحدة سريعة ومتجاوبة.
+</p>
 
-      <h1>
-        TJ Football ⚽
-      </h1>
+<div class="hero-buttons">
 
-      <p>
-        كل ما يخص كرة القدم في مكان واحد:
-        مباريات، نتائج، أخبار، انتقالات،
-        ترتيب وهدافون.
-      </p>
+<button
+class="btn-white"
+onclick="go('matches')">
+⚽ شاهد المباريات
+</button>
 
-      <div class="hero-actions">
-
-        <button
-          class="primary-btn"
-          onclick="goTo('matches-section')">
-          ⚽ المباريات
-        </button>
-
-        <button
-          class="secondary-btn"
-          onclick="goTo('news-section')">
-          📰 آخر الأخبار
-        </button>
-
-      </div>
-
-    </div>
-
-    <div class="hero-card">
-
-      <div class="hero-card-title">
-        إجمالي المباريات المحملة
-      </div>
-
-      <div
-        class="hero-stat"
-        id="heroMatches">
-        -
-      </div>
-
-      <div class="hero-card-title">
-        TJ Football
-      </div>
-
-    </div>
-
-  </div>
+<button
+class="btn-transparent"
+onclick="go('news')">
+📰 آخر الأخبار
+</button>
 
 </div>
 
+</div>
+
+<div class="hero-card">
+
+<div>عدد المباريات</div>
+
+<div
+class="hero-number"
+id="matchCount">
+-
+</div>
+
+<div>محدثة من بيانات الموقع</div>
+
+</div>
+
+</div>
+</div>
 
 <main>
 
-  <!-- STATUS -->
+<div id="globalStatus">
+⏳ جاري تحميل المباريات...
+</div>
 
-  <div id="status">
-    ⏳ جاري تحميل بيانات TJ Football...
-  </div>
 
+<!-- MATCHES -->
 
-  <!-- =========================
-       MATCHES
-  ========================= -->
+<section id="matches">
 
-  <section id="matches-section">
+<div class="section-head">
 
-    <div class="section-title">
+<h2>⚽ المباريات والنتائج</h2>
 
-      <div>
-        <h2>⚽ المباريات والنتائج</h2>
-        <span>
-          المباريات المتوفرة حاليًا
-        </span>
-      </div>
+<small>
+مباشر • انتهت • قادمة
+</small>
 
-    </div>
+</div>
 
-    <div class="filters">
+<div class="filters">
 
-      <input
-        id="searchMatch"
-        type="search"
-        placeholder="🔎 ابحث عن فريق أو بطولة..."
-        oninput="renderMatches()"
-      >
+<input
+id="search"
+type="search"
+placeholder="🔎 ابحث عن فريق أو بطولة"
+oninput="renderMatches()">
 
-      <select
-        id="leagueFilter"
-        onchange="renderMatches()">
+<select
+id="league"
+onchange="renderMatches()">
 
-        <option value="all">
-          كل البطولات
-        </option>
+<option value="all">
+كل البطولات
+</option>
 
-      </select>
+</select>
 
-      <select
-        id="statusFilter"
-        onchange="renderMatches()">
+<select
+id="matchStatus"
+onchange="renderMatches()">
 
-        <option value="all">
-          كل الحالات
-        </option>
+<option value="all">
+كل الحالات
+</option>
 
-        <option value="live">
-          🔴 مباشر
-        </option>
+<option value="live">
+🔴 مباشر
+</option>
 
-        <option value="finished">
-          ✅ انتهت
-        </option>
+<option value="finished">
+✅ انتهت
+</option>
 
-        <option value="scheduled">
-          🕐 قادمة
-        </option>
+<option value="scheduled">
+🕐 قادمة
+</option>
 
-      </select>
+</select>
 
-    </div>
+</div>
 
-    <div
-      id="matches"
-      class="matches">
-    </div>
+<div
+id="matchesList"
+class="matches">
+</div>
 
-  </section>
+</section>
 
 
-  <!-- =========================
-       NEWS
-  ========================= -->
+<!-- NEWS -->
 
-  <section id="news-section">
+<section id="news">
 
-    <div class="section-title">
+<div class="section-head">
 
-      <div>
-        <h2>📰 آخر الأخبار</h2>
-        <span>
-          أخبار كرة القدم
-        </span>
-      </div>
+<h2>📰 الأخبار</h2>
 
-    </div>
+<small>
+آخر الأخبار
+</small>
 
-    <div
-      id="news"
-      class="news-grid">
-    </div>
+</div>
 
-  </section>
+<div
+id="newsList"
+class="news-grid">
 
+<div class="empty">
+⏳ جاري تحميل الأخبار...
+</div>
 
-  <!-- =========================
-       TRANSFERS
-  ========================= -->
+</div>
 
-  <section id="transfers-section">
+</section>
 
-    <div class="section-title">
 
-      <div>
-        <h2>🔄 الانتقالات</h2>
-        <span>
-          آخر أخبار انتقالات اللاعبين
-        </span>
-      </div>
+<!-- TRANSFERS -->
 
-    </div>
+<section id="transfers">
 
-    <div
-      id="transfers"
-      class="transfer-grid">
-    </div>
+<div class="section-head">
 
-  </section>
+<h2>🔄 الانتقالات</h2>
 
+<small>
+سوق الانتقالات
+</small>
 
-  <!-- =========================
-       STANDINGS
-  ========================= -->
+</div>
 
-  <section id="standings-section">
+<div
+id="transferList"
+class="transfer-grid">
 
-    <div class="section-title">
+<div class="empty">
+⏳ جاري تحميل الانتقالات...
+</div>
 
-      <div>
-        <h2>🏆 ترتيب الدوريات</h2>
-        <span>
-          ترتيب الفرق
-        </span>
-      </div>
+</div>
 
-    </div>
+</section>
 
-    <div class="filters">
 
-      <select
-        id="standingsLeague"
-        onchange="loadStandings()">
+<!-- STANDINGS -->
 
-        <option value="la-liga">
-          🇪🇸 La Liga
-        </option>
+<section id="standings">
 
-        <option value="premier-league">
-          🏴 Premier League
-        </option>
+<div class="section-head">
 
-      </select>
+<h2>🏆 الترتيب</h2>
 
-    </div>
+</div>
 
-    <div
-      id="standings"
-      class="table-box">
-    </div>
+<div class="filters">
 
-  </section>
+<select
+id="standingLeague"
+onchange="loadStandings()">
 
+<option value="la-liga">
+🇪🇸 La Liga
+</option>
 
-  <!-- =========================
-       SCORERS
-  ========================= -->
+<option value="premier-league">
+🏴 Premier League
+</option>
 
-  <section id="scorers-section">
+</select>
 
-    <div class="section-title">
+</div>
 
-      <div>
-        <h2>👟 الهدافون</h2>
-        <span>
-          أفضل الهدافين
-        </span>
-      </div>
+<div
+id="standingList"
+class="table-wrap">
 
-    </div>
+<div class="empty">
+⏳ جاري تحميل الترتيب...
+</div>
 
-    <div class="filters">
+</div>
 
-      <select
-        id="scorersLeague"
-        onchange="loadScorers()">
+</section>
 
-        <option value="la-liga">
-          🇪🇸 La Liga
-        </option>
 
-        <option value="premier-league">
-          🏴 Premier League
-        </option>
+<!-- SCORERS -->
 
-      </select>
+<section id="scorers">
 
-    </div>
+<div class="section-head">
 
-    <div
-      id="scorers"
-      class="scorers">
-    </div>
+<h2>👟 الهدافون</h2>
 
-  </section>
+</div>
+
+<div class="filters">
+
+<select
+id="scorerLeague"
+onchange="loadScorers()">
+
+<option value="la-liga">
+🇪🇸 La Liga
+</option>
+
+<option value="premier-league">
+🏴 Premier League
+</option>
+
+</select>
+
+</div>
+
+<div
+id="scorerList"
+class="scorer-grid">
+
+<div class="empty">
+⏳ جاري تحميل الهدافين...
+</div>
+
+</div>
+
+</section>
 
 </main>
 
 
-<!-- =========================
-     MATCH MODAL
-========================= -->
+<!-- MODAL -->
 
 <div
-  id="matchModal"
-  class="modal"
-  onclick="closeModal(event)">
+id="modal"
+class="modal"
+onclick="closeOutside(event)">
 
-  <div
-    class="modal-content"
-    onclick="event.stopPropagation()">
+<div
+class="modal-box"
+onclick="event.stopPropagation()">
 
-    <button
-      class="close"
-      onclick="hideModal()">
-      ×
-    </button>
+<button
+class="close"
+onclick="closeModal()">
+×
+</button>
 
-    <div id="modalBody"></div>
+<div id="modalContent"></div>
 
-  </div>
+</div>
 
 </div>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer>
 
-  <strong>
-    ⚽ TJ Football
-  </strong>
+<strong>⚽ TJ Football</strong>
 
-  <p>
-    Football • Matches • Results • News • Transfers
-  </p>
+<p>
+Matches • Results • News • Transfers • Standings • Scorers
+</p>
 
-  <p>
-    © 2026 TJ Football
-  </p>
+<p>
+© 2026 TJ Football
+</p>
 
 </footer>
 
 
 <script>
 
-  /* =====================================
-     GLOBAL DATA
-  ===================================== */
-
-  let matchesData = [];
-  let newsData = [];
-  let transfersData = [];
+"use strict";
 
 
-  /* =====================================
-     HELPERS
-  ===================================== */
+/* =========================
+   GLOBAL DATA
+========================= */
 
-  function safe(value, fallback = "") {
+let matches=[];
+let news=[];
+let transfers=[];
 
-    if (
-      value === null ||
-      value === undefined
-    ) {
-      return fallback;
-    }
 
-    return value;
+/* =========================
+   HELPERS
+========================= */
+
+function text(value,fallback=""){
+
+ if(value===undefined||value===null)
+  return fallback;
+
+ return String(value);
+
+}
+
+
+function teamName(team){
+
+ if(!team)
+  return "Unknown";
+
+ if(typeof team==="string")
+  return team;
+
+ return team.name||
+        team.team||
+        team.title||
+        "Unknown";
+
+}
+
+
+function teamLogo(team){
+
+ if(!team||typeof team==="string")
+  return "";
+
+ return team.logo||
+        team.image||
+        team.crest||
+        "";
+
+}
+
+
+function escapeHTML(value){
+
+ return text(value)
+  .replaceAll("&","&amp;")
+  .replaceAll("<","&lt;")
+  .replaceAll(">","&gt;")
+  .replaceAll('"',"&quot;")
+  .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================
+   JSON LOADER
+========================= */
+
+async function getJSON(file){
+
+ const response=
+ await fetch(
+  "./data/"+file+
+  "?v="+Date.now(),
+  {
+   cache:"no-store"
+  }
+ );
+
+ if(!response.ok){
+
+  throw new Error(
+   file+" HTTP "+response.status
+  );
+
+ }
+
+ return await response.json();
+
+}
+
+
+/* =========================
+   NAV
+========================= */
+
+function go(id,button){
+
+ const el=
+ document.getElementById(id);
+
+ if(el){
+
+  el.scrollIntoView({
+   behavior:"smooth"
+  });
+
+ }
+
+ document
+ .querySelectorAll("nav button")
+ .forEach(b=>
+  b.classList.remove("active")
+ );
+
+ if(button)
+  button.classList.add("active");
+
+ document
+ .getElementById("nav")
+ .classList.remove("open");
+
+}
+
+
+function toggleMenu(){
+
+ document
+ .getElementById("nav")
+ .classList.toggle("open");
+
+}
+
+
+/* =========================
+   MATCHES
+========================= */
+
+async function loadMatches(){
+
+ try{
+
+  const data=
+  await getJSON("matches.json");
+
+  matches=
+  Array.isArray(data)
+  ?data
+  :Array.isArray(data.matches)
+   ?data.matches
+   :[];
+
+  document
+  .getElementById("matchCount")
+  .textContent=
+  matches.length;
+
+  createLeagueOptions();
+
+  renderMatches();
+
+  document
+  .getElementById("globalStatus")
+  .textContent=
+  "✅ تم تحميل "+matches.length+
+  " مباريات بنجاح";
+
+  return true;
+
+ }catch(error){
+
+  console.error(error);
+
+  document
+  .getElementById("globalStatus")
+  .textContent=
+  "❌ تعذر تحميل المباريات";
+
+  document
+  .getElementById("matchesList")
+  .innerHTML=
+  `
+  <div class="empty">
+  ❌ خطأ في تحميل matches.json
+  <br><br>
+  ${escapeHTML(error.message)}
+  </div>
+  `;
+
+  return false;
+
+ }
+
+}
+
+
+function createLeagueOptions(){
+
+ const select=
+ document.getElementById("league");
+
+ const leagues=[
+  ...new Set(
+   matches.map(
+    m=>text(m.league,"Football")
+   )
+  )
+ ];
+
+ select.innerHTML=
+ `
+ <option value="all">
+ كل البطولات
+ </option>
+ `;
+
+ leagues.forEach(league=>{
+
+  const option=
+  document.createElement("option");
+
+  option.value=league;
+  option.textContent=league;
+
+  select.appendChild(option);
+
+ });
+
+}
+
+
+function renderMatches(){
+
+ const list=
+ document.getElementById(
+  "matchesList"
+ );
+
+ const search=
+ document.getElementById(
+  "search"
+ ).value.toLowerCase().trim();
+
+ const league=
+ document.getElementById(
+  "league"
+ ).value;
+
+ const status=
+ document.getElementById(
+  "matchStatus"
+ ).value;
+
+ const result=
+ matches.filter(match=>{
+
+  const home=
+  teamName(match.homeTeam);
+
+  const away=
+  teamName(match.awayTeam);
+
+  const comp=
+  text(match.league);
+
+  const okSearch=
+  !search||
+  (
+   home+" "+away+" "+comp
+  )
+  .toLowerCase()
+  .includes(search);
+
+  const okLeague=
+  league==="all"||
+  comp===league;
+
+  const okStatus=
+  status==="all"||
+  text(match.status,"scheduled")
+  ===status;
+
+  return okSearch&&okLeague&&okStatus;
+
+ });
+
+ if(!result.length){
+
+  list.innerHTML=
+  `
+  <div class="empty">
+  لا توجد مباريات مطابقة.
+  </div>
+  `;
+
+  return;
+
+ }
+
+ list.innerHTML=
+ result.map((match,index)=>
+  matchCard(match,index)
+ ).join("");
+
+}
+
+
+function matchCard(match,index){
+
+ const home=match.homeTeam||{};
+ const away=match.awayTeam||{};
+
+ const homeLogo=
+ teamLogo(home);
+
+ const awayLogo=
+ teamLogo(away);
+
+ const status=
+ text(match.status,"scheduled");
+
+ const hs=
+ match.homeScore??"-";
+
+ const as=
+ match.awayScore??"-";
+
+ return `
+ <article
+ class="card match-card"
+ onclick="openMatch(${index})">
+
+ <div class="match-top">
+
+ <span class="league">
+ ${escapeHTML(
+  text(match.league,"Football")
+ )}
+ </span>
+
+ <span class="date">
+ ${escapeHTML(
+  text(match.date)
+ )}
+ </span>
+
+ </div>
+
+ <div class="teams">
+
+ <div class="team">
+
+ ${
+ homeLogo
+ ?`
+ <img
+ class="logo"
+ src="${escapeHTML(homeLogo)}"
+ alt=""
+ onerror="this.style.display='none'">
+ `
+ :""
+ }
+
+ ${escapeHTML(
+  teamName(home)
+ )}
+
+ </div>
+
+ <div>
+
+ <div
+ class="score ${
+  hs==="-"?"pending":""
+ }">
+
+ ${escapeHTML(hs)}
+ -
+ ${escapeHTML(as)}
+
+ </div>
+
+ </div>
+
+ <div class="team">
+
+ ${
+ awayLogo
+ ?`
+ <img
+ class="logo"
+ src="${escapeHTML(awayLogo)}"
+ alt=""
+ onerror="this.style.display='none'">
+ `
+ :""
+ }
+
+ ${escapeHTML(
+  teamName(away)
+ )}
+
+ </div>
+
+ </div>
+
+ <div
+ class="match-status ${status}">
+
+ ${
+  status==="live"
+  ?"🔴 مباشر"
+  :status==="finished"
+   ?"✅ انتهت"
+   :"🕐 قادمة"
+ }
+
+ </div>
+
+ </article>
+ `;
+
+}
+
+
+/* =========================
+   NEWS
+========================= */
+
+async function loadNews(){
+
+ const box=
+ document.getElementById(
+  "newsList"
+ );
+
+ try{
+
+  const data=
+  await getJSON("news.json");
+
+  news=
+  Array.isArray(data)
+  ?data
+  :Array.isArray(data.news)
+   ?data.news
+   :[];
+
+  if(!news.length){
+
+   box.innerHTML=
+   `<div class="empty">
+   لا توجد أخبار حاليًا.
+   </div>`;
+
+   return;
 
   }
 
+  box.innerHTML=
+  news.slice(0,12)
+  .map(item=>{
 
-  function getName(team) {
+   const title=
+   item.title||
+   item.headline||
+   "خبر رياضي";
 
-    if (!team) {
-      return "Unknown";
-    }
+   const body=
+   item.description||
+   item.summary||
+   item.content||
+   "";
 
-    if (typeof team === "string") {
-      return team;
-    }
+   const category=
+   item.category||
+   item.league||
+   "Football";
 
-    return (
-      team.name ||
-      team.team ||
-      team.title ||
-      "Unknown"
-    );
+   const date=
+   item.date||
+   item.publishedAt||
+   "";
+
+   return `
+   <article class="card">
+
+   <div class="category">
+   ${escapeHTML(category)}
+   </div>
+
+   <div class="news-title">
+   ${escapeHTML(title)}
+   </div>
+
+   <div class="news-text">
+   ${escapeHTML(
+    text(body).slice(0,220)
+   )}
+   </div>
+
+   <div class="meta">
+   ${escapeHTML(date)}
+   </div>
+
+   </article>
+   `;
+
+  }).join("");
+
+ }catch(error){
+
+  console.warn(
+   "news.json:",
+   error
+  );
+
+  box.innerHTML=
+  `<div class="empty">
+  📰 الأخبار غير متوفرة حاليًا.
+  </div>`;
+
+ }
+
+}
+
+
+/* =========================
+   TRANSFERS
+========================= */
+
+async function loadTransfers(){
+
+ const box=
+ document.getElementById(
+  "transferList"
+ );
+
+ try{
+
+  const data=
+  await getJSON(
+   "transfers.json"
+  );
+
+  transfers=
+  Array.isArray(data)
+  ?data
+  :Array.isArray(data.transfers)
+   ?data.transfers
+   :[];
+
+  if(!transfers.length){
+
+   box.innerHTML=
+   `<div class="empty">
+   لا توجد انتقالات حاليًا.
+   </div>`;
+
+   return;
 
   }
 
+  box.innerHTML=
+  transfers.slice(0,12)
+  .map(item=>{
 
-  function getLogo(team) {
+   const player=
+   item.player||
+   item.name||
+   "لاعب";
 
-    if (!team || typeof team === "string") {
-      return "";
-    }
+   const from=
+   item.from||
+   item.oldClub||
+   item.previousClub||
+   "—";
 
-    return (
-      team.logo ||
-      team.image ||
-      team.crest ||
-      ""
-    );
+   const to=
+   item.to||
+   item.newClub||
+   item.currentClub||
+   "—";
+
+   return `
+   <article class="card">
+
+   <div class="transfer-player">
+   🔄 ${escapeHTML(
+    teamName(player)
+   )}
+   </div>
+
+   <div class="transfer-row">
+
+   <div>
+   ${escapeHTML(
+    teamName(from)
+   )}
+   </div>
+
+   <div class="arrow">
+   ←
+   </div>
+
+   <div>
+   ${escapeHTML(
+    teamName(to)
+   )}
+   </div>
+
+   </div>
+
+   <div class="meta">
+   ${escapeHTML(
+    item.date||""
+   )}
+   </div>
+
+   </article>
+   `;
+
+  }).join("");
+
+ }catch(error){
+
+  console.warn(
+   "transfers.json:",
+   error
+  );
+
+  box.innerHTML=
+  `<div class="empty">
+  🔄 الانتقالات غير متوفرة حاليًا.
+  </div>`;
+
+ }
+
+}
+
+
+/* =========================
+   STANDINGS
+========================= */
+
+async function loadStandings(){
+
+ const box=
+ document.getElementById(
+  "standingList"
+ );
+
+ const league=
+ document.getElementById(
+  "standingLeague"
+ ).value;
+
+ box.innerHTML=
+ `<div class="empty">
+ ⏳ جاري تحميل الترتيب...
+ </div>`;
+
+ try{
+
+  const data=
+  await getJSON(
+   league+"-standings.json"
+  );
+
+  let rows=
+  Array.isArray(data)
+  ?data
+  :data.standings||
+   data.teams||
+   data.data||
+   [];
+
+  if(
+   rows.length&&
+   Array.isArray(rows[0])
+  ){
+   rows=rows[0];
+  }
+
+  if(!Array.isArray(rows))
+   rows=[];
+
+  if(!rows.length){
+
+   box.innerHTML=
+   `<div class="empty">
+   لا توجد بيانات ترتيب.
+   </div>`;
+
+   return;
 
   }
 
+  box.innerHTML=
+  `
+  <table>
 
-  function getStatusText(status) {
+  <thead>
+  <tr>
+  <th>#</th>
+  <th>الفريق</th>
+  <th>لعب</th>
+  <th>ف</th>
+  <th>ت</th>
+  <th>خ</th>
+  <th>نقاط</th>
+  </tr>
+  </thead>
 
-    if (status === "live") {
-      return "🔴 مباشر";
-    }
+  <tbody>
 
-    if (status === "finished") {
-      return "✅ انتهت";
+  ${
+   rows.slice(0,25)
+   .map((row,i)=>
+    standingRow(row,i)
+   ).join("")
+  }
+
+  </tbody>
+
+  </table>
+  `;
+
+ }catch(error){
+
+  console.warn(
+   "standings:",
+   error
+  );
+
+  box.innerHTML=
+  `<div class="empty">
+  🏆 الترتيب غير متوفر حاليًا.
+  </div>`;
+
+ }
+
+}
+
+
+function standingRow(row,index){
+
+ const team=
+ row.team||
+ row.club||
+ row;
+
+ const name=
+ teamName(team);
+
+ const logo=
+ teamLogo(team);
+
+ const played=
+ row.played??
+ row.games??
+ row.p??
+ "-";
+
+ const wins=
+ row.win
